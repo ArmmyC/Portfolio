@@ -1,10 +1,12 @@
 {
   "scripts": {
-    "button:scss": "node-sass -w styles/button.scss styles/button.css"
+    "button:scss": "sass --watch styles/button.scss:css/button.css"
   },
   "dependencies": {
     "gsap": "^3.12.5",
-    "lenis": "^1.1.14",
-    "node-sass": "^9.0.0"
+    "lenis": "^1.1.14"
+  },
+  "devDependencies": {
+    "sass": "^1.77.6"
   }
 }

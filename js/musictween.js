@@ -1,4 +1,4 @@
-var vaudio = document.getElementById("audio");
+const vaudio = document.getElementById("audio");
 vaudio.volume = 0.2;
 const c = document.querySelector("canvas");
 const audio = document.querySelector("#audio");
@@ -17,8 +17,8 @@ let opt = {
 };
 c.width = opt.width * 2;
 c.height = opt.height * 2;
-c.style.width = opt.width;
-c.style.height = opt.height;
+c.style.width = opt.width + "px";
+c.style.height = opt.height + "px";
 
 const ctx = c.getContext("2d");
 ctx.scale(2, 2);
@@ -36,7 +36,7 @@ const render = () => {
   ctx.beginPath();
   let increment = 0;
 
-  for (i = 0; i <= opt.points; i++) {
+  for (let i = 0; i <= opt.points; i++) {
     if (i < opt.points / 2) {
       increment += 0.1;
     } else {
@@ -55,10 +55,11 @@ const render = () => {
 render();
 
 audio.play();
-TweenMax.to(opt, 1, {
+gsap.to(opt, {
+  duration: 1,
   sinHeight: 4,
   stretch: 5,
-  ease: Power2.easeInOut,
+  ease: "power2.inOut",
 });
 opt.power = !opt.power;
 c.addEventListener("click", () => {
@@ -66,18 +67,21 @@ c.addEventListener("click", () => {
 
   if (opt.power) {
     audio.play();
-    TweenMax.to(opt, 1, {
+    gsap.to(opt, {
+      duration: 1,
       sinHeight: 4,
       stretch: 5,
-      ease: Power2.easeInOut,
+      ease: "power2.inOut",
     });
   } else {
     audio.pause();
-    TweenMax.to(opt, 1, {
+    gsap.to(opt, {
+      duration: 1,
       sinHeight: 0,
       stretch: 10,
-      ease: Power3.easeOut,
+      ease: "power3.out",
     });
   }
   console.log(opt.power);
 });
+

@@ -1,3 +1,17 @@
+// Initialize Lenis smooth scroll
+const lenis = new Lenis();
+
+// Synchronize Lenis scroll with GSAP ScrollTrigger
+lenis.on("scroll", ScrollTrigger.update);
+
+// Add Lenis to GSAP ticker
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+});
+
+// Disable lag smoothing for GSAP because smooth scroll handles it
+gsap.ticker.lagSmoothing(0);
+
 let aboutbg = gsap.timeline({
   scrollTrigger: {
     trigger: "#animation1",

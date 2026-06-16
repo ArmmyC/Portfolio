@@ -17,6 +17,7 @@
     <!-- all css -->
     <link rel="stylesheet" href="css/mystyle.css" class="css" />
     <link rel="stylesheet" href="css/button.css" class="css" />
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.14/dist/lenis.css" />
 
     <!-- google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -79,7 +80,7 @@
         </a>
 
         <!-- buttons -->
-        <ul>
+        <div class="nav-links">
           <!-- music buttons using js script -->
           <div class="btn-music">
             <audio id="audio" src="music/goodsong.mp3"></audio>
@@ -152,7 +153,7 @@
             <br />
           </div>
           <!-- end of blob buttons -->
-        </ul>
+        </div>
       </nav>
     </header>
     <!-- end of header/navbar -->
@@ -161,7 +162,7 @@
     <main>
       <!-- home section -->
       <section id="home">
-        <banner id="interactive-3d">
+        <div id="interactive-3d">
           <article id="home-text">
             <p>
               When I wrote this website, <br />only God and I understood what I
@@ -170,7 +171,7 @@
             <br />
             <cite>- Anonymous</cite>
           </article>
-        </banner>
+        </div>
       </section>
 
       <!-- animation1 section -->
@@ -400,42 +401,41 @@
     </main>
     <!-- end of main section -->
 
-    <!-- all javascripts -->
-    <script src="js/intro.js" defer></script>
-    <script src="js/header.js" defer></script>
-
-    <!-- music buttons -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"
-      integrity="sha256-AJvwDTgx+2JZWtsg4XDtKI2KFXST+2AosYiLBYde2PM="
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/musictween.js" defer></script>
-
-    <!-- 3D Interactive background -->
+    <!-- Third-Party Libraries -->
+    <!-- Three.js and Vanta for 3D Globe -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
       integrity="sha256-dHgr289lGPd0XtdwNZaPyule1Ktcmg+Qz2RqacIHhew="
       crossorigin="anonymous"
+      defer
     ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"
       integrity="sha256-tU3amZyqk0RXyb3EPpJ9DyRTG864STyYQ23aobJW6po="
       crossorigin="anonymous"
+      defer
     ></script>
-    <script src="js/3dinteractive.js" defer></script>
-
-    <!-- GSAP -->
+    <!-- GSAP & ScrollTrigger -->
     <script
       src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
       integrity="sha256-KAM+RJox68w5blvosTtjFSvwMJQoj7WGcDQyGSe84Ic="
       crossorigin="anonymous"
+      defer
     ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
       integrity="sha256-rTPC35raimY8IUc1eCj5gNC3ynMe8z6zxuTzJ8OyzaU="
       crossorigin="anonymous"
+      defer
     ></script>
+    <!-- Lenis for Smooth Scrolling -->
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" defer></script>
+
+    <!-- Local Custom Scripts -->
+    <script src="js/intro.js" defer></script>
+    <script src="js/header.js" defer></script>
+    <script src="js/musictween.js" defer></script>
+    <script src="js/3dinteractive.js" defer></script>
     <script src="js/animation.js" defer></script>
   </body>
 </html>

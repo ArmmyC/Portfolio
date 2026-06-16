@@ -204,7 +204,7 @@ nav {
   transition: all 0.7s;
 }
 
-header ul {
+header .nav-links {
   position: relative;
   display: flex;
   justify-content: center;
