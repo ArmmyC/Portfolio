@@ -14,6 +14,10 @@ import { NAV, PROFILE } from "@/data/portfolio";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useReveal } from "@/hooks/useReveal";
 
+const SEO_TITLE = "Kamolpop Vitayarat | AI & Embedded Systems Engineer";
+const SEO_DESCRIPTION =
+  "Portfolio of Kamolpop Vitayarat, a Computer Engineering student at KMUTT focused on AI infrastructure, embedded systems, edge AI, robotics, RISC-V, and practical engineering projects.";
+
 const Index = () => {
   const active = useActiveSection(NAV.map((n) => n.id));
   const [catTrailUnlocked, setCatTrailUnlocked] = useState(false);
@@ -21,13 +25,10 @@ const Index = () => {
   useReveal();
 
   useEffect(() => {
-    document.title = `${PROFILE.name} | ${PROFILE.role}`;
+    document.title = SEO_TITLE;
     const desc = document.querySelector('meta[name="description"]');
     if (desc) {
-      desc.setAttribute(
-        "content",
-        `${PROFILE.name} (Arm) | Computer Engineering student at KMUTT focused on AI infrastructure, digital IC design, embedded systems, and RISC-V projects.`,
-      );
+      desc.setAttribute("content", SEO_DESCRIPTION);
     }
   }, []);
 

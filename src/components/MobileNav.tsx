@@ -12,16 +12,18 @@ export function MobileNav({ active }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="lg:hidden sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur lg:hidden">
       <div className="flex items-center justify-between px-5 py-3">
         <a href="#about" className="flex flex-col leading-tight">
-          <span className="text-base font-semibold text-foreground">{PROFILE.name} <span className="text-cat">🐾</span></span>
+          <h1 className="text-base font-semibold text-foreground">
+            {PROFILE.name} <span className="text-cat">🐾</span>
+          </h1>
           <span className="text-xs text-muted-foreground">{PROFILE.role}</span>
         </a>
         <div className="flex items-center gap-3">
           <ThemeToggle />
           <button
-            onClick={() => setOpen((o) => !o)}
+            onClick={() => setOpen((current) => !current)}
             aria-label="Toggle navigation"
             className="rounded-full border border-border bg-card p-2 text-foreground"
           >

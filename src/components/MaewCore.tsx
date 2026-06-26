@@ -106,7 +106,7 @@ export function MaewCore({
       >
         <img
           src={mascot}
-          alt="MaewCore mascot"
+          alt="Illustrated cat mascot for Kamolpop Vitayarat's portfolio"
           width={compact ? 40 : 48}
           height={compact ? 40 : 48}
           loading="lazy"
