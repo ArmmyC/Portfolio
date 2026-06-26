@@ -2,6 +2,7 @@ export type NavItem = { id: string; label: string };
 
 export const NAV: NavItem[] = [
   { id: "about", label: "/about" },
+  { id: "experience", label: "/experience" },
   { id: "projects", label: "/projects" },
   { id: "recognition", label: "/recognition" },
   { id: "skills", label: "/skills" },
@@ -11,15 +12,43 @@ export const NAV: NavItem[] = [
 export const PROFILE = {
   name: "Kamolpop Vitayarat",
   nickname: "Arm",
-  role: "AI & Embedded Systems Engineer",
+  role: "AI, Systems & Embedded Engineer",
   intro:
-    "I build systems across AI, embedded software, and computer engineering: from private LLM infrastructure to edge AI and RISC-V experiments.",
-  location: "KMUTT · Bangkok, TH",
-  email: "arm@example.com",
+    "Computer Engineering student building across AI infrastructure, digital IC design, and embedded systems, from private LLM serving and Slurm workflows to edge AI and RISC-V experiments.",
+  location: "KMUTT, Bangkok, TH",
+  email: "k.kamolpopv@gmail.com",
   github: "https://github.com/ArmmyC",
-  linkedin: "#",
-  resume: "#",
+  linkedin: "https://www.linkedin.com/in/kamolpop-vitayarat-781aa539a/",
+  resume: "",
 };
+
+export type Experience = {
+  organization: string;
+  link?: string;
+  title: string;
+  period: string;
+  status: string;
+  summary: string;
+  responsibilities: string[];
+};
+
+export const EXPERIENCES: Experience[] = [
+  {
+    organization: "Silicon Craft",
+    link: "https://www.sic.co.th/",
+    title: "Digital IC Design Intern and AI Engineer",
+    period: "Jun 2026 - Jul 2026",
+    status: "Summer 2026",
+    summary:
+      "Internship spanning digital IC design and AI engineering work across RFID-oriented research, benchmarking, and internal LLM tooling.",
+    responsibilities: [
+      "Fine-tuning an RTL specialist model for hardware-oriented tasks.",
+      "Creating benchmark workflows for RFID-related evaluation and experimentation.",
+      "Researching spiking neural networks for RFID applications.",
+      "Building and hosting an internal LLM website with RAG capabilities.",
+    ],
+  },
+];
 
 export type Project = {
   title: string;
@@ -46,7 +75,7 @@ export const PROJECTS: Project[] = [
     category: "Computer Vision / Edge AI",
     status: "Prototype",
     description:
-      "A local-first smart stretching kiosk prototype using camera pose tracking, web session UI, and Arduino wearable/hub firmware for guided stretch feedback.",
+      "A local-first smart stretching kiosk prototype using camera pose tracking, web session UI, and Arduino wearable and hub firmware for guided stretch feedback.",
     tech: ["Python", "FastAPI", "OpenCV", "MediaPipe", "MoveNet", "Arduino", "BLE", "WebSocket"],
     link: "https://github.com/ArmmyC/Stretching",
   },
@@ -81,25 +110,31 @@ export type Recognition = {
 export const RECOGNITION: Recognition[] = [
   {
     title: "Huawei Cloud HCCDA-AI Developer Certification",
-    issuer: "Huawei",
+    issuer: "Huawei Cloud",
+    year: "2026",
+    category: "Certification",
+  },
+  {
+    title: "Huawei Cloud HCCDA-Tech Essentials Developer Certification",
+    issuer: "Huawei Cloud",
     year: "2026",
     category: "Certification",
   },
   {
     title: "TPQI Huawei Professional Qualification: Cloud Developer Level 5",
-    issuer: "TPQI × Huawei",
+    issuer: "Thailand Professional Qualification Institute",
     year: "2026",
     category: "Certification",
   },
   {
-    title: "Super AI Engineer Season 6: Foundation & Hackathon",
-    issuer: "AIAT",
+    title: "Super AI Engineer Season 6: Level 1 and Level 2 Participant",
+    issuer: "Artificial Intelligence Association of Thailand",
     year: "2026",
     category: "Program",
   },
   {
-    title: "MakeX Robotics: Asian Intercontinental, Energy Innovator (Runner-up)",
-    issuer: "MakeX",
+    title: "MakeX Asian Intercontinental Tournament Energy Innovator Runner-up",
+    issuer: "MakeX Robotics Competition Committee",
     year: "2023",
     category: "Award",
   },
@@ -107,25 +142,26 @@ export const RECOGNITION: Recognition[] = [
 
 export const SKILLS: { group: string; items: string[] }[] = [
   {
-    group: "AI / Machine Learning",
-    items: ["PyTorch", "TensorFlow", "OpenCV", "MediaPipe", "MoveNet", "Computer Vision", "RAG"],
+    group: "AI / ML",
+    items: ["Python", "RAG", "Model Fine-tuning", "OpenCV", "MediaPipe", "LightGBM", "CatBoost", "Optuna"],
   },
   {
-    group: "Embedded / Systems",
-    items: ["C/C++", "Arduino", "ESP32", "BLE", "RTOS", "Verilog", "RISC-V", "FPGA"],
+    group: "Systems / Infrastructure",
+    items: ["Linux", "SSH", "Docker", "Slurm", "FastAPI", "vLLM", "LiteLLM", "Prometheus", "Grafana"],
   },
   {
-    group: "Backend / Infrastructure",
-    items: ["FastAPI", "Docker", "LiteLLM", "vLLM", "Prometheus", "Grafana", "Slurm"],
+    group: "Embedded / Digital Design",
+    items: ["Verilog", "RISC-V RV32I", "FPGA", "Xilinx Vivado", "ESP32", "BLE", "UART", "Memory-mapped I/O"],
   },
   {
-    group: "Frontend / Tools",
-    items: ["Next.js", "TypeScript", "Tailwind CSS", "Git", "Python", "MapLibre GL"],
+    group: "App / Data Tools",
+    items: ["pandas", "NumPy", "scikit-learn", "Next.js", "TypeScript", "Tailwind CSS", "Git", "Java"],
   },
 ];
 
 export const CAT_STATUS: Record<string, string> = {
   about: "Cat approved.",
+  experience: "Experience loaded.",
   projects: "Projects are ready.",
   recognition: "Credentials sorted.",
   skills: "Skills loaded.",

@@ -1,17 +1,36 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import mascot from "@/assets/maew-mascot.png";
 import { CAT_STATUS } from "@/data/portfolio";
-import { useTheme } from "next-themes";
+import {
+  CAT_EASTER_EGG_CLICK_TARGET,
+  useCatEasterEggEligibility,
+} from "@/hooks/useCatEasterEggEligibility";
+import { cn } from "@/lib/utils";
 
 interface Props {
   active: string;
   compact?: boolean;
+  allowEasterEgg?: boolean;
+  easterEggUnlocked?: boolean;
+  onUnlock?: () => void;
+  achievementVisible?: boolean;
 }
 
-export function MaewCore({ active, compact = false }: Props) {
+export function MaewCore({
+  active,
+  compact = false,
+  allowEasterEgg = false,
+  easterEggUnlocked = false,
+  onUnlock,
+  achievementVisible = false,
+}: Props) {
   const [purring, setPurring] = useState(false);
-  const { resolvedTheme } = useTheme();
+  const [petCount, setPetCount] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const isMotionSafeDesktop = useCatEasterEggEligibility();
+  const canUnlockEasterEgg = allowEasterEgg && isMotionSafeDesktop;
 
   useEffect(() => {
     setMounted(true);
@@ -20,8 +39,20 @@ export function MaewCore({ active, compact = false }: Props) {
   const isDark = mounted && resolvedTheme === "dark";
 
   let status = "";
-  if (purring) {
-    status = isDark ? "Currently purring in the dark... 🌙🐾" : "Currently purring. 🐾";
+  if (achievementVisible) {
+    status = "Achievement unlocked.";
+  } else if (purring) {
+    if (easterEggUnlocked) {
+      status = isDark
+        ? "Currently purring in the dark. Paw mode still online."
+        : "Currently purring. Paw mode still online.";
+    } else {
+      status = isDark ? "Currently purring in the dark." : "Currently purring.";
+    }
+  } else if (easterEggUnlocked) {
+    status = "Soft paw mode online. Move the cursor.";
+  } else if (canUnlockEasterEgg && petCount > 0) {
+    status = `${CAT_EASTER_EGG_CLICK_TARGET - petCount} more pets until a surprise.`;
   } else {
     const darkStatuses: Record<string, string> = {
       about: "Zzz... dreaming of clean code.",
@@ -30,38 +61,67 @@ export function MaewCore({ active, compact = false }: Props) {
       skills: "Night vision sensors online.",
       contact: "Drop a line, cat never sleeps.",
     };
-    status = isDark 
-      ? (darkStatuses[active] ?? "Guarding the system. 🐈")
+
+    status = isDark
+      ? (darkStatuses[active] ?? "Guarding the system.")
       : (CAT_STATUS[active] ?? "Cat approved.");
   }
 
+  const handlePet = () => {
+    setPurring((current) => !current);
+
+    if (!canUnlockEasterEgg || easterEggUnlocked) {
+      return;
+    }
+
+    setPetCount((current) => {
+      const nextCount = current + 1;
+
+      if (nextCount >= CAT_EASTER_EGG_CLICK_TARGET) {
+        onUnlock?.();
+        return 0;
+      }
+
+      return nextCount;
+    });
+  };
+
   return (
     <div
-      className={
-        "flex items-center gap-3 rounded-2xl border border-border bg-card/90 px-3 py-2.5 shadow-[0_4px_20px_-12px_hsl(350_60%_60%/0.35)]" +
-        (compact ? "" : "")
-      }
+      className={cn(
+        "relative flex items-center rounded-2xl border border-border bg-card/90 shadow-[0_4px_20px_-12px_hsl(350_60%_60%/0.35)]",
+        compact ? "gap-2.5 px-3 py-2" : "gap-3 px-3 py-2.5",
+      )}
     >
       <button
         type="button"
-        onClick={() => setPurring((p) => !p)}
-        className="group relative shrink-0 rounded-full bg-cat/30 p-1 ring-1 ring-cat/40 transition hover:bg-cat/50"
+        onClick={handlePet}
+        className={cn(
+          "group relative shrink-0 rounded-full bg-cat/15 ring-1 ring-cat/40 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2",
+          compact ? "p-1.5" : "p-2",
+          canUnlockEasterEgg && !easterEggUnlocked && "hover:-translate-y-0.5 hover:bg-cat/30",
+          (!canUnlockEasterEgg || easterEggUnlocked) && "hover:bg-cat/25",
+        )}
         aria-label="MaewCore mascot: click to pet"
       >
         <img
           src={mascot}
           alt="MaewCore mascot"
-          width={36}
-          height={36}
+          width={compact ? 40 : 48}
+          height={compact ? 40 : 48}
           loading="lazy"
-          className="h-9 w-9 rounded-full object-contain transition group-hover:scale-110"
+          className={cn(
+            "rounded-full object-cover drop-shadow-[0_6px_18px_hsl(222_30%_18%/0.16)] transition duration-300 group-hover:scale-[1.08]",
+            compact ? "h-10 w-10" : "h-12 w-12",
+          )}
         />
       </button>
+
       <div className="min-w-0">
         <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-          maew · little helper
+          maew . little helper
         </div>
-        <div className="truncate text-[13px] font-medium text-foreground/90">
+        <div className="truncate text-[13px] font-medium text-foreground/90" aria-live="polite">
           {status}
         </div>
       </div>

@@ -1,3 +1,5 @@
+import { PROFILE } from "@/data/portfolio";
+
 export function About() {
   return (
     <section id="about" className="scroll-mt-24 py-16 lg:py-24">
@@ -6,7 +8,10 @@ export function About() {
         <p>
           I'm <span className="text-foreground font-medium">Arm</span>, a Computer Engineering student at{" "}
           <span className="text-foreground font-medium">King Mongkut's University of Technology Thonburi (KMUTT)</span>.
-          I like building at the intersection of AI, embedded systems, and practical engineering tools.
+          I like building at the intersection of AI, embedded systems, and practical engineering tools with a strong systems mindset.
+        </p>
+        <p>
+          {PROFILE.intro}
         </p>
         <p>
           Lately I've been exploring{" "}

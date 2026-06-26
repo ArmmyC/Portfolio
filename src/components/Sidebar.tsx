@@ -6,11 +6,17 @@ import { cn } from "@/lib/utils";
 
 interface Props {
   active: string;
+  easterEggUnlocked: boolean;
+  achievementVisible: boolean;
+  onUnlockEasterEgg: () => void;
 }
 
-export function Sidebar({ active }: Props) {
+export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnlockEasterEgg }: Props) {
+  const hasLinkedIn = PROFILE.linkedin.trim().length > 0;
+  const hasResume = PROFILE.resume.trim().length > 0;
+
   return (
-    <aside className="hidden lg:flex lg:flex-col lg:justify-center lg:sticky lg:top-0 lg:h-screen lg:max-h-screen lg:w-[280px] xl:w-[320px] lg:py-12 lg:pr-6 lg:gap-y-8 select-none overflow-hidden">
+    <aside className="hidden lg:flex lg:w-[260px] xl:w-[292px] lg:shrink-0 lg:self-start lg:flex-col lg:gap-y-8 lg:sticky lg:top-6 lg:py-6 lg:pr-4 select-none">
       <div>
         <div className="flex items-center justify-between w-full">
           <div className="inline-flex items-center gap-2 rounded-full bg-cat/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/70">
@@ -23,11 +29,10 @@ export function Sidebar({ active }: Props) {
           {PROFILE.name}
         </h1>
         <p className="mt-1.5 text-base text-muted-foreground">
-          aka <span className="text-foreground">"{PROFILE.nickname}"</span> 🐾
+          aka <span className="text-foreground">"{PROFILE.nickname}"</span>
         </p>
-        <p className="mt-3 text-[14px] xl:text-[15px] font-semibold text-primary uppercase tracking-wider">{PROFILE.role}</p>
-        <p className="mt-4 max-w-xs text-[15px] xl:text-base leading-relaxed text-muted-foreground">
-          {PROFILE.intro}
+        <p className="mt-3 text-[14px] xl:text-[15px] font-semibold text-primary uppercase tracking-wider">
+          {PROFILE.role}
         </p>
 
         <nav className="mt-8" aria-label="Section navigation">
@@ -59,24 +64,31 @@ export function Sidebar({ active }: Props) {
       </div>
 
       <div className="space-y-4">
-        <MaewCore active={active} />
+        <MaewCore
+          active={active}
+          allowEasterEgg
+          easterEggUnlocked={easterEggUnlocked}
+          achievementVisible={achievementVisible}
+          onUnlock={onUnlockEasterEgg}
+        />
         <div className="flex items-center gap-5 text-muted-foreground">
           <a href={PROFILE.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="link-cyan">
             <Github className="h-[22px] w-[22px] transition-transform hover:scale-105" />
           </a>
-          <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="link-cyan">
-            <Linkedin className="h-[22px] w-[22px] transition-transform hover:scale-105" />
-          </a>
           <a href={`mailto:${PROFILE.email}`} aria-label="Email" className="link-cyan">
             <Mail className="h-[22px] w-[22px] transition-transform hover:scale-105" />
           </a>
-          <a href={PROFILE.resume} aria-label="Resume" className="link-cyan">
-            <FileText className="h-[22px] w-[22px] transition-transform hover:scale-105" />
-          </a>
+          {hasLinkedIn && (
+            <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="link-cyan">
+              <Linkedin className="h-[22px] w-[22px] transition-transform hover:scale-105" />
+            </a>
+          )}
+          {hasResume && (
+            <a href={PROFILE.resume} aria-label="Resume" className="link-cyan">
+              <FileText className="h-[22px] w-[22px] transition-transform hover:scale-105" />
+            </a>
+          )}
         </div>
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground/70">
-          {PROFILE.location}
-        </p>
       </div>
     </aside>
   );

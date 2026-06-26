@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import { PROJECTS } from "@/data/portfolio";
+import { PROFILE, PROJECTS } from "@/data/portfolio";
 
 export function Projects() {
   return (
@@ -39,6 +39,18 @@ export function Projects() {
             </div>
           </a>
         ))}
+      </div>
+
+      <div className="reveal mt-6">
+        <a
+          href={PROFILE.github}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground transition hover:border-primary/40 hover:text-primary"
+        >
+          More projects
+          <ArrowUpRight className="h-4 w-4" />
+        </a>
       </div>
     </section>
   );
