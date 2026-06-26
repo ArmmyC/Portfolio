@@ -141,10 +141,3 @@ dist/
 ```
 
 Recommended deployment targets include GitHub Pages, Vercel, Netlify, Cloudflare Pages, or a static web server.
-
-> [!IMPORTANT]
-> Update the canonical URL, Open Graph image URL, and social metadata in `index.html` when deploying to a different domain.
-
-## Naming recommendation
-
-The current repository name, `Portfolio`, is short but too generic. **Kamolpop.dev** is the better project name because it aligns with the site URL, the SEO metadata, and the personal brand behind the portfolio.
