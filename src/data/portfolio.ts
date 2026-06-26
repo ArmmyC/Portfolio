@@ -19,7 +19,7 @@ export const PROFILE = {
   location: "KMUTT, Bangkok, TH",
   email: "k.kamolpopv@gmail.com",
   github: "https://github.com/ArmmyC",
-  linkedin: "https://www.linkedin.com/in/kamolpop-vitayarat-781aa539a/",
+  linkedin: "https://www.linkedin.com/in/kamolpopvitayarat/",
   resume: "",
 };
 
