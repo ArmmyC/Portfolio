@@ -25,7 +25,8 @@ export function About() {
 
       <div className="space-y-5 text-base md:text-lg leading-relaxed text-muted-foreground reveal">
         <p>
-          I'm <span className="text-foreground font-medium">Arm</span>, a Computer Engineering student at{" "}
+          I'm <span className="text-foreground font-medium">Arm</span>{" "}
+          <span className="text-foreground/80">({PROFILE.thaiName})</span>, a Computer Engineering student at{" "}
           <span className="text-foreground font-medium">King Mongkut's University of Technology Thonburi (KMUTT)</span>.
           I like building at the intersection of AI, embedded systems, and practical engineering tools with a strong systems mindset.
         </p>

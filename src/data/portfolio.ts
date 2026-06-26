@@ -11,6 +11,7 @@ export const NAV: NavItem[] = [
 
 export const PROFILE = {
   name: "Kamolpop Vitayarat",
+  thaiName: "กมลภพ วิทยารัฐ",
   nickname: "Arm",
   role: "AI, Systems & Embedded Engineer",
   intro:
