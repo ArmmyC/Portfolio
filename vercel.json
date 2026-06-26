@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/innosoft-resume",
+      "destination": "/resume/innosoft_system_engineering_resume.pdf"
+    }
+  ]
+}
