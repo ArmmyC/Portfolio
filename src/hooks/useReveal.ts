@@ -8,11 +8,15 @@ export function useReveal() {
         entries.forEach((e) => {
           if (e.isIntersecting) {
             e.target.classList.add("in");
-            io.unobserve(e.target);
+          } else {
+            e.target.classList.remove("in");
           }
         });
       },
-      { threshold: 0.08 },
+      { 
+        threshold: 0.02, 
+        rootMargin: "-4% 0px -4% 0px" 
+      },
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();

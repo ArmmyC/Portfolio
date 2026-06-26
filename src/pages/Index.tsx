@@ -16,20 +16,39 @@ const Index = () => {
   useReveal();
 
   useEffect(() => {
-    document.title = `${PROFILE.name} — ${PROFILE.role}`;
+    document.title = `${PROFILE.name} | ${PROFILE.role}`;
     const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute("content", `${PROFILE.name} (Arm) — Computer Engineering student at KMUTT. AI, embedded systems, edge AI, RISC-V, and systems engineering portfolio.`);
+    if (desc) desc.setAttribute("content", `${PROFILE.name} (Arm) | Computer Engineering student at KMUTT. AI, embedded systems, edge AI, RISC-V, and systems engineering portfolio.`);
+  }, []);
+
+  useEffect(() => {
+    const glowEl = document.getElementById("ambient-glow");
+    if (!glowEl) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      glowEl.style.background = `radial-gradient(circle 500px at ${e.clientX}px ${e.clientY}px, hsl(var(--primary) / 0.12), transparent 80%)`;
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Interactive Ambient Mouse Glow */}
+      <div 
+        id="ambient-glow"
+        className="pointer-events-none fixed inset-0 z-0 hidden lg:block transition-opacity duration-300"
+      />
+
       <a href="#about" className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded focus:bg-primary focus:px-3 focus:py-1.5 focus:text-primary-foreground">
         Skip to content
       </a>
 
       <MobileNav active={active} />
 
-      <div className="mx-auto max-w-6xl px-5 lg:px-12">
+      <div className="mx-auto max-w-6xl px-5 lg:px-12 relative z-10">
         <div className="lg:flex lg:gap-12">
           <Sidebar active={active} />
 
@@ -40,9 +59,9 @@ const Index = () => {
             <Skills />
             <Contact />
 
-            <footer className="border-t border-border pb-10 pt-8 text-xs text-muted-foreground">
+            <footer className="border-t border-border pb-10 pt-8 text-[13px] text-muted-foreground">
               <p>
-                Built with React, TypeScript &amp; Tailwind — designed &amp; coded by {PROFILE.nickname}. <span className="text-cat">🐾</span>
+                Built with React, TypeScript &amp; Tailwind | Designed &amp; coded by {PROFILE.nickname}. <span className="text-cat">🐾</span>
               </p>
             </footer>
           </main>

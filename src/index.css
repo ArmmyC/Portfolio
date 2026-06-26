@@ -41,11 +41,46 @@
     --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   }
+
+  .dark {
+    /* Premium, lively, and soft dark palette */
+    --background: 222 35% 8%;            /* sleek deep navy */
+    --foreground: 210 20% 98%;           /* crisp off-white */
+
+    --card: 222 35% 12%;                 /* slightly lighter navy */
+    --card-foreground: 210 20% 98%;
+
+    --popover: 222 35% 10%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 180 65% 50%;              /* vibrant teal */
+    --primary-foreground: 222 35% 8%;
+
+    --secondary: 222 25% 16%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 222 25% 16%;
+    --muted-foreground: 217.2 32.6% 75%; /* softer light gray */
+
+    --accent: 260 55% 72%;               /* bright lavender */
+    --accent-foreground: 210 20% 98%;
+
+    --cat: 350 75% 75%;                  /* soft warm coral/pink */
+    --cat-foreground: 222 35% 8%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 25% 18%;
+    --input: 222 25% 18%;
+    --ring: 180 65% 55%;
+  }
 }
 
 @layer base {
   * {
     @apply border-border;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease, box-shadow 0.3s ease;
   }
 
   html {
@@ -64,6 +99,14 @@
     background-attachment: fixed;
   }
 
+  .dark body {
+    background-image:
+      radial-gradient(ellipse 60% 50% at 8% 0%, hsl(350 45% 12% / 0.45), transparent 60%),
+      radial-gradient(ellipse 55% 45% at 95% 8%, hsl(200 45% 12% / 0.4), transparent 65%),
+      radial-gradient(ellipse 55% 45% at 80% 95%, hsl(260 45% 12% / 0.35), transparent 65%),
+      radial-gradient(ellipse 50% 40% at 10% 90%, hsl(45 45% 12% / 0.35), transparent 65%);
+  }
+
   ::selection {
     background: hsl(var(--primary) / 0.25);
     color: hsl(var(--foreground));
@@ -75,24 +118,35 @@
     font-family: var(--font-mono);
   }
   .tag {
-    @apply inline-flex items-center rounded-full border border-border bg-secondary px-2.5 py-0.5 text-[11px] font-mono text-muted-foreground;
+    @apply inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 text-xs font-mono text-muted-foreground transition-all duration-300;
   }
   .link-cyan {
     @apply text-muted-foreground transition-colors hover:text-primary;
   }
   .section-label {
-    @apply font-mono text-[11px] uppercase tracking-[0.22em] text-primary;
+    @apply font-mono text-xs uppercase tracking-[0.22em] text-primary;
   }
   .soft-card {
-    @apply rounded-2xl border border-border bg-card/80 backdrop-blur-sm shadow-[0_4px_20px_-12px_hsl(220_30%_40%/0.18)];
+    @apply rounded-2xl border border-border bg-card/85 backdrop-blur-md shadow-[0_4px_20px_-12px_hsl(220_30%_40%/0.18)] transition-all duration-300;
+  }
+  .dark .soft-card {
+    @apply shadow-[0_4px_24px_-12px_rgba(0,0,0,0.6)];
   }
   .reveal {
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(15px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
   }
   .reveal.in {
     opacity: 1;
     transform: translateY(0);
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

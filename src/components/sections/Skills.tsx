@@ -10,7 +10,7 @@ export function Skills() {
             key={group.group}
             className="reveal soft-card p-5 transition hover:border-primary/30"
           >
-            <h3 className="font-mono text-[11px] uppercase tracking-widest text-foreground/60">
+            <h3 className="font-mono text-xs uppercase tracking-widest text-foreground/75 font-medium">
               {group.group}
             </h3>
             <div className="mt-3 flex flex-wrap gap-1.5">

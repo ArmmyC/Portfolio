@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import mascot from "@/assets/maew-mascot.png";
 import { CAT_STATUS } from "@/data/portfolio";
+import { useTheme } from "next-themes";
 
 interface Props {
   active: string;
@@ -9,7 +10,30 @@ interface Props {
 
 export function MaewCore({ active, compact = false }: Props) {
   const [purring, setPurring] = useState(false);
-  const status = purring ? "Currently purring." : CAT_STATUS[active] ?? "Cat approved.";
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && resolvedTheme === "dark";
+
+  let status = "";
+  if (purring) {
+    status = isDark ? "Currently purring in the dark... 🌙🐾" : "Currently purring. 🐾";
+  } else {
+    const darkStatuses: Record<string, string> = {
+      about: "Zzz... dreaming of clean code.",
+      projects: "Running simulations in the dark.",
+      recognition: "Credentials shining like stars.",
+      skills: "Night vision sensors online.",
+      contact: "Drop a line, cat never sleeps.",
+    };
+    status = isDark 
+      ? (darkStatuses[active] ?? "Guarding the system. 🐈")
+      : (CAT_STATUS[active] ?? "Cat approved.");
+  }
 
   return (
     <div
@@ -22,7 +46,7 @@ export function MaewCore({ active, compact = false }: Props) {
         type="button"
         onClick={() => setPurring((p) => !p)}
         className="group relative shrink-0 rounded-full bg-cat/30 p-1 ring-1 ring-cat/40 transition hover:bg-cat/50"
-        aria-label="MaewCore mascot — click to pet"
+        aria-label="MaewCore mascot: click to pet"
       >
         <img
           src={mascot}

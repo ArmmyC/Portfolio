@@ -13,7 +13,7 @@ export const PROFILE = {
   nickname: "Arm",
   role: "AI & Embedded Systems Engineer",
   intro:
-    "I build systems across AI, embedded software, and computer engineering — from private LLM infrastructure to edge AI and RISC-V experiments.",
+    "I build systems across AI, embedded software, and computer engineering: from private LLM infrastructure to edge AI and RISC-V experiments.",
   location: "KMUTT · Bangkok, TH",
   email: "arm@example.com",
   github: "https://github.com/ArmmyC",
@@ -86,19 +86,19 @@ export const RECOGNITION: Recognition[] = [
     category: "Certification",
   },
   {
-    title: "TPQI Huawei Professional Qualification — Cloud Developer Level 5",
+    title: "TPQI Huawei Professional Qualification: Cloud Developer Level 5",
     issuer: "TPQI × Huawei",
     year: "2026",
     category: "Certification",
   },
   {
-    title: "Super AI Engineer Season 6 — Foundation & Hackathon",
+    title: "Super AI Engineer Season 6: Foundation & Hackathon",
     issuer: "AIAT",
     year: "2026",
     category: "Program",
   },
   {
-    title: "MakeX Robotics — Asian Intercontinental, Energy Innovator (Runner-up)",
+    title: "MakeX Robotics: Asian Intercontinental, Energy Innovator (Runner-up)",
     issuer: "MakeX",
     year: "2023",
     category: "Award",
