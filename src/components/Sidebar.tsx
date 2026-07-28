@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, FileText } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, LayoutGrid } from "lucide-react";
 import { NAV, PROFILE } from "@/data/portfolio";
 import { MaewCore } from "./MaewCore";
 import { ThemeToggle } from "./ThemeToggle";
@@ -13,6 +13,7 @@ interface Props {
 
 export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnlockEasterEgg }: Props) {
   const hasLinkedIn = PROFILE.linkedin.trim().length > 0;
+  const hasHub = PROFILE.hub.trim().length > 0;
   const hasResume = PROFILE.resume.trim().length > 0;
 
   return (
@@ -81,6 +82,11 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
           {hasLinkedIn && (
             <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="link-cyan">
               <Linkedin className="h-[22px] w-[22px] transition-transform hover:scale-105" />
+            </a>
+          )}
+          {hasHub && (
+            <a href={PROFILE.hub} target="_blank" rel="noreferrer" aria-label="Website Hub" className="link-cyan">
+              <LayoutGrid className="h-[22px] w-[22px] transition-transform hover:scale-105" />
             </a>
           )}
           {hasResume && (

@@ -20,6 +20,7 @@ export const PROFILE = {
   email: "k.kamolpopv@gmail.com",
   github: "https://github.com/ArmmyC",
   linkedin: "https://www.linkedin.com/in/kamolpopvitayarat/",
+  hub: "https://hub.kamolpop.dev",
   resume: "",
 };
 
