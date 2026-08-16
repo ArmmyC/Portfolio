@@ -14,6 +14,15 @@ export function Projects() {
             rel="noreferrer"
             className="reveal soft-card group relative block p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_10px_30px_-12px_hsl(180_50%_45%/0.25)]"
           >
+            {p.image && (
+              <div className="mb-4 overflow-hidden rounded-xl border border-border/70 bg-background/60">
+                <img
+                  src={p.image}
+                  alt={`${p.title} project preview`}
+                  className="h-40 w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                />
+              </div>
+            )}
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <h3 className="text-[17px] md:text-[18px] font-semibold text-foreground transition-colors group-hover:text-primary">
                 {p.title}

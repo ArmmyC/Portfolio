@@ -1,3 +1,6 @@
+import rallyLogo from "@/assets/projects/rally-logo.avif";
+import freedomainOg from "@/assets/projects/freedomain-og.png";
+
 export type NavItem = { id: string; label: string };
 
 export const NAV: NavItem[] = [
@@ -60,9 +63,30 @@ export type Project = {
   description: string;
   tech: string[];
   link?: string;
+  image?: string;
 };
 
 export const PROJECTS: Project[] = [
+  {
+    title: "Rally",
+    category: "Opportunity Directory",
+    status: "Active",
+    description:
+      "A bilingual directory for discovering verified internships, hackathons, competitions, scholarships, and student programmes in Thailand.",
+    tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Node.js"],
+    link: "https://rally.kamolpop.dev/",
+    image: rallyLogo,
+  },
+  {
+    title: "Freedomain / WebPad",
+    category: "Web Infrastructure",
+    status: "Live",
+    description:
+      "A self-service web namespace and DNS control plane for claiming memorable addresses and connecting them to hosted projects.",
+    tech: ["Next.js", "TypeScript", "React", "DNS"],
+    link: "https://freedomain.kamolpop.dev/",
+    image: freedomainOg,
+  },
   {
     title: "Lanta LLM Hosting",
     category: "AI Infrastructure",
@@ -111,6 +135,18 @@ export type Recognition = {
 
 export const RECOGNITION: Recognition[] = [
   {
+    title: "Super AI Engineer Season 6 Average 5 Domain Individual Rank 1",
+    issuer: "Artificial Intelligence Association of Thailand",
+    year: "2026",
+    category: "Award",
+  },
+  {
+    title: "AI Ready ASEAN Completion",
+    issuer: "AI Ready ASEAN",
+    year: "2026",
+    category: "Certificate",
+  },
+  {
     title: "Huawei Cloud HCCDA-AI Developer Certification",
     issuer: "Huawei Cloud",
     year: "2026",
@@ -123,16 +159,10 @@ export const RECOGNITION: Recognition[] = [
     category: "Certification",
   },
   {
-    title: "TPQI Huawei Professional Qualification: Cloud Developer Level 5",
-    issuer: "Thailand Professional Qualification Institute",
+    title: "Hour of Code Certificate of Completion",
+    issuer: "Code.org",
     year: "2026",
-    category: "Certification",
-  },
-  {
-    title: "Super AI Engineer Season 6: Level 1 and Level 2 Participant",
-    issuer: "Artificial Intelligence Association of Thailand",
-    year: "2026",
-    category: "Program",
+    category: "Certificate",
   },
   {
     title: "MakeX Asian Intercontinental Tournament Energy Innovator Runner-up",
