@@ -1,5 +1,5 @@
-import rallyLogo from "@/assets/projects/rally-logo.avif";
-import freedomainOg from "@/assets/projects/freedomain-og.png";
+import rallyScreenshot from "@/assets/projects/rally-user.png";
+import freedomainScreenshot from "@/assets/projects/freedomain-user.png";
 
 export type NavItem = { id: string; label: string };
 
@@ -75,7 +75,7 @@ export const PROJECTS: Project[] = [
       "A bilingual directory for discovering verified internships, hackathons, competitions, scholarships, and student programmes in Thailand.",
     tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Node.js"],
     link: "https://rally.kamolpop.dev/",
-    image: rallyLogo,
+    image: rallyScreenshot,
   },
   {
     title: "Freedomain / WebPad",
@@ -85,7 +85,7 @@ export const PROJECTS: Project[] = [
       "A self-service web namespace and DNS control plane for claiming memorable addresses and connecting them to hosted projects.",
     tech: ["Next.js", "TypeScript", "React", "DNS"],
     link: "https://freedomain.kamolpop.dev/",
-    image: freedomainOg,
+    image: freedomainScreenshot,
   },
   {
     title: "Lanta LLM Hosting",
