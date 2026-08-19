@@ -19,7 +19,7 @@ export function Projects() {
                 <img
                   src={p.image}
                   alt={`${p.title} project preview`}
-                  className="h-40 w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                  className="h-40 w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]"
                 />
               </div>
             )}
