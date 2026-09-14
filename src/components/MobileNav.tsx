@@ -16,7 +16,7 @@ export function MobileNav({ active }: Props) {
       <div className="flex items-center justify-between gap-4 px-5 py-3.5">
         <a href="#about" className="flex min-w-0 items-center gap-3 leading-tight">
           <img
-            src="/brand/kv-monogram.svg"
+            src="/brand/kv-monogram.png"
             alt=""
             aria-hidden="true"
             className="brand-mark brand-mark--compact"

@@ -19,17 +19,17 @@ describe("editorial portfolio shell", () => {
 
     const monogram = screen.getByRole("img", { name: "Kamolpop monogram" });
 
-    expect(monogram).toHaveAttribute("src", "/brand/kv-monogram.svg");
+    expect(monogram).toHaveAttribute("src", "/brand/kv-monogram.png");
     expect(screen.getByRole("navigation", { name: "Primary section navigation" })).toBeInTheDocument();
   });
 
-  it("keeps the kv mark as separate vector shapes with a broken k leg", () => {
-    const logo = readFileSync(resolve(process.cwd(), "public/brand/kv-monogram.svg"), "utf8");
+  it("ships the PNG master with a transparent 1024px canvas", () => {
+    const png = readFileSync(resolve(process.cwd(), "public/brand/kv-monogram.png"));
+    const signature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
 
-    expect(logo).toContain('id="k-stem"');
-    expect(logo).toContain('id="k-upper"');
-    expect(logo).toContain('id="k-lower"');
-    expect(logo).toContain('id="v"');
-    expect(logo).not.toContain("<text");
+    expect(png.subarray(0, 8).equals(signature)).toBe(true);
+    expect(png.readUInt32BE(16)).toBe(1024);
+    expect(png.readUInt32BE(20)).toBe(1024);
+    expect(png[25]).toBe(6);
   });
 });
