@@ -30,10 +30,10 @@ export function ThemeToggle() {
     >
       {/* Sliding Knob */}
       <div
-        className={`absolute top-1 flex h-8 w-8 items-center justify-center rounded-full text-foreground transition-all duration-500 ease-out ${
-          isDark 
-            ? "left-auto right-1 rotate-[360deg] bg-primary text-primary-foreground"
-            : "left-1 rotate-0 bg-cat text-cat-foreground"
+        className={`absolute left-1 top-1 flex h-8 w-8 items-center justify-center rounded-full text-foreground transition-transform duration-500 ease-out ${
+          isDark
+            ? "translate-x-[38px] rotate-[360deg] bg-primary text-primary-foreground"
+            : "translate-x-0 rotate-0 bg-cat text-cat-foreground"
         }`}
         aria-hidden="true"
       >

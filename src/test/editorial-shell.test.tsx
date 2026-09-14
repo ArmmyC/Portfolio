@@ -93,7 +93,7 @@ describe("editorial portfolio shell", () => {
     }
   });
 
-  it("anchors the dark theme knob to the right inset", async () => {
+  it("animates the dark theme knob with a stable transform", async () => {
     render(
       <ThemeProvider attribute="class" defaultTheme="dark">
         <ThemeToggle />
@@ -103,8 +103,8 @@ describe("editorial portfolio shell", () => {
     const toggle = await screen.findByRole("button", { name: "Switch to light mode" });
     const knob = toggle.firstElementChild;
 
-    expect(knob).toHaveClass("right-1");
-    expect(knob).not.toHaveClass("translate-x-[36px]");
+    expect(knob).toHaveClass("left-1", "translate-x-[38px]", "transition-transform");
+    expect(knob).not.toHaveClass("right-1", "translate-x-[36px]");
   });
 
   it("uses a concise status when Maew is purring", () => {
@@ -234,6 +234,16 @@ describe("editorial portfolio shell", () => {
     expect(within(isap).getByText("Aug 2026 - Current", { exact: true })).toBeInTheDocument();
     expect(within(siliconCraft).getByText("Jun 2026 - Jul 2026", { exact: true })).toBeInTheDocument();
     expect(timeline.querySelectorAll(".status-pill")).toHaveLength(0);
+  });
+
+  it("shows a visible point for each experience timeline entry", () => {
+    render(<Experience />);
+
+    const timeline = screen.getByRole("list", { name: "Career experience timeline" });
+    const points = timeline.querySelectorAll('[data-timeline-point="true"]');
+
+    expect(points).toHaveLength(4);
+    expect(points[0]).toHaveClass("h-2.5", "w-2.5", "rounded-full", "border-2", "border-background");
   });
 
   it("groups Super AI levels into one final month-granularity entry with company marks", () => {

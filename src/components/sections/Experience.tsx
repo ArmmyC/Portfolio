@@ -71,7 +71,13 @@ export function Experience() {
             <li key={experience.id} className="reveal relative">
               <span aria-hidden="true" className="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center">
                 <span className={cn("absolute h-4 w-4 rounded-full", `status-marker--${tone}`)} />
-                <span className={cn("relative h-2 w-2 rounded-full", `status-dot--${tone}`)} />
+                <span
+                  data-timeline-point="true"
+                  className={cn(
+                    "relative h-2.5 w-2.5 rounded-full border-2 border-background",
+                    `status-dot--${tone}`,
+                  )}
+                />
               </span>
 
               {experience.link ? (
