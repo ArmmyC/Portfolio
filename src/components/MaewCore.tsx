@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import mascot from "@/assets/maew-mascot.png";
+import mascot from "@/assets/maew-mascot-v2.png";
 import { CAT_STATUS } from "@/data/portfolio";
 import {
   CAT_EASTER_EGG_CLICK_TARGET,
