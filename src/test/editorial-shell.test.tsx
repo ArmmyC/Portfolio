@@ -6,6 +6,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { MobileNav } from "@/components/MobileNav";
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
+import { ThemeFavicon } from "@/components/ThemeFavicon";
 
 describe("editorial portfolio shell", () => {
   it("exposes the monogram and primary section navigation from the sidebar", () => {
@@ -28,7 +29,7 @@ describe("editorial portfolio shell", () => {
     expect(screen.getByRole("button", { name: "Switch to dark mode" })).toHaveAttribute("aria-pressed", "false");
   });
 
-  it("switches to the dark monogram when the resolved theme is dark", async () => {
+  it("keeps the light monogram when the resolved theme is dark", async () => {
     render(
       <ThemeProvider attribute="class" defaultTheme="dark">
         <Sidebar
@@ -43,9 +44,34 @@ describe("editorial portfolio shell", () => {
     await waitFor(() => {
       expect(screen.getByRole("img", { name: "Kamolpop monogram" })).toHaveAttribute(
         "src",
-        "/brand/kv-monogram-dark.png",
+        "/brand/kv-monogram-light.png",
       );
     });
+  });
+
+  it("keeps the light favicon assets when the resolved theme is dark", async () => {
+    const links = ["16x16", "32x32"].map((size) => {
+      const link = document.createElement("link");
+      link.dataset.themeFavicon = "true";
+      link.setAttribute("sizes", size);
+      Object.defineProperty(link, "sizes", { value: { value: size } });
+      document.head.appendChild(link);
+      return link;
+    });
+
+    try {
+      render(
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <ThemeFavicon />
+        </ThemeProvider>,
+      );
+
+      await waitFor(() => {
+        expect(links.every((link) => link.href.includes("/brand/kv-monogram-light-"))).toBe(true);
+      });
+    } finally {
+      links.forEach((link) => link.remove());
+    }
   });
 
   it("ships both PNG masters with transparent 1024px canvases", () => {
