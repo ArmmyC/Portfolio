@@ -46,8 +46,8 @@ export const EXPERIENCES: Experience[] = [
     logo: { src: "/brand/companies/blendata-mark.png", alt: "Blendata logo", surface: "contained" },
     link: "https://blendata.com/",
     title: "DevOps Engineer",
-    period: "Current",
-    status: "Active",
+    period: "Aug 2026 - Current",
+    status: "Current",
     summary:
       "Currently interning at Blendata as a DevOps Engineer, working across Kubernetes and RKE2, CI/CD and artifact tooling, and company-wide observability deployment.",
     responsibilities: [
@@ -63,7 +63,7 @@ export const EXPERIENCES: Experience[] = [
     link: "https://innosoft.kmutt.ac.th/",
     title: "System Engineer",
     period: "Current",
-    status: "Active",
+    status: "Current",
     summary:
       "Currently participating in the Innosoft Student Associate Program as a System Engineer, learning infrastructure fundamentals while contributing to production backup and document-system design.",
     responsibilities: [

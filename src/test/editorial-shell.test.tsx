@@ -207,6 +207,22 @@ describe("editorial portfolio shell", () => {
     expect(lanta).not.toHaveClass("md:col-span-2");
   });
 
+  it("uses current wording for ongoing experience entries", () => {
+    render(<Experience />);
+
+    const timeline = screen.getByRole("list", { name: "Career experience timeline" });
+    const blendata = within(timeline).getByRole("link", { name: /Blendata/i });
+    const isap = within(timeline).getByRole("link", { name: /Innosoft Student Associate Program/i });
+
+    expect(within(blendata).getByText("Aug 2026 - Current", { exact: true })).toBeInTheDocument();
+    expect(within(blendata).getByText("Current", { exact: true })).toHaveClass("status-pill--live");
+    const isapCurrentLabels = within(isap).getAllByText("Current", { exact: true });
+    expect(isapCurrentLabels).toHaveLength(2);
+    expect(isapCurrentLabels[1]).toHaveClass("status-pill--live");
+    expect(within(blendata).queryByText("Active", { exact: true })).not.toBeInTheDocument();
+    expect(within(isap).queryByText("Active", { exact: true })).not.toBeInTheDocument();
+  });
+
   it("groups Super AI levels into one final month-granularity entry with company marks", () => {
     render(<Experience />);
 
