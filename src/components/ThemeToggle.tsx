@@ -23,14 +23,14 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="group relative flex min-h-11 w-[80px] shrink-0 items-center justify-between rounded-full border border-border bg-card/60 p-1 text-foreground shadow-[0_2px_8px_-3px_rgba(0,0,0,0.08)] backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:bg-card/90"
+      className="group relative flex min-h-11 w-[80px] shrink-0 items-center justify-between rounded-full border border-border bg-card/60 p-1 text-foreground backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:bg-card/90"
       aria-label={`Switch to ${nextTheme} mode`}
       aria-pressed={isDark}
       title={`Switch to ${nextTheme} mode`}
     >
       {/* Sliding Knob */}
       <div
-        className={`absolute left-1 top-1 flex h-8 w-8 items-center justify-center rounded-full text-foreground shadow-[0_2px_5px_rgba(0,0,0,0.15)] transition-all duration-500 ease-out ${
+        className={`absolute left-1 top-1 flex h-8 w-8 items-center justify-center rounded-full text-foreground transition-all duration-500 ease-out ${
           isDark 
             ? "translate-x-[36px] rotate-[360deg] bg-primary text-primary-foreground"
             : "translate-x-0 rotate-0 bg-cat text-cat-foreground"

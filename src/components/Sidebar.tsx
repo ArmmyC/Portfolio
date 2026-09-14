@@ -27,8 +27,8 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
           <a href="#about" aria-label="Kamolpop monogram" className="brand-mark">
             <BrandMark className="h-full w-full" />
           </a>
-          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/70">
-            <span className="h-1.5 w-1.5 rounded-full bg-cat" />
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-foreground/70">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             hi, i'm
           </div>
           <ThemeToggle />
@@ -39,7 +39,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
         <p className="mt-1.5 text-base text-muted-foreground">
           aka <span className="text-foreground">"{PROFILE.nickname}"</span>
         </p>
-        <p className="mt-4 max-w-[17rem] text-[14px] xl:text-[15px] font-semibold text-primary uppercase tracking-[0.18em] leading-relaxed">
+        <p className="mt-4 max-w-[17rem] text-[14px] xl:text-[15px] font-semibold text-primary uppercase tracking-[0.08em] leading-relaxed">
           {PROFILE.role}
         </p>
 
@@ -53,7 +53,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
                     href={`#${item.id}`}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "editorial-nav-link group flex items-center gap-3 py-2 font-mono text-[13px] md:text-sm uppercase tracking-[0.2em] transition-colors",
+                      "editorial-nav-link group flex items-center gap-3 py-2 font-mono text-[13px] md:text-sm uppercase tracking-[0.1em] transition-colors",
                       isActive ? "text-primary" : "text-muted-foreground hover:text-foreground",
                     )}
                   >

@@ -61,7 +61,7 @@ export function MobileNav({ active }: Props) {
                   onClick={() => setOpen(false)}
                   aria-current={active === item.id ? "page" : undefined}
                   className={cn(
-                    "flex min-h-11 items-center py-2 font-mono text-[13px] uppercase tracking-[0.2em]",
+                    "flex min-h-11 items-center py-2 font-mono text-[13px] uppercase tracking-[0.1em]",
                     active === item.id ? "text-primary" : "text-muted-foreground",
                   )}
                 >

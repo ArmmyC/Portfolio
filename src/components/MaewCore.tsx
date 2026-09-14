@@ -89,7 +89,7 @@ export function MaewCore({
   return (
     <div
       className={cn(
-        "relative flex items-center rounded-2xl border border-border bg-card/90 shadow-[0_4px_20px_-12px_hsl(350_60%_60%/0.35)]",
+        "relative flex items-center rounded-2xl border border-border bg-card/90",
         compact ? "gap-2.5 px-3 py-2" : "gap-3 px-3 py-2.5",
       )}
     >
@@ -111,14 +111,14 @@ export function MaewCore({
           height={compact ? 40 : 48}
           loading="lazy"
           className={cn(
-            "rounded-full object-cover drop-shadow-[0_6px_18px_hsl(222_30%_18%/0.16)] transition duration-300 group-hover:scale-[1.08]",
+            "rounded-full object-cover transition duration-300 group-hover:scale-[1.08]",
             compact ? "h-10 w-10" : "h-12 w-12",
           )}
         />
       </button>
 
       <div className="min-w-0">
-        <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+        <div className="font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground">
           maew . little helper
         </div>
         <div className="truncate text-[13px] font-medium text-foreground/90" aria-live="polite">

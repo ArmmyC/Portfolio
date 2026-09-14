@@ -14,7 +14,7 @@ export function CatAchievementToast({ visible }: CatAchievementToastProps) {
         visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
       )}
     >
-      <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-card/95 shadow-[0_18px_48px_-22px_hsl(180_55%_35%/0.45)] backdrop-blur-md">
+      <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-card/95 backdrop-blur-md">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,hsl(var(--cat)/0.18),transparent_45%),radial-gradient(circle_at_bottom_right,hsl(var(--primary)/0.18),transparent_55%)]" />
 
         <div className="relative flex items-start gap-3 p-4">
@@ -23,7 +23,7 @@ export function CatAchievementToast({ visible }: CatAchievementToastProps) {
           </div>
 
           <div className="min-w-0">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary/80">
+            <p className="font-mono text-[10px] uppercase tracking-[0.08em] text-primary/80">
               Achievement unlocked
             </p>
             <h3 className="mt-1 text-base font-semibold tracking-tight text-foreground">

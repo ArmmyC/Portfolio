@@ -26,7 +26,7 @@
     --accent: 221 100% 79%;              /* #95B6FF */
     --accent-foreground: 220 13% 15%;
 
-    --cat: 350 60% 88%;                  /* quiet blush support accent */
+    --cat: 221 100% 79%;                 /* cobalt support accent */
     --cat-foreground: 220 13% 15%;
     --paw-trail: 220 30% 30%;
     --paw-trail-alpha: 0.34;
@@ -68,7 +68,7 @@
     --accent: 222 69% 46%;
     --accent-foreground: 220 20% 95%;
 
-    --cat: 350 52% 76%;                  /* subdued blush on dark */
+    --cat: 221 100% 79%;                 /* cobalt support accent on dark */
     --cat-foreground: 226 51% 11%;
     --paw-trail: 220 30% 92%;
     --paw-trail-alpha: 0.22;
@@ -86,7 +86,7 @@
 @layer base {
   * {
     @apply border-border;
-    transition-property: background-color, border-color, color, box-shadow, opacity;
+    transition-property: background-color, border-color, color, opacity;
     transition-duration: 0.3s;
     transition-timing-function: ease;
   }
@@ -110,19 +110,19 @@
     font-family: var(--font-sans);
     background-color: hsl(var(--background));
     background-image:
-      radial-gradient(ellipse 58% 46% at 7% 0%, hsl(350 60% 91% / 0.45), transparent 64%),
+      radial-gradient(ellipse 58% 46% at 7% 0%, hsl(221 100% 92% / 0.45), transparent 64%),
       radial-gradient(ellipse 55% 45% at 96% 8%, hsl(205 88% 91% / 0.5), transparent 65%),
       radial-gradient(ellipse 58% 46% at 80% 96%, hsl(230 90% 94% / 0.62), transparent 66%),
-      radial-gradient(ellipse 48% 38% at 10% 90%, hsl(42 95% 93% / 0.7), transparent 64%);
+      radial-gradient(ellipse 48% 38% at 10% 90%, hsl(190 80% 94% / 0.65), transparent 64%);
     background-attachment: fixed;
   }
 
   .dark body {
     background-image:
-      radial-gradient(ellipse 58% 46% at 7% 0%, hsl(350 45% 16% / 0.45), transparent 64%),
+      radial-gradient(ellipse 58% 46% at 7% 0%, hsl(221 45% 16% / 0.45), transparent 64%),
       radial-gradient(ellipse 55% 45% at 96% 8%, hsl(215 55% 20% / 0.45), transparent 65%),
       radial-gradient(ellipse 58% 46% at 80% 96%, hsl(230 45% 20% / 0.4), transparent 66%),
-      radial-gradient(ellipse 48% 38% at 10% 90%, hsl(42 45% 16% / 0.34), transparent 64%);
+      radial-gradient(ellipse 48% 38% at 10% 90%, hsl(195 45% 16% / 0.34), transparent 64%);
   }
 
   ::selection {
@@ -137,7 +137,7 @@
   }
 
   .brand-mark {
-    @apply inline-flex h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-primary shadow-[0_10px_24px_-12px_hsl(var(--primary)/0.8)] transition-transform duration-300 hover:-translate-y-0.5;
+    @apply inline-flex h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-primary transition-transform duration-300 hover:scale-[1.02];
   }
 
   .brand-mark--compact {
@@ -157,11 +157,7 @@
   }
 
   .editorial-card {
-    @apply rounded-2xl border border-border/80 bg-card/80 shadow-[0_12px_32px_-24px_hsl(220_30%_40%/0.35)] backdrop-blur-xl;
-  }
-
-  .dark .editorial-card {
-    @apply shadow-[0_14px_34px_-24px_rgba(0,0,0,0.8)];
+    @apply rounded-2xl border border-border/80 bg-card/90;
   }
 
   .editorial-pill {
@@ -183,13 +179,10 @@
     @apply text-muted-foreground transition-colors hover:text-primary;
   }
   .section-label {
-    @apply font-mono text-[11px] uppercase tracking-[0.34em] text-primary;
+    @apply font-mono text-[11px] uppercase tracking-[0.12em] text-primary;
   }
   .soft-card {
-    @apply editorial-card transition-all duration-300;
-  }
-  .dark .soft-card {
-    @apply shadow-[0_4px_24px_-12px_rgba(0,0,0,0.6)];
+    @apply editorial-card transition-colors duration-300;
   }
   .reveal {
     opacity: 0;

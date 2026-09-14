@@ -11,7 +11,7 @@ export function Experience() {
             <>
               <div className="flex flex-wrap items-start gap-3">
                 <div className="min-w-0 flex-1">
-                  <div className="inline-flex items-center gap-1 font-mono text-[12px] uppercase tracking-[0.18em] text-primary/80 transition group-hover:text-primary">
+                  <div className="inline-flex items-center gap-1 font-mono text-[12px] uppercase tracking-[0.08em] text-primary/80 transition group-hover:text-primary">
                     {experience.organization}
                     {experience.link && <ArrowUpRight className="h-3.5 w-3.5 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />}
                   </div>
@@ -24,10 +24,10 @@ export function Experience() {
                 </div>
 
                 <div className="flex flex-col items-start gap-2 text-left md:items-end md:text-right">
-                  <span className="rounded-full bg-cat/20 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/75">
+                  <span className="rounded-full bg-cat/20 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-foreground/75">
                     {experience.status}
                   </span>
-                  <span className="font-mono text-[12px] uppercase tracking-[0.12em] text-muted-foreground">
+                  <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-muted-foreground">
                     {experience.period}
                   </span>
                 </div>
@@ -53,7 +53,7 @@ export function Experience() {
                 href={experience.link}
                 target="_blank"
                 rel="noreferrer"
-                className="reveal editorial-card group block p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_10px_30px_-12px_hsl(var(--primary)/0.25)] md:p-6"
+                className="reveal editorial-card group block p-5 transition-colors hover:border-primary/40 md:p-6"
               >
                 {cardContent}
               </a>

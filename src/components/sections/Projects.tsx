@@ -12,7 +12,7 @@ export function Projects() {
             href={p.link ?? "#"}
             target="_blank"
             rel="noreferrer"
-            className="reveal editorial-card group relative block p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_10px_30px_-12px_hsl(var(--primary)/0.25)]"
+            className="reveal editorial-card group relative block p-5 transition-colors hover:border-primary/40"
           >
             {p.image && (
               <div className="mb-4 overflow-hidden rounded-xl border border-border/70 bg-background/60">
@@ -33,12 +33,12 @@ export function Projects() {
                 {p.title}
               </h3>
               <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
-              <span className="ml-auto rounded-full bg-cat/20 px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-widest text-foreground/70">
+              <span className="ml-auto rounded-full bg-cat/20 px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-[0.08em] text-foreground/70">
                 {p.status}
               </span>
             </div>
 
-            <div className="mt-1 font-mono text-[12px] uppercase tracking-widest text-accent-foreground/70">
+            <div className="mt-1 font-mono text-[12px] uppercase tracking-[0.08em] text-accent-foreground/70">
               {p.category}
             </div>
 

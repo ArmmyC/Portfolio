@@ -14,7 +14,7 @@ export function About() {
         {ABOUT_CHIPS.map((chip) => (
           <span
             key={chip}
-            className="editorial-pill inline-flex items-center rounded-full border border-primary/20 bg-primary px-3.5 py-2 text-[12px] font-medium text-primary-foreground shadow-[0_8px_24px_-16px_hsl(var(--primary)/0.55)]"
+            className="editorial-pill inline-flex items-center rounded-full border border-primary/20 bg-primary px-3.5 py-2 text-[12px] font-medium text-primary-foreground"
           >
             {chip}
           </span>

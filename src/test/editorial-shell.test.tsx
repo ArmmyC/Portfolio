@@ -92,4 +92,32 @@ describe("editorial portfolio shell", () => {
     expect(preview).toHaveAttribute("width", "1898");
     expect(preview).toHaveAttribute("height", "860");
   });
+
+  it("keeps the shell flat, cobalt-led, and readable", () => {
+    render(
+      <ThemeProvider attribute="class" defaultTheme="light">
+        <Sidebar
+          active="about"
+          easterEggUnlocked={false}
+          achievementVisible={false}
+          onUnlockEasterEgg={() => undefined}
+        />
+      </ThemeProvider>,
+    );
+
+    const intro = screen.getByText("hi, i'm");
+    const introBadge = intro.closest("div.inline-flex");
+    const themeToggle = screen.getByRole("button", { name: "Switch to dark mode" });
+    const mascot = screen.getByRole("img", { name: /illustrated cat mascot/i });
+
+    expect(introBadge).toHaveClass("bg-primary/10", "tracking-[0.08em]");
+    expect(introBadge?.querySelector("span")).toHaveClass("bg-primary");
+    expect(themeToggle).not.toHaveClass("shadow-[0_2px_8px_-3px_rgba(0,0,0,0.08)]");
+    expect(mascot).not.toHaveClass("drop-shadow-[0_6px_18px_hsl(222_30%_18%/0.16)]");
+
+    const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+    expect(styles).not.toContain("shadow-[");
+    expect(styles).not.toContain("hsl(350");
+    expect(styles).toContain("--cat: 221");
+  });
 });
