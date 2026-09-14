@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/react";
+import { ThemeFavicon } from "./components/ThemeFavicon";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -14,6 +15,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <Analytics />
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
+      <ThemeFavicon />
       <TooltipProvider>
         <Toaster />
         <Sonner />
