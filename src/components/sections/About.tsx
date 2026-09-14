@@ -28,7 +28,7 @@ export function About() {
           I'm <span className="text-foreground font-medium">Arm</span>{" "}
           <span className="text-foreground/80">({PROFILE.thaiName})</span>, a Computer Engineering student at{" "}
           <span className="text-foreground font-medium">King Mongkut's University of Technology Thonburi (KMUTT)</span>.
-          Through hands-on internships and engineering programs, my work has expanded from AI and embedded systems into DevOps and systems engineering, with a focus on reliable infrastructure and practical engineering tools.
+          People often describe me as someone who is always learning. I enjoy understanding how systems work from the ground up, from infrastructure and deployment to the AI layer.
         </p>
         <p>{PROFILE.intro}</p>
         <p>

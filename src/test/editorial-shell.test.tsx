@@ -149,12 +149,12 @@ describe("editorial portfolio shell", () => {
 
     expect(
       screen.getByText(
-        /internships and engineering programs, my work has expanded from AI and embedded systems into DevOps and systems engineering/i,
+        /People often describe me as someone who is always learning\. I enjoy understanding how systems work from the ground up, from infrastructure and deployment to the AI layer\./i,
       ),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /AI infrastructure, DevOps, systems engineering, digital IC design, and embedded systems, including Kubernetes and observability workflows/i,
+        /My work has grown from AI and embedded systems into DevOps and systems engineering\. I'm interested in building systems end to end, including how they are deployed, scaled, operated, and maintained\./i,
       ),
     ).toBeInTheDocument();
   });

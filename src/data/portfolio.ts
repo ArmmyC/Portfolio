@@ -18,7 +18,7 @@ export const PROFILE = {
   nickname: "Arm",
   role: "AI, DevOps, Systems & Embedded Engineer",
   intro:
-    "Building across AI infrastructure, DevOps, systems engineering, digital IC design, and embedded systems, including Kubernetes and observability workflows, private LLM serving, edge AI, and RISC-V experiments.",
+    "My work has grown from AI and embedded systems into DevOps and systems engineering. I'm interested in building systems end to end, including how they are deployed, scaled, operated, and maintained.",
   location: "KMUTT, Bangkok, TH",
   email: "k.kamolpopv@gmail.com",
   github: "https://github.com/ArmmyC",
