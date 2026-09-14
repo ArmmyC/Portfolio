@@ -26,11 +26,17 @@ export function Experience() {
                   src={experience.logo.src}
                   alt={experience.logo.alt}
                   data-company-mark
+                  data-logo-surface={experience.logo.surface}
                   width="36"
                   height="36"
                   loading="lazy"
                   decoding="async"
-                  className="h-9 w-9 shrink-0 rounded-lg border border-primary/20 bg-white object-contain p-1"
+                  className={cn(
+                    "h-9 w-9 shrink-0 rounded-lg",
+                    experience.logo.surface === "full"
+                      ? "object-cover"
+                      : "border border-primary/20 bg-white object-contain p-1",
+                  )}
                 />
                 <span className="inline-flex items-center gap-1 font-mono text-[13px] uppercase tracking-[0.06em] text-primary/85 transition-colors group-hover:text-primary md:text-[14px]">
                   {experience.organization}

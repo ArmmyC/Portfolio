@@ -223,10 +223,28 @@ describe("editorial portfolio shell", () => {
     expect(
       within(timeline).getByRole("img", { name: "Artificial Intelligence Association of Thailand logo" }),
     ).toHaveAttribute("src", "/brand/companies/aiat-mark.webp");
+    expect(within(timeline).getByRole("img", { name: "Blendata logo" })).toHaveAttribute(
+      "data-logo-surface",
+      "contained",
+    );
+    expect(within(timeline).getByRole("img", { name: "Innosoft Student Associate Program logo" })).toHaveAttribute(
+      "data-logo-surface",
+      "contained",
+    );
+    expect(within(timeline).getByRole("img", { name: "Silicon Craft logo" })).toHaveAttribute(
+      "data-logo-surface",
+      "contained",
+    );
+    expect(
+      within(timeline).getByRole("img", { name: "Artificial Intelligence Association of Thailand logo" }),
+    ).toHaveAttribute("data-logo-surface", "full");
+    expect(within(timeline).getByRole("img", { name: "Artificial Intelligence Association of Thailand logo" })).not.toHaveClass(
+      "bg-white",
+    );
     expect(within(timeline).getByRole("link", { name: /Blendata/i })).toHaveAttribute("href", "https://blendata.com/");
     expect(within(timeline).getByRole("link", { name: /Innosoft Student Associate Program/i })).toHaveAttribute(
       "href",
-      "/resume/innosoft_system_engineering_resume.pdf",
+      "https://innosoft.kmutt.ac.th/",
     );
     expect(within(timeline).getByRole("link", { name: /Silicon Craft/i })).toHaveAttribute(
       "href",
