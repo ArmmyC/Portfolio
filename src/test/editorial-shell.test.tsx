@@ -166,9 +166,13 @@ describe("editorial portfolio shell", () => {
     expect(mascot).not.toHaveClass("drop-shadow-[0_6px_18px_hsl(222_30%_18%/0.16)]");
 
     const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+    const inactiveNavRule = screen.getByRole("link", { name: /^experience$/i }).querySelector("span");
+
+    expect(inactiveNavRule).toHaveClass("editorial-nav-rule");
     expect(styles).not.toContain("shadow-[");
     expect(styles).not.toContain("hsl(350");
     expect(styles).toContain("--cat: 221");
+    expect(styles).toContain("--nav-rule");
     expect(styles).toContain("--status-live");
     expect(styles).toContain("text-[13px]");
   });

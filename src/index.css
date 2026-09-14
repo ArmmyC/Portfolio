@@ -46,6 +46,7 @@
     --destructive-foreground: 0 0% 100%;
 
     --border: 218 32% 89%;              /* #D8E0EC */
+    --nav-rule: 218 24% 84%;
     --input: 218 32% 89%;
     --ring: 222 69% 54%;
 
@@ -98,6 +99,7 @@
     --destructive-foreground: 0 0% 100%;
 
     --border: 218 43% 33%;                /* #304A78 */
+    --nav-rule: 218 34% 40%;
     --input: 218 43% 33%;
     --ring: 221 100% 79%;
   }
@@ -170,6 +172,10 @@
 
   .editorial-nav-link {
     @apply relative;
+  }
+
+  .editorial-nav-rule {
+    background-color: hsl(var(--nav-rule));
   }
 
   .editorial-section {

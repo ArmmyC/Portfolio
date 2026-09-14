@@ -56,7 +56,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
                     <span
                       className={cn(
                         "h-px transition-all rounded-full",
-                        isActive ? "w-12 bg-primary" : "w-6 bg-border group-hover:w-10 group-hover:bg-foreground/40",
+                        isActive ? "w-12 bg-primary" : "w-6 editorial-nav-rule group-hover:w-10 group-hover:bg-foreground/40",
                       )}
                     />
                     <span>{item.label.replace("/", "")}</span>
