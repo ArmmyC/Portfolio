@@ -9,6 +9,7 @@ import { About } from "@/components/sections/About";
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
 import { ThemeFavicon } from "@/components/ThemeFavicon";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 describe("editorial portfolio shell", () => {
   it("exposes the monogram and primary section navigation from the sidebar", () => {
@@ -90,6 +91,20 @@ describe("editorial portfolio shell", () => {
     } finally {
       links.forEach((link) => link.remove());
     }
+  });
+
+  it("anchors the dark theme knob to the right inset", async () => {
+    render(
+      <ThemeProvider attribute="class" defaultTheme="dark">
+        <ThemeToggle />
+      </ThemeProvider>,
+    );
+
+    const toggle = await screen.findByRole("button", { name: "Switch to light mode" });
+    const knob = toggle.firstElementChild;
+
+    expect(knob).toHaveClass("right-1");
+    expect(knob).not.toHaveClass("translate-x-[36px]");
   });
 
   it("uses a concise status when Maew is purring", () => {
