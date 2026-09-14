@@ -22,6 +22,14 @@ export function Experience() {
               </div>
 
               <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <span
+                  role="img"
+                  aria-label={experience.logo.label}
+                  data-company-mark
+                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-primary/20 bg-primary/[0.08] font-mono text-[12px] font-semibold tracking-[-0.03em] text-primary"
+                >
+                  {experience.logo.initials}
+                </span>
                 <span className="inline-flex items-center gap-1 font-mono text-[13px] uppercase tracking-[0.06em] text-primary/85 transition-colors group-hover:text-primary md:text-[14px]">
                   {experience.organization}
                   {experience.link && (

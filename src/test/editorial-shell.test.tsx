@@ -192,19 +192,23 @@ describe("editorial portfolio shell", () => {
     expect(preview).toHaveAttribute("height", "860");
   });
 
-  it("renders all CareerDatabase experiences as a readable timeline", () => {
+  it("groups Super AI levels into one final month-granularity entry with company marks", () => {
     render(<Experience />);
 
     const timeline = screen.getByRole("list", { name: "Career experience timeline" });
 
     expect(timeline).toHaveClass("border-l-2");
-    expect(timeline.querySelectorAll(":scope > li")).toHaveLength(6);
+    expect(timeline.querySelectorAll(":scope > li")).toHaveLength(4);
     expect(within(timeline).getByRole("heading", { name: /Digital IC Design Intern and AI Engineer/i })).toBeInTheDocument();
-    expect(within(timeline).getByRole("heading", { name: /Super AI Engineer Season 6 Level 2 Participant/i })).toBeInTheDocument();
-    expect(within(timeline).getByRole("heading", { name: /Super AI Engineer Season 6 Level 1 Participant/i })).toBeInTheDocument();
+    expect(within(timeline).getByRole("heading", { name: /Super AI Engineer Season 6, Levels 1-3/i })).toBeInTheDocument();
+    expect(within(timeline).queryByRole("heading", { name: /Level 2 Participant/i })).not.toBeInTheDocument();
+    expect(within(timeline).queryByRole("heading", { name: /Level 1 Participant/i })).not.toBeInTheDocument();
+    expect(within(timeline).queryByRole("heading", { name: /Level 3 Completer/i })).not.toBeInTheDocument();
     expect(within(timeline).getByText("Blendata")).toBeInTheDocument();
     expect(within(timeline).getByRole("heading", { name: "System Engineer" })).toBeInTheDocument();
-    expect(within(timeline).getByRole("heading", { name: /Super AI Engineer Level 3 Completer/i })).toBeInTheDocument();
+    expect(within(timeline).getByText("Mar 2026 - Sep 2026")).toBeInTheDocument();
+    expect(within(timeline).queryByText(/Apr 20, 2026|Jun 8, 2026/)).not.toBeInTheDocument();
+    expect(within(timeline).getAllByRole("img", { name: /logo/i })).toHaveLength(4);
     expect(within(timeline).getAllByText(/silver medal/i).length).toBeGreaterThan(0);
   });
 

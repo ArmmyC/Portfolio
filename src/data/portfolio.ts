@@ -30,6 +30,7 @@ export const PROFILE = {
 export type Experience = {
   id: string;
   organization: string;
+  logo: { initials: string; label: string };
   link?: string;
   title: string;
   period: string;
@@ -42,6 +43,7 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "EXP-2026-004",
     organization: "Blendata",
+    logo: { initials: "B", label: "Blendata logo" },
     title: "DevOps Engineer",
     period: "Current",
     status: "Active",
@@ -56,6 +58,7 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "EXP-2026-005",
     organization: "Innosoft Student Associate Program",
+    logo: { initials: "IS", label: "Innosoft Student Associate Program logo" },
     title: "System Engineer",
     period: "Current",
     status: "Active",
@@ -68,17 +71,9 @@ export const EXPERIENCES: Experience[] = [
     ],
   },
   {
-    id: "EXP-2026-006",
-    organization: "Artificial Intelligence Association of Thailand",
-    title: "Super AI Engineer Level 3 Completer",
-    period: "Sep 2026",
-    status: "Completed",
-    summary: "Completed Super AI Engineer Level 3 and received a silver medal reward.",
-    responsibilities: ["Completed Super AI Engineer Level 3.", "Received a silver medal reward for Level 3."],
-  },
-  {
     id: "EXP-2026-001",
     organization: "Silicon Craft",
+    logo: { initials: "SC", label: "Silicon Craft logo" },
     link: "https://www.sic.co.th/",
     title: "Digital IC Design Intern and AI Engineer",
     period: "Jun 2026 - Jul 2026",
@@ -93,34 +88,19 @@ export const EXPERIENCES: Experience[] = [
     ],
   },
   {
-    id: "EXP-2026-002",
+    id: "EXP-2026-006",
     organization: "Artificial Intelligence Association of Thailand",
-    title: "Super AI Engineer Season 6 Level 2 Participant",
-    period: "Apr 20, 2026 - Jun 8, 2026",
+    logo: { initials: "AI", label: "Artificial Intelligence Association of Thailand logo" },
+    title: "Super AI Engineer Season 6, Levels 1-3",
+    period: "Mar 2026 - Sep 2026",
     status: "Completed",
     summary:
-      "Completed the Super AI Engineer Season 6 Level 2 program through online learning and an onsite bootcamp covering machine learning, deep learning, NLP, AI agents, full-stack AI applications, edge AI, AIoT, cybersecurity, and LLM safety.",
+      "Completed Super AI Engineer Season 6 across Levels 1-3, progressing from AI foundations to applied engineering, edge AI, AIoT, cybersecurity, and LLM safety.",
     responsibilities: [
-      "Completed the two-week online phase covering AI foundations, supervised and unsupervised learning, research methodology, deep learning, NLP/Transformers, AI usage, AI agents, database design, full-stack AI apps, and design thinking.",
-      "Completed the four-week onsite bootcamp covering time-series forecasting, edge AI for intelligent transport systems, human sensing and wellness AIoT, AI cybersecurity, harness engineering, and agentic AI / LLM safety.",
-      "Participated in scheduled mini hackathons and onsite weekly hackathons including demand forecasting, intelligent transport edge AI, WellSense AIoT, and FahMai enterprise data-agent work.",
-      "Worked across Chest Disease Detection, Thai Math VQA, Thai Call Center ASR, Heart Disease Prediction, and Sleep Stage Classification tasks.",
-      "Achieved currently evidenced individual-hackathon placements of 1st, 2nd, 6th, 20th, and 21st across the recorded tracks.",
-    ],
-  },
-  {
-    id: "EXP-2026-003",
-    organization: "Artificial Intelligence Association of Thailand",
-    title: "Super AI Engineer Season 6 Level 1 Participant",
-    period: "Mar 2026 - Apr 2026",
-    status: "Completed",
-    summary:
-      "Completed Super AI Engineer Season 6 Level 1, an online AI engineering preparation stage by the Artificial Intelligence Association of Thailand.",
-    responsibilities: [
-      "Completed prerequisite learning and assessment work including AI Ready ASEAN, AI Practitioner, and Foundation AI Theory requirements.",
-      "Completed Level 1 practice challenges evidenced by Data to Insight, Thai Election OCR, and FahMai RAG certificates.",
-      "Participated in challenge tracks covering OCR, RAG, Thai image captioning, house recognition, word segmentation, sleep-stage classification, and heart disease prediction.",
-      "Completed selection-stage work including a data-to-insight / EDA challenge record and an AI presentation video submission record.",
+      "Level 1: completed AI foundations, RAG, OCR, image captioning, and selection-stage challenges.",
+      "Level 2: completed online learning and onsite bootcamp across machine learning, deep learning, NLP, AI agents, edge AI, AIoT, cybersecurity, and LLM safety.",
+      "Level 2: placed 1st, 2nd, 6th, 20th, and 21st across recorded individual hackathon tracks.",
+      "Level 3: completed the program and received a silver medal reward.",
     ],
   },
 ];
