@@ -21,15 +21,17 @@ export function Experience() {
                 <span className={cn("status-pill", `status-pill--${tone}`)}>{experience.status}</span>
               </div>
 
-              <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                <span
-                  role="img"
-                  aria-label={experience.logo.label}
+              <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
+                <img
+                  src={experience.logo.src}
+                  alt={experience.logo.alt}
                   data-company-mark
-                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-primary/20 bg-primary/[0.08] font-mono text-[12px] font-semibold tracking-[-0.03em] text-primary"
-                >
-                  {experience.logo.initials}
-                </span>
+                  width="36"
+                  height="36"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-9 w-9 shrink-0 rounded-lg border border-primary/20 bg-white object-contain p-1"
+                />
                 <span className="inline-flex items-center gap-1 font-mono text-[13px] uppercase tracking-[0.06em] text-primary/85 transition-colors group-hover:text-primary md:text-[14px]">
                   {experience.organization}
                   {experience.link && (

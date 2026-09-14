@@ -30,7 +30,7 @@ export const PROFILE = {
 export type Experience = {
   id: string;
   organization: string;
-  logo: { initials: string; label: string };
+  logo: { src: string; alt: string };
   link?: string;
   title: string;
   period: string;
@@ -43,7 +43,8 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "EXP-2026-004",
     organization: "Blendata",
-    logo: { initials: "B", label: "Blendata logo" },
+    logo: { src: "/brand/companies/blendata-mark.png", alt: "Blendata logo" },
+    link: "https://blendata.com/",
     title: "DevOps Engineer",
     period: "Current",
     status: "Active",
@@ -58,7 +59,8 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "EXP-2026-005",
     organization: "Innosoft Student Associate Program",
-    logo: { initials: "IS", label: "Innosoft Student Associate Program logo" },
+    logo: { src: "/brand/companies/isap.svg", alt: "Innosoft Student Associate Program logo" },
+    link: "/resume/innosoft_system_engineering_resume.pdf",
     title: "System Engineer",
     period: "Current",
     status: "Active",
@@ -73,7 +75,7 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "EXP-2026-001",
     organization: "Silicon Craft",
-    logo: { initials: "SC", label: "Silicon Craft logo" },
+    logo: { src: "/brand/companies/silicon-craft-mark.png", alt: "Silicon Craft logo" },
     link: "https://www.sic.co.th/",
     title: "Digital IC Design Intern and AI Engineer",
     period: "Jun 2026 - Jul 2026",
@@ -90,7 +92,8 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "EXP-2026-006",
     organization: "Artificial Intelligence Association of Thailand",
-    logo: { initials: "AI", label: "Artificial Intelligence Association of Thailand logo" },
+    logo: { src: "/brand/companies/aiat-mark.webp", alt: "Artificial Intelligence Association of Thailand logo" },
+    link: "https://aiat.or.th/",
     title: "Super AI Engineer Season 6, Levels 1-3",
     period: "Mar 2026 - Sep 2026",
     status: "Completed",

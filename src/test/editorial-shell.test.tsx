@@ -208,7 +208,34 @@ describe("editorial portfolio shell", () => {
     expect(within(timeline).getByRole("heading", { name: "System Engineer" })).toBeInTheDocument();
     expect(within(timeline).getByText("Mar 2026 - Sep 2026")).toBeInTheDocument();
     expect(within(timeline).queryByText(/Apr 20, 2026|Jun 8, 2026/)).not.toBeInTheDocument();
-    expect(within(timeline).getAllByRole("img", { name: /logo/i })).toHaveLength(4);
+    expect(within(timeline).getByRole("img", { name: "Blendata logo" })).toHaveAttribute(
+      "src",
+      "/brand/companies/blendata-mark.png",
+    );
+    expect(within(timeline).getByRole("img", { name: "Innosoft Student Associate Program logo" })).toHaveAttribute(
+      "src",
+      "/brand/companies/isap.svg",
+    );
+    expect(within(timeline).getByRole("img", { name: "Silicon Craft logo" })).toHaveAttribute(
+      "src",
+      "/brand/companies/silicon-craft-mark.png",
+    );
+    expect(
+      within(timeline).getByRole("img", { name: "Artificial Intelligence Association of Thailand logo" }),
+    ).toHaveAttribute("src", "/brand/companies/aiat-mark.webp");
+    expect(within(timeline).getByRole("link", { name: /Blendata/i })).toHaveAttribute("href", "https://blendata.com/");
+    expect(within(timeline).getByRole("link", { name: /Innosoft Student Associate Program/i })).toHaveAttribute(
+      "href",
+      "/resume/innosoft_system_engineering_resume.pdf",
+    );
+    expect(within(timeline).getByRole("link", { name: /Silicon Craft/i })).toHaveAttribute(
+      "href",
+      "https://www.sic.co.th/",
+    );
+    expect(within(timeline).getByRole("link", { name: /Artificial Intelligence Association of Thailand/i })).toHaveAttribute(
+      "href",
+      "https://aiat.or.th/",
+    );
     expect(within(timeline).getAllByText(/silver medal/i).length).toBeGreaterThan(0);
   });
 
