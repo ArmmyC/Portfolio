@@ -15,7 +15,9 @@ describe("editorial portfolio shell", () => {
       </ThemeProvider>,
     );
 
-    expect(screen.getByLabelText("Kamolpop monogram")).toBeInTheDocument();
+    const monogram = screen.getByRole("img", { name: "Kamolpop monogram" });
+
+    expect(monogram).toHaveAttribute("src", "/brand/kv-monogram.svg");
     expect(screen.getByRole("navigation", { name: "Primary section navigation" })).toBeInTheDocument();
   });
 });

@@ -24,7 +24,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
       <div>
         <div className="flex items-center justify-between gap-4 w-full">
           <a href="#about" aria-label="Kamolpop monogram" className="brand-mark">
-            kv
+            <img src="/brand/kv-monogram.svg" alt="Kamolpop monogram" className="h-full w-full" />
           </a>
           <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/70">
             <span className="h-1.5 w-1.5 rounded-full bg-cat" />

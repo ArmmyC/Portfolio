@@ -125,11 +125,11 @@
   }
 
   .brand-mark {
-    @apply inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-[21px] font-semibold tracking-[-0.12em] text-primary-foreground shadow-[0_10px_24px_-12px_hsl(var(--primary)/0.8)] transition-transform duration-300 hover:-translate-y-0.5;
+    @apply inline-flex h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-primary shadow-[0_10px_24px_-12px_hsl(var(--primary)/0.8)] transition-transform duration-300 hover:-translate-y-0.5;
   }
 
   .brand-mark--compact {
-    @apply h-9 w-9 rounded-lg text-lg;
+    @apply h-9 w-9 rounded-lg;
   }
 
   .editorial-nav-link {

@@ -15,7 +15,12 @@ export function MobileNav({ active }: Props) {
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur-xl lg:hidden">
       <div className="flex items-center justify-between gap-4 px-5 py-3.5">
         <a href="#about" className="flex min-w-0 items-center gap-3 leading-tight">
-          <span className="brand-mark brand-mark--compact" aria-hidden="true">kv</span>
+          <img
+            src="/brand/kv-monogram.svg"
+            alt=""
+            aria-hidden="true"
+            className="brand-mark brand-mark--compact"
+          />
           <span className="min-w-0">
             <h1 className="truncate text-base font-semibold text-foreground">
               {PROFILE.name}
