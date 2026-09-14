@@ -86,11 +86,23 @@
 @layer base {
   * {
     @apply border-border;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease, box-shadow 0.3s ease;
+    transition-property: background-color, border-color, color, box-shadow, opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  :where(a, button, [role="button"], input, textarea, select):focus-visible {
+    outline: 3px solid hsl(var(--ring) / 0.8);
+    outline-offset: 3px;
+  }
+
+  :where(a, button, [role="button"]) {
+    touch-action: manipulation;
   }
 
   body {
@@ -130,6 +142,10 @@
 
   .brand-mark--compact {
     @apply h-9 w-9 rounded-lg;
+  }
+
+  .mobile-nav-bar {
+    padding-top: max(0.875rem, env(safe-area-inset-top));
   }
 
   .editorial-nav-link {
@@ -264,5 +280,26 @@
   100% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(calc(var(--paw-scale) * 1.04));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .reveal.in {
+    opacity: 1;
+    transform: none;
   }
 }

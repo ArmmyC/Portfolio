@@ -71,7 +71,7 @@ const Index = () => {
       <PawTrail enabled={catTrailUnlocked} />
       <CatAchievementToast visible={showCatAchievement} />
 
-      <a href="#about" className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded focus:bg-primary focus:px-3 focus:py-1.5 focus:text-primary-foreground">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground">
         Skip to content
       </a>
 
@@ -86,7 +86,7 @@ const Index = () => {
             onUnlockEasterEgg={handleUnlockEasterEgg}
           />
 
-          <main className="min-w-0 lg:py-8 xl:py-10">
+          <main id="main-content" tabIndex={-1} className="min-w-0 focus:outline-none lg:py-8 xl:py-10">
             <About />
             <Experience />
             <Projects />

@@ -51,6 +51,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
                 <li key={item.id}>
                   <a
                     href={`#${item.id}`}
+                    aria-current={isActive ? "page" : undefined}
                     className={cn(
                       "editorial-nav-link group flex items-center gap-3 py-2 font-mono text-[13px] md:text-sm uppercase tracking-[0.2em] transition-colors",
                       isActive ? "text-primary" : "text-muted-foreground hover:text-foreground",

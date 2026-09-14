@@ -19,6 +19,11 @@ export function Projects() {
                 <img
                   src={p.image}
                   alt={`${p.title} project preview`}
+                  width={1898}
+                  height={860}
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(min-width: 768px) 32rem, 100vw"
                   className="h-32 w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]"
                 />
               </div>
