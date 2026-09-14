@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { Sidebar } from "@/components/Sidebar";
 import { MobileNav } from "@/components/MobileNav";
+import { About } from "@/components/sections/About";
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
 import { ThemeFavicon } from "@/components/ThemeFavicon";
@@ -27,6 +28,7 @@ describe("editorial portfolio shell", () => {
     expect(screen.getByRole("navigation", { name: "Primary section navigation" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /about/i })).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("button", { name: "Switch to dark mode" })).toHaveAttribute("aria-pressed", "false");
+    expect(screen.getByText("AI, DevOps, Systems & Embedded Engineer")).toBeInTheDocument();
   });
 
   it("keeps the sidebar social links free of a divider", () => {
@@ -108,6 +110,28 @@ describe("editorial portfolio shell", () => {
 
     expect(brandMarkStyles).toContain("bg-transparent");
     expect(brandMarkStyles).not.toContain("bg-primary");
+  });
+
+  it("keeps editorial sections free of top divider rules", () => {
+    const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+    const sectionStyles = styles.match(/\.editorial-section \{[\s\S]*?\n\s*\}/)?.[0] ?? "";
+
+    expect(sectionStyles).not.toContain("border-t");
+  });
+
+  it("describes the expanded DevOps and systems engineering practice", () => {
+    render(<About />);
+
+    expect(
+      screen.getByText(
+        /internships and engineering programs, my work has expanded from AI and embedded systems into DevOps and systems engineering/i,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /AI infrastructure, DevOps, systems engineering, digital IC design, and embedded systems—from Kubernetes and observability workflows/i,
+      ),
+    ).toBeInTheDocument();
   });
 
   it("keeps mobile navigation keyboard-dismissible and stateful", () => {

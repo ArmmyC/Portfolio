@@ -178,10 +178,6 @@
     background-color: hsl(var(--nav-rule));
   }
 
-  .editorial-section {
-    @apply border-t border-border/80;
-  }
-
   .editorial-card {
     @apply rounded-2xl border border-border/80 bg-card/90;
   }

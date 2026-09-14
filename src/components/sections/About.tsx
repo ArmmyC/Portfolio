@@ -4,7 +4,7 @@ const ABOUT_CHIPS = [
   "Open to internships",
   "AI engineer",
   "Embedded systems",
-  "Systems infrastructure",
+  "DevOps & systems",
 ];
 
 export function About() {
@@ -28,7 +28,7 @@ export function About() {
           I'm <span className="text-foreground font-medium">Arm</span>{" "}
           <span className="text-foreground/80">({PROFILE.thaiName})</span>, a Computer Engineering student at{" "}
           <span className="text-foreground font-medium">King Mongkut's University of Technology Thonburi (KMUTT)</span>.
-          I like building at the intersection of AI, embedded systems, and practical engineering tools with a strong systems mindset.
+          Through hands-on internships and engineering programs, my work has expanded from AI and embedded systems into DevOps and systems engineering, with a focus on reliable infrastructure and practical engineering tools.
         </p>
         <p>{PROFILE.intro}</p>
         <p>

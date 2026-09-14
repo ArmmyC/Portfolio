@@ -16,9 +16,9 @@ export const PROFILE = {
   name: "Kamolpop Vitayarat",
   thaiName: "กมลภพ วิทยารัฐ",
   nickname: "Arm",
-  role: "AI, Systems & Embedded Engineer",
+  role: "AI, DevOps, Systems & Embedded Engineer",
   intro:
-    "Computer Engineering student building across AI infrastructure, digital IC design, and embedded systems, from private LLM serving and Slurm workflows to edge AI and RISC-V experiments.",
+    "Building across AI infrastructure, DevOps, systems engineering, digital IC design, and embedded systems—from Kubernetes and observability workflows to private LLM serving, edge AI, and RISC-V experiments.",
   location: "KMUTT, Bangkok, TH",
   email: "k.kamolpopv@gmail.com",
   github: "https://github.com/ArmmyC",

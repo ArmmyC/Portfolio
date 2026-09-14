@@ -14,9 +14,9 @@ import { NAV, PROFILE } from "@/data/portfolio";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useReveal } from "@/hooks/useReveal";
 
-const SEO_TITLE = "Kamolpop Vitayarat | AI Engineer & Embedded Systems";
+const SEO_TITLE = "Kamolpop Vitayarat | AI, DevOps & Systems Engineer";
 const SEO_DESCRIPTION =
-  "Kamolpop Vitayarat (กมลภพ วิทยารัฐ), also known as Arm, is a KMUTT computer engineering student and AI engineer focused on AI infrastructure, systems engineering, embedded systems, edge AI, robotics, RISC-V, FPGA, and computer vision.";
+  "Kamolpop Vitayarat (กมลภพ วิทยารัฐ), also known as Arm, is a KMUTT computer engineering student and AI, DevOps, and systems engineer focused on AI infrastructure, Kubernetes, observability, embedded systems, edge AI, robotics, RISC-V, FPGA, and computer vision.";
 
 const Index = () => {
   const active = useActiveSection(NAV.map((n) => n.id));
