@@ -129,7 +129,7 @@ describe("editorial portfolio shell", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /AI infrastructure, DevOps, systems engineering, digital IC design, and embedded systems—from Kubernetes and observability workflows/i,
+        /AI infrastructure, DevOps, systems engineering, digital IC design, and embedded systems, including Kubernetes and observability workflows/i,
       ),
     ).toBeInTheDocument();
   });
