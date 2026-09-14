@@ -29,6 +29,21 @@ describe("editorial portfolio shell", () => {
     expect(screen.getByRole("button", { name: "Switch to dark mode" })).toHaveAttribute("aria-pressed", "false");
   });
 
+  it("keeps the sidebar social links free of a divider", () => {
+    render(
+      <ThemeProvider attribute="class" defaultTheme="light">
+        <Sidebar
+          active="about"
+          easterEggUnlocked={false}
+          achievementVisible={false}
+          onUnlockEasterEgg={() => undefined}
+        />
+      </ThemeProvider>,
+    );
+
+    expect(screen.getByRole("link", { name: "GitHub" }).parentElement).not.toHaveClass("border-t");
+  });
+
   it("keeps the light monogram when the resolved theme is dark", async () => {
     render(
       <ThemeProvider attribute="class" defaultTheme="dark">
@@ -85,6 +100,14 @@ describe("editorial portfolio shell", () => {
       expect(png.readUInt32BE(20)).toBe(1024);
       expect(png[25]).toBe(6);
     }
+  });
+
+  it("keeps the fixed light logo free from a theme-colored halo", () => {
+    const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+    const brandMarkStyles = styles.match(/\.brand-mark \{[\s\S]*?\n\s*\}/)?.[0] ?? "";
+
+    expect(brandMarkStyles).toContain("bg-transparent");
+    expect(brandMarkStyles).not.toContain("bg-primary");
   });
 
   it("keeps mobile navigation keyboard-dismissible and stateful", () => {

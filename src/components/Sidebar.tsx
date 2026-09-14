@@ -76,7 +76,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
           achievementVisible={achievementVisible}
           onUnlock={onUnlockEasterEgg}
         />
-        <div className="flex items-center gap-5 border-t border-border/80 pt-4 text-muted-foreground">
+        <div className="flex items-center gap-5 pt-4 text-muted-foreground">
           <a href={PROFILE.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="link-cyan">
             <Github className="h-[22px] w-[22px] transition-transform hover:scale-105" />
           </a>

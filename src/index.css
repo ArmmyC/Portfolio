@@ -159,7 +159,7 @@
   }
 
   .brand-mark {
-    @apply inline-flex h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-primary transition-transform duration-300 hover:scale-[1.02];
+    @apply inline-flex h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-transparent transition-transform duration-300 hover:scale-[1.02];
   }
 
   .brand-mark--compact {
