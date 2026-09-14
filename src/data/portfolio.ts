@@ -40,6 +40,43 @@ export type Experience = {
 
 export const EXPERIENCES: Experience[] = [
   {
+    id: "EXP-2026-004",
+    organization: "Blendata",
+    title: "DevOps Engineer",
+    period: "Current",
+    status: "Active",
+    summary:
+      "Currently interning at Blendata as a DevOps Engineer, working across Kubernetes and RKE2, CI/CD and artifact tooling, and company-wide observability deployment.",
+    responsibilities: [
+      "Currently working with Kubernetes and RKE2 cluster environments.",
+      "Currently working with Jenkins, Harbor, Argo CD, Helm, and Docker in DevOps workflows.",
+      "Deployed Grafana, Prometheus, Loki, Alloy, Node Exporter, and cAdvisor across company VMs to improve observability and logging.",
+    ],
+  },
+  {
+    id: "EXP-2026-005",
+    organization: "Innosoft Student Associate Program",
+    title: "System Engineer",
+    period: "Current",
+    status: "Active",
+    summary:
+      "Currently participating in the Innosoft Student Associate Program as a System Engineer, learning infrastructure fundamentals while contributing to production backup and document-system design.",
+    responsibilities: [
+      "Learned about computer networking, backup design, Fortinet firewalls, and Proxmox virtualization.",
+      "Designed a backup strategy for a production database to support high availability and consistency requirements.",
+      "Designed a signed-PDF parser using tooling for the Paperless System.",
+    ],
+  },
+  {
+    id: "EXP-2026-006",
+    organization: "Artificial Intelligence Association of Thailand",
+    title: "Super AI Engineer Level 3 Completer",
+    period: "Sep 2026",
+    status: "Completed",
+    summary: "Completed Super AI Engineer Level 3 and received a silver medal reward.",
+    responsibilities: ["Completed Super AI Engineer Level 3.", "Received a silver medal reward for Level 3."],
+  },
+  {
     id: "EXP-2026-001",
     organization: "Silicon Craft",
     link: "https://www.sic.co.th/",

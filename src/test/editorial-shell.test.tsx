@@ -100,10 +100,14 @@ describe("editorial portfolio shell", () => {
     const timeline = screen.getByRole("list", { name: "Career experience timeline" });
 
     expect(timeline).toHaveClass("border-l-2");
-    expect(timeline.querySelectorAll(":scope > li")).toHaveLength(3);
+    expect(timeline.querySelectorAll(":scope > li")).toHaveLength(6);
     expect(within(timeline).getByRole("heading", { name: /Digital IC Design Intern and AI Engineer/i })).toBeInTheDocument();
     expect(within(timeline).getByRole("heading", { name: /Super AI Engineer Season 6 Level 2 Participant/i })).toBeInTheDocument();
     expect(within(timeline).getByRole("heading", { name: /Super AI Engineer Season 6 Level 1 Participant/i })).toBeInTheDocument();
+    expect(within(timeline).getByText("Blendata")).toBeInTheDocument();
+    expect(within(timeline).getByRole("heading", { name: "System Engineer" })).toBeInTheDocument();
+    expect(within(timeline).getByRole("heading", { name: /Super AI Engineer Level 3 Completer/i })).toBeInTheDocument();
+    expect(within(timeline).getAllByText(/silver medal/i).length).toBeGreaterThan(0);
   });
 
   it("uses the live status treatment for Rally and WebPad", () => {
