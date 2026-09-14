@@ -262,10 +262,10 @@ export const SKILLS: { group: string; items: string[] }[] = [
 ];
 
 export const CAT_STATUS: Record<string, string> = {
-  about: "Cat approved.",
-  experience: "Experience loaded.",
-  projects: "Projects are ready.",
-  recognition: "Credentials sorted.",
-  skills: "Skills loaded.",
-  contact: "Open to new opportunities.",
+  about: "Approved",
+  experience: "Loaded",
+  projects: "Ready",
+  recognition: "Sorted",
+  skills: "Loaded",
+  contact: "Available",
 };

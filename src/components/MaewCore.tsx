@@ -40,31 +40,23 @@ export function MaewCore({
 
   let status = "";
   if (achievementVisible) {
-    status = "Achievement unlocked.";
+    status = "Unlocked";
   } else if (purring) {
-    if (easterEggUnlocked) {
-      status = isDark
-        ? "Currently purring in the dark. Paw mode still online."
-        : "Currently purring. Paw mode still online.";
-    } else {
-      status = isDark ? "Currently purring in the dark." : "Currently purring.";
-    }
+    status = "Purring";
   } else if (easterEggUnlocked) {
-    status = "Soft paw mode online. Move the cursor.";
+    status = "Paw mode online";
   } else if (canUnlockEasterEgg && petCount > 0) {
-    status = `${CAT_EASTER_EGG_CLICK_TARGET - petCount} more pets until a surprise.`;
+    status = `${CAT_EASTER_EGG_CLICK_TARGET - petCount} more pets`;
   } else {
     const darkStatuses: Record<string, string> = {
-      about: "Zzz... dreaming of clean code.",
-      projects: "Running simulations in the dark.",
-      recognition: "Credentials shining like stars.",
-      skills: "Night vision sensors online.",
-      contact: "Drop a line, cat never sleeps.",
+      about: "Dreaming",
+      projects: "Simulating",
+      recognition: "Shining",
+      skills: "Scanning",
+      contact: "Available",
     };
 
-    status = isDark
-      ? (darkStatuses[active] ?? "Guarding the system.")
-      : (CAT_STATUS[active] ?? "Cat approved.");
+    status = isDark ? (darkStatuses[active] ?? "Guarding") : (CAT_STATUS[active] ?? "Approved");
   }
 
   const handlePet = () => {

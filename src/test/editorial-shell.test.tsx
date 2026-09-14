@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { Sidebar } from "@/components/Sidebar";
 import { MobileNav } from "@/components/MobileNav";
+import { MaewCore } from "@/components/MaewCore";
 import { About } from "@/components/sections/About";
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
@@ -89,6 +90,30 @@ describe("editorial portfolio shell", () => {
     } finally {
       links.forEach((link) => link.remove());
     }
+  });
+
+  it("uses a concise status when Maew is purring", () => {
+    render(
+      <ThemeProvider attribute="class" defaultTheme="light">
+        <MaewCore active="about" />
+      </ThemeProvider>,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "MaewCore mascot: click to pet" }));
+
+    expect(screen.getByText("Purring")).toBeInTheDocument();
+  });
+
+  it("uses concise status copy in dark mode", async () => {
+    render(
+      <ThemeProvider attribute="class" defaultTheme="dark">
+        <MaewCore active="about" />
+      </ThemeProvider>,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText("Dreaming")).toBeInTheDocument();
+    });
   });
 
   it("ships both PNG masters with transparent 1024px canvases", () => {
