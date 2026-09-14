@@ -28,6 +28,7 @@ export const PROFILE = {
 };
 
 export type Experience = {
+  id: string;
   organization: string;
   link?: string;
   title: string;
@@ -39,18 +40,50 @@ export type Experience = {
 
 export const EXPERIENCES: Experience[] = [
   {
+    id: "EXP-2026-001",
     organization: "Silicon Craft",
     link: "https://www.sic.co.th/",
     title: "Digital IC Design Intern and AI Engineer",
     period: "Jun 2026 - Jul 2026",
-    status: "Summer 2026",
+    status: "Active",
     summary:
-      "Internship spanning digital IC design and AI engineering work across RFID-oriented research, benchmarking, and internal LLM tooling.",
+      "Active internship building a private IC and semiconductor engineering assistant and related AI systems.",
     responsibilities: [
-      "Fine-tuning an RTL specialist model for hardware-oriented tasks.",
-      "Creating benchmark workflows for RFID-related evaluation and experimentation.",
-      "Researching spiking neural networks for RFID applications.",
-      "Building and hosting an internal LLM website with RAG capabilities.",
+      "Built a private IC and semiconductor engineering assistant for company PDFs, datasheets, test reports, CSV/XLSX experiment files, and other engineering documents.",
+      "Implemented parsing, chunking, metadata and embedding storage, hybrid search retrieval, and cited question answering through OpenWebUI and the Control Plane.",
+      "Used hybrid RAG, Cache-Augmented Generation, bounded ReAct-style read-only investigation workflows, and structured XLSX ingestion for grounded engineering support.",
+      "Integrated optional Docling PDF parsing, deterministic PASS/FAIL compliance validation, human approval for extracted spec or rule candidates, and LiteLLM as the model gateway.",
+    ],
+  },
+  {
+    id: "EXP-2026-002",
+    organization: "Artificial Intelligence Association of Thailand",
+    title: "Super AI Engineer Season 6 Level 2 Participant",
+    period: "Apr 20, 2026 - Jun 8, 2026",
+    status: "Completed",
+    summary:
+      "Completed the Super AI Engineer Season 6 Level 2 program through online learning and an onsite bootcamp covering machine learning, deep learning, NLP, AI agents, full-stack AI applications, edge AI, AIoT, cybersecurity, and LLM safety.",
+    responsibilities: [
+      "Completed the two-week online phase covering AI foundations, supervised and unsupervised learning, research methodology, deep learning, NLP/Transformers, AI usage, AI agents, database design, full-stack AI apps, and design thinking.",
+      "Completed the four-week onsite bootcamp covering time-series forecasting, edge AI for intelligent transport systems, human sensing and wellness AIoT, AI cybersecurity, harness engineering, and agentic AI / LLM safety.",
+      "Participated in scheduled mini hackathons and onsite weekly hackathons including demand forecasting, intelligent transport edge AI, WellSense AIoT, and FahMai enterprise data-agent work.",
+      "Worked across Chest Disease Detection, Thai Math VQA, Thai Call Center ASR, Heart Disease Prediction, and Sleep Stage Classification tasks.",
+      "Achieved currently evidenced individual-hackathon placements of 1st, 2nd, 6th, 20th, and 21st across the recorded tracks.",
+    ],
+  },
+  {
+    id: "EXP-2026-003",
+    organization: "Artificial Intelligence Association of Thailand",
+    title: "Super AI Engineer Season 6 Level 1 Participant",
+    period: "Mar 2026 - Apr 2026",
+    status: "Completed",
+    summary:
+      "Completed Super AI Engineer Season 6 Level 1, an online AI engineering preparation stage by the Artificial Intelligence Association of Thailand.",
+    responsibilities: [
+      "Completed prerequisite learning and assessment work including AI Ready ASEAN, AI Practitioner, and Foundation AI Theory requirements.",
+      "Completed Level 1 practice challenges evidenced by Data to Insight, Thai Election OCR, and FahMai RAG certificates.",
+      "Participated in challenge tracks covering OCR, RAG, Thai image captioning, house recognition, word segmentation, sleep-stage classification, and heart disease prediction.",
+      "Completed selection-stage work including a data-to-insight / EDA challenge record and an AI presentation video submission record.",
     ],
   },
 ];
@@ -70,7 +103,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Rally",
     category: "Opportunity Directory",
-    status: "Active",
+    status: "Live",
     description:
       "A bilingual directory for discovering verified internships, hackathons, competitions, scholarships, and student programmes in Thailand.",
     tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Node.js"],

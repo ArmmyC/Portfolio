@@ -9,7 +9,7 @@ export function Contact() {
     <section id="contact" className="editorial-section scroll-mt-24 py-16 lg:py-20">
       <h2 className="section-label reveal mb-5">contact</h2>
       <div className="reveal editorial-card p-6">
-        <p className="text-base md:text-lg leading-relaxed text-muted-foreground">
+        <p className="text-[17px] leading-relaxed text-muted-foreground md:text-[19px]">
           Open to internships, collaborations, and engineering projects across{" "}
           <span className="text-foreground font-medium">AI</span>,{" "}
           <span className="text-foreground font-medium">embedded systems</span>, and{" "}
@@ -19,7 +19,7 @@ export function Contact() {
         <div className="mt-5 flex flex-wrap gap-2.5">
           <a
             href={`mailto:${PROFILE.email}`}
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-[15px] md:text-base font-medium text-primary-foreground transition hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-[16px] font-medium text-primary-foreground transition hover:opacity-90 md:text-[17px]"
           >
             <Mail className="h-4 w-4" /> Say hi
           </a>
@@ -27,7 +27,7 @@ export function Contact() {
             href={PROFILE.github}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-[15px] md:text-base font-medium text-foreground transition hover:border-primary/40"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-[16px] font-medium text-foreground transition hover:border-primary/40 md:text-[17px]"
           >
             <Github className="h-4 w-4" /> GitHub
           </a>
@@ -36,7 +36,7 @@ export function Contact() {
               href={PROFILE.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-[15px] md:text-base font-medium text-foreground transition hover:border-primary/40"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-[16px] font-medium text-foreground transition hover:border-primary/40 md:text-[17px]"
             >
               <Linkedin className="h-4 w-4" /> LinkedIn
             </a>
@@ -44,7 +44,7 @@ export function Contact() {
           {hasResume && (
             <a
               href={PROFILE.resume}
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-[15px] md:text-base font-medium text-foreground transition hover:border-primary/40"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-[16px] font-medium text-foreground transition hover:border-primary/40 md:text-[17px]"
             >
               <FileText className="h-4 w-4" /> Resume
             </a>

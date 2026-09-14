@@ -1,9 +1,10 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { ThemeProvider } from "next-themes";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { Sidebar } from "@/components/Sidebar";
 import { MobileNav } from "@/components/MobileNav";
+import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
 
 describe("editorial portfolio shell", () => {
@@ -93,6 +94,28 @@ describe("editorial portfolio shell", () => {
     expect(preview).toHaveAttribute("height", "860");
   });
 
+  it("renders all CareerDatabase experiences as a readable timeline", () => {
+    render(<Experience />);
+
+    const timeline = screen.getByRole("list", { name: "Career experience timeline" });
+
+    expect(timeline).toHaveClass("border-l-2");
+    expect(timeline.querySelectorAll(":scope > li")).toHaveLength(3);
+    expect(within(timeline).getByRole("heading", { name: /Digital IC Design Intern and AI Engineer/i })).toBeInTheDocument();
+    expect(within(timeline).getByRole("heading", { name: /Super AI Engineer Season 6 Level 2 Participant/i })).toBeInTheDocument();
+    expect(within(timeline).getByRole("heading", { name: /Super AI Engineer Season 6 Level 1 Participant/i })).toBeInTheDocument();
+  });
+
+  it("uses the live status treatment for Rally and WebPad", () => {
+    render(<Projects />);
+
+    const rally = screen.getByRole("link", { name: /Rally/i });
+    const webpad = screen.getByRole("link", { name: /Freedomain \/ WebPad/i });
+
+    expect(within(rally).getByText("Live")).toHaveClass("status-pill--live");
+    expect(within(webpad).getByText("Live")).toHaveClass("status-pill--live");
+  });
+
   it("keeps the shell flat, cobalt-led, and readable", () => {
     render(
       <ThemeProvider attribute="class" defaultTheme="light">
@@ -119,5 +142,7 @@ describe("editorial portfolio shell", () => {
     expect(styles).not.toContain("shadow-[");
     expect(styles).not.toContain("hsl(350");
     expect(styles).toContain("--cat: 221");
+    expect(styles).toContain("--status-live");
+    expect(styles).toContain("text-[13px]");
   });
 });

@@ -27,19 +27,19 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
           <a href="#about" aria-label="Kamolpop monogram" className="brand-mark">
             <BrandMark className="h-full w-full" />
           </a>
-          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-foreground/70">
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-foreground/70">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             hi, i'm
           </div>
           <ThemeToggle />
         </div>
-        <h1 className="mt-6 text-[25px] xl:text-[29px] font-bold tracking-tight text-foreground leading-tight whitespace-nowrap">
+        <h1 className="mt-6 text-[26px] font-bold tracking-tight text-foreground leading-tight whitespace-nowrap xl:text-[30px]">
           {PROFILE.name}
         </h1>
-        <p className="mt-1.5 text-base text-muted-foreground">
+        <p className="mt-1.5 text-[17px] text-muted-foreground">
           aka <span className="text-foreground">"{PROFILE.nickname}"</span>
         </p>
-        <p className="mt-4 max-w-[17rem] text-[14px] xl:text-[15px] font-semibold text-primary uppercase tracking-[0.08em] leading-relaxed">
+        <p className="mt-4 max-w-[17rem] text-[15px] font-semibold text-primary uppercase tracking-[0.08em] leading-relaxed xl:text-[16px]">
           {PROFILE.role}
         </p>
 
@@ -53,7 +53,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
                     href={`#${item.id}`}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "editorial-nav-link group flex items-center gap-3 py-2 font-mono text-[13px] md:text-sm uppercase tracking-[0.1em] transition-colors",
+                      "editorial-nav-link group flex items-center gap-3 py-2 font-mono text-[14px] uppercase tracking-[0.08em] transition-colors md:text-[15px]",
                       isActive ? "text-primary" : "text-muted-foreground hover:text-foreground",
                     )}
                   >

@@ -23,7 +23,7 @@ export function About() {
 
       <h2 className="section-label reveal mb-5">about</h2>
 
-      <div className="space-y-5 text-base md:text-lg leading-relaxed text-muted-foreground reveal">
+      <div className="space-y-5 text-[17px] leading-relaxed text-muted-foreground reveal md:text-[19px]">
         <p>
           I'm <span className="text-foreground font-medium">Arm</span>{" "}
           <span className="text-foreground/80">({PROFILE.thaiName})</span>, a Computer Engineering student at{" "}
@@ -36,7 +36,7 @@ export function About() {
           <span className="text-primary font-medium">edge devices</span>, and{" "}
           <span className="text-primary font-medium">robotics prototypes</span>, where software meets hardware.
         </p>
-        <p className="text-[15px] md:text-base italic text-muted-foreground/80">
+        <p className="text-[16px] italic text-muted-foreground/80 md:text-[17px]">
           Outside engineering, I'm probably debugging something, learning something, or being judged by a cat.
         </p>
       </div>

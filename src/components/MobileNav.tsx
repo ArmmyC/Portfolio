@@ -31,10 +31,10 @@ export function MobileNav({ active }: Props) {
         <a href="#about" className="flex min-w-0 items-center gap-3 leading-tight">
           <BrandMark alt="" aria-hidden="true" className="brand-mark brand-mark--compact" />
           <span className="min-w-0">
-            <h1 className="truncate text-base font-semibold text-foreground">
+            <h1 className="truncate text-[17px] font-semibold text-foreground">
               {PROFILE.name}
             </h1>
-            <span className="block truncate text-xs text-muted-foreground">{PROFILE.role}</span>
+            <span className="block truncate text-[13px] text-muted-foreground">{PROFILE.role}</span>
           </span>
         </a>
         <div className="flex items-center gap-3">
@@ -61,7 +61,7 @@ export function MobileNav({ active }: Props) {
                   onClick={() => setOpen(false)}
                   aria-current={active === item.id ? "page" : undefined}
                   className={cn(
-                    "flex min-h-11 items-center py-2 font-mono text-[13px] uppercase tracking-[0.1em]",
+                    "flex min-h-11 items-center py-2 font-mono text-[14px] uppercase tracking-[0.08em]",
                     active === item.id ? "text-primary" : "text-muted-foreground",
                   )}
                 >
