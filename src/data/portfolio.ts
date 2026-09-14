@@ -59,7 +59,7 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "EXP-2026-005",
     organization: "Innosoft Student Associate Program",
-    logo: { src: "/brand/companies/isap.svg", alt: "Innosoft Student Associate Program logo" },
+    logo: { src: "/brand/companies/isap.png", alt: "Innosoft Student Associate Program logo" },
     link: "/resume/innosoft_system_engineering_resume.pdf",
     title: "System Engineer",
     period: "Current",

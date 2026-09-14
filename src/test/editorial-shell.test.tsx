@@ -214,7 +214,7 @@ describe("editorial portfolio shell", () => {
     );
     expect(within(timeline).getByRole("img", { name: "Innosoft Student Associate Program logo" })).toHaveAttribute(
       "src",
-      "/brand/companies/isap.svg",
+      "/brand/companies/isap.png",
     );
     expect(within(timeline).getByRole("img", { name: "Silicon Craft logo" })).toHaveAttribute(
       "src",
