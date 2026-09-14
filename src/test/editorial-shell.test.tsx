@@ -250,6 +250,9 @@ describe("editorial portfolio shell", () => {
       "href",
       "https://www.sic.co.th/",
     );
+    const siliconCraft = within(timeline).getByRole("link", { name: /Silicon Craft/i });
+    expect(within(siliconCraft).getByText("Completed", { exact: true })).toHaveClass("status-pill--built");
+    expect(within(siliconCraft).getByText(/Completed internship building a private IC/i)).toBeInTheDocument();
     expect(within(timeline).getByRole("link", { name: /Artificial Intelligence Association of Thailand/i })).toHaveAttribute(
       "href",
       "https://aiat.or.th/",

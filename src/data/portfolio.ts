@@ -79,9 +79,9 @@ export const EXPERIENCES: Experience[] = [
     link: "https://www.sic.co.th/",
     title: "Digital IC Design Intern and AI Engineer",
     period: "Jun 2026 - Jul 2026",
-    status: "Active",
+    status: "Completed",
     summary:
-      "Active internship building a private IC and semiconductor engineering assistant and related AI systems.",
+      "Completed internship building a private IC and semiconductor engineering assistant and related AI systems.",
     responsibilities: [
       "Built a private IC and semiconductor engineering assistant for company PDFs, datasheets, test reports, CSV/XLSX experiment files, and other engineering documents.",
       "Implemented parsing, chunking, metadata and embedding storage, hybrid search retrieval, and cited question answering through OpenWebUI and the Control Plane.",
