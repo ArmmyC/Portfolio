@@ -1,6 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title description">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title description" shape-rendering="geometricPrecision">
   <title id="title">Kamolpop monogram</title>
-  <desc id="description">A lowercase kv monogram in soft white on a cobalt rounded square.</desc>
+  <desc id="description">A lowercase kv monogram with a small break in the lower k leg, set in soft white on a cobalt rounded square.</desc>
   <rect width="64" height="64" rx="16" fill="#2454C6"/>
-  <text x="32" y="43" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" letter-spacing="-3.5" fill="#FEFAF6">kv</text>
+  <path id="k-stem" d="M17.5 16.5V47.5" fill="none" stroke="#FEFAF6" stroke-width="6" stroke-linecap="round"/>
+  <path id="k-upper" d="M20.8 31.5 35.4 16.5" fill="none" stroke="#FEFAF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="k-lower" d="M23.6 35.2 36.8 47.5" fill="none" stroke="#FEFAF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="v" d="m34.3 26.5 9.5 21 9.9-21" fill="none" stroke="#FEFAF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
