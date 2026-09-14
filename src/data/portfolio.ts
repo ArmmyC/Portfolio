@@ -62,7 +62,7 @@ export const EXPERIENCES: Experience[] = [
     logo: { src: "/brand/companies/isap.png", alt: "Innosoft Student Associate Program logo", surface: "contained" },
     link: "https://innosoft.kmutt.ac.th/",
     title: "System Engineer",
-    period: "Current",
+    period: "Aug 2026 - Current",
     status: "Current",
     summary:
       "Currently participating in the Innosoft Student Associate Program as a System Engineer, learning infrastructure fundamentals while contributing to production backup and document-system design.",

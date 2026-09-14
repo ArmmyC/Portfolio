@@ -16,9 +16,8 @@ export function Experience() {
           const tone = getStatusTone(experience.status);
           const content = (
             <div className="rounded-xl border border-transparent px-2 py-1 transition-colors group-hover:border-border/80 group-hover:bg-card/60 md:px-4 md:py-3">
-              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2">
+              <div className="flex flex-wrap items-baseline">
                 <span className="font-mono text-[13px] text-primary md:text-[14px]">{experience.period}</span>
-                <span className={cn("status-pill", `status-pill--${tone}`)}>{experience.status}</span>
               </div>
 
               <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">

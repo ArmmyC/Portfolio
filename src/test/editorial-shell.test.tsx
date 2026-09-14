@@ -207,20 +207,18 @@ describe("editorial portfolio shell", () => {
     expect(lanta).not.toHaveClass("md:col-span-2");
   });
 
-  it("uses current wording for ongoing experience entries", () => {
+  it("uses date ranges instead of status badges for experience entries", () => {
     render(<Experience />);
 
     const timeline = screen.getByRole("list", { name: "Career experience timeline" });
     const blendata = within(timeline).getByRole("link", { name: /Blendata/i });
     const isap = within(timeline).getByRole("link", { name: /Innosoft Student Associate Program/i });
+    const siliconCraft = within(timeline).getByRole("link", { name: /Silicon Craft/i });
 
     expect(within(blendata).getByText("Aug 2026 - Current", { exact: true })).toBeInTheDocument();
-    expect(within(blendata).getByText("Current", { exact: true })).toHaveClass("status-pill--live");
-    const isapCurrentLabels = within(isap).getAllByText("Current", { exact: true });
-    expect(isapCurrentLabels).toHaveLength(2);
-    expect(isapCurrentLabels[1]).toHaveClass("status-pill--live");
-    expect(within(blendata).queryByText("Active", { exact: true })).not.toBeInTheDocument();
-    expect(within(isap).queryByText("Active", { exact: true })).not.toBeInTheDocument();
+    expect(within(isap).getByText("Aug 2026 - Current", { exact: true })).toBeInTheDocument();
+    expect(within(siliconCraft).getByText("Jun 2026 - Jul 2026", { exact: true })).toBeInTheDocument();
+    expect(timeline.querySelectorAll(".status-pill")).toHaveLength(0);
   });
 
   it("groups Super AI levels into one final month-granularity entry with company marks", () => {
@@ -282,7 +280,8 @@ describe("editorial portfolio shell", () => {
       "https://www.sic.co.th/",
     );
     const siliconCraft = within(timeline).getByRole("link", { name: /Silicon Craft/i });
-    expect(within(siliconCraft).getByText("Completed", { exact: true })).toHaveClass("status-pill--built");
+    expect(within(siliconCraft).getByText("Jun 2026 - Jul 2026", { exact: true })).toBeInTheDocument();
+    expect(within(siliconCraft).queryByText("Completed", { exact: true })).not.toBeInTheDocument();
     expect(within(siliconCraft).getByText(/Completed internship building a private IC/i)).toBeInTheDocument();
     expect(within(timeline).getByRole("link", { name: /Artificial Intelligence Association of Thailand/i })).toHaveAttribute(
       "href",
