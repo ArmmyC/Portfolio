@@ -192,6 +192,21 @@ describe("editorial portfolio shell", () => {
     expect(preview).toHaveAttribute("height", "860");
   });
 
+  it("uses wide media cards for visual projects and compact cards for text-only projects", () => {
+    render(<Projects />);
+
+    const rally = screen.getByRole("link", { name: /Rally/i });
+    const webpad = screen.getByRole("link", { name: /Freedomain \/ WebPad/i });
+    const lanta = screen.getByRole("link", { name: /Lanta LLM Hosting/i });
+
+    expect(rally).toHaveAttribute("data-project-layout", "media");
+    expect(webpad).toHaveAttribute("data-project-layout", "media");
+    expect(rally).toHaveClass("md:col-span-2");
+    expect(webpad).toHaveClass("md:col-span-2");
+    expect(lanta).toHaveAttribute("data-project-layout", "text");
+    expect(lanta).not.toHaveClass("md:col-span-2");
+  });
+
   it("groups Super AI levels into one final month-granularity entry with company marks", () => {
     render(<Experience />);
 

@@ -17,10 +17,16 @@ export function Projects() {
               href={p.link ?? "#"}
               target="_blank"
               rel="noreferrer"
-              className="reveal editorial-card group relative block p-5 transition-colors hover:border-primary/40"
+              data-project-layout={p.image ? "media" : "text"}
+              className={cn(
+                "reveal editorial-card group relative block transition-colors hover:border-primary/40",
+                p.image
+                  ? "p-3.5 md:col-span-2 md:grid md:grid-cols-[minmax(13rem,0.82fr)_minmax(0,1.45fr)] md:items-center md:gap-6 md:p-4"
+                  : "p-5",
+              )}
             >
               {p.image && (
-                <div className="mb-4 overflow-hidden rounded-xl border border-border/70 bg-background/60">
+                <div className="mb-4 overflow-hidden rounded-xl border border-primary/15 bg-secondary/80 md:mb-0">
                   <img
                     src={p.image}
                     alt={`${p.title} project preview`}
@@ -29,34 +35,67 @@ export function Projects() {
                     loading="lazy"
                     decoding="async"
                     sizes="(min-width: 768px) 32rem, 100vw"
-                    className="h-32 w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]"
+                    className="h-36 w-full object-cover object-left-top transition duration-500 group-hover:scale-[1.02] md:h-40"
                   />
                 </div>
               )}
-              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2">
-                <h3 className="text-[18px] font-semibold text-foreground transition-colors group-hover:text-primary md:text-[19px]">
-                  {p.title}
-                </h3>
-                <ArrowUpRight
-                  aria-hidden="true"
-                  className="h-4 w-4 text-muted-foreground transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
-                />
-                <span className={cn("status-pill ml-auto", `status-pill--${tone}`)}>{p.status}</span>
-              </div>
+              {p.image ? (
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <span className={cn("status-pill", `status-pill--${tone}`)}>{p.status}</span>
+                    <div className="font-mono text-[12px] uppercase tracking-[0.06em] text-primary/75">
+                      {p.category}
+                    </div>
+                  </div>
 
-              <div className="mt-1 font-mono text-[13px] uppercase tracking-[0.06em] text-accent-foreground/75">
-                {p.category}
-              </div>
+                  <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                    <h3 className="text-[20px] font-semibold text-foreground transition-colors group-hover:text-primary md:text-[22px]">
+                      {p.title}
+                    </h3>
+                    <ArrowUpRight
+                      aria-hidden="true"
+                      className="h-4 w-4 text-muted-foreground transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                    />
+                  </div>
 
-              <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
-                {p.description}
-              </p>
+                  <p className="mt-2 max-w-2xl text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
+                    {p.description}
+                  </p>
 
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {p.tech.map((t) => (
-                  <span key={t} className="editorial-tag">{t}</span>
-                ))}
-              </div>
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {p.tech.map((t) => (
+                      <span key={t} className="editorial-tag">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2">
+                    <h3 className="text-[18px] font-semibold text-foreground transition-colors group-hover:text-primary md:text-[19px]">
+                      {p.title}
+                    </h3>
+                    <ArrowUpRight
+                      aria-hidden="true"
+                      className="h-4 w-4 text-muted-foreground transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                    />
+                    <span className={cn("status-pill ml-auto", `status-pill--${tone}`)}>{p.status}</span>
+                  </div>
+
+                  <div className="mt-1 font-mono text-[13px] uppercase tracking-[0.06em] text-accent-foreground/75">
+                    {p.category}
+                  </div>
+
+                  <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
+                    {p.description}
+                  </p>
+
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {p.tech.map((t) => (
+                      <span key={t} className="editorial-tag">{t}</span>
+                    ))}
+                  </div>
+                </>
+              )}
             </a>
           );
         })}
