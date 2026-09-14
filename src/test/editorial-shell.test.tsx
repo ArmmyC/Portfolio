@@ -158,13 +158,10 @@ describe("editorial portfolio shell", () => {
       </ThemeProvider>,
     );
 
-    const intro = screen.getByText("hi, i'm");
-    const introBadge = intro.closest("div.inline-flex");
     const themeToggle = screen.getByRole("button", { name: "Switch to dark mode" });
     const mascot = screen.getByRole("img", { name: /illustrated cat mascot/i });
 
-    expect(introBadge).toHaveClass("bg-primary/10", "tracking-[0.08em]");
-    expect(introBadge?.querySelector("span")).toHaveClass("bg-primary");
+    expect(screen.queryByText("hi, i'm")).not.toBeInTheDocument();
     expect(themeToggle).not.toHaveClass("shadow-[0_2px_8px_-3px_rgba(0,0,0,0.08)]");
     expect(mascot).not.toHaveClass("drop-shadow-[0_6px_18px_hsl(222_30%_18%/0.16)]");
 

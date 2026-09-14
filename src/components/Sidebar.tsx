@@ -27,10 +27,6 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
           <a href="#about" aria-label="Kamolpop monogram" className="brand-mark">
             <BrandMark className="h-full w-full" />
           </a>
-          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-foreground/70">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            hi, i'm
-          </div>
           <ThemeToggle />
         </div>
         <h1 className="mt-6 text-[26px] font-bold tracking-tight text-foreground leading-tight whitespace-nowrap xl:text-[30px]">
