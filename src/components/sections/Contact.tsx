@@ -6,9 +6,9 @@ export function Contact() {
   const hasResume = PROFILE.resume.trim().length > 0;
 
   return (
-    <section id="contact" className="scroll-mt-24 py-16 lg:py-24">
+    <section id="contact" className="editorial-section scroll-mt-24 py-16 lg:py-20">
       <h2 className="section-label reveal mb-5">contact</h2>
-      <div className="reveal soft-card p-6">
+      <div className="reveal editorial-card p-6">
         <p className="text-base md:text-lg leading-relaxed text-muted-foreground">
           Open to internships, collaborations, and engineering projects across{" "}
           <span className="text-foreground font-medium">AI</span>,{" "}

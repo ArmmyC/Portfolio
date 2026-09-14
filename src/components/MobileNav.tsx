@@ -12,13 +12,16 @@ export function MobileNav({ active }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur lg:hidden">
-      <div className="flex items-center justify-between px-5 py-3">
-        <a href="#about" className="flex flex-col leading-tight">
-          <h1 className="text-base font-semibold text-foreground">
-            {PROFILE.name} <span className="text-cat">🐾</span>
-          </h1>
-          <span className="text-xs text-muted-foreground">{PROFILE.role}</span>
+    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur-xl lg:hidden">
+      <div className="flex items-center justify-between gap-4 px-5 py-3.5">
+        <a href="#about" className="flex min-w-0 items-center gap-3 leading-tight">
+          <span className="brand-mark brand-mark--compact" aria-hidden="true">kv</span>
+          <span className="min-w-0">
+            <h1 className="truncate text-base font-semibold text-foreground">
+              {PROFILE.name}
+            </h1>
+            <span className="block truncate text-xs text-muted-foreground">{PROFILE.role}</span>
+          </span>
         </a>
         <div className="flex items-center gap-3">
           <ThemeToggle />
@@ -32,7 +35,7 @@ export function MobileNav({ active }: Props) {
         </div>
       </div>
       {open && (
-        <nav className="border-t border-border bg-background/95 px-5 py-3">
+        <nav aria-label="Primary section navigation" className="border-t border-border/80 bg-background/95 px-5 py-3">
           <ul className="space-y-1">
             {NAV.map((item) => (
               <li key={item.id}>

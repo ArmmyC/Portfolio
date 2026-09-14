@@ -2,7 +2,7 @@ import { RECOGNITION } from "@/data/portfolio";
 
 export function Recognition() {
   return (
-    <section id="recognition" className="scroll-mt-24 py-16 lg:py-24">
+    <section id="recognition" className="editorial-section scroll-mt-24 py-16 lg:py-20">
       <h2 className="section-label reveal mb-5">recognition</h2>
       <p className="reveal mb-6 text-[15px] md:text-base text-muted-foreground">A few credentials and moments along the way.</p>
 
@@ -15,7 +15,7 @@ export function Recognition() {
             </span>
             <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
               <span className="font-mono text-xs text-primary">{r.year}</span>
-              <span className="tag">{r.category}</span>
+              <span className="editorial-tag">{r.category}</span>
             </div>
             <h3 className="mt-1 text-[16px] md:text-[17px] font-medium text-foreground">{r.title}</h3>
             <p className="text-[14px] md:text-[15px] text-muted-foreground">{r.issuer}</p>

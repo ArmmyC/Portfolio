@@ -17,27 +17,33 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
   const hasResume = PROFILE.resume.trim().length > 0;
 
   return (
-    <aside className="hidden lg:flex lg:w-[260px] xl:w-[292px] lg:shrink-0 lg:self-start lg:flex-col lg:gap-y-8 lg:sticky lg:top-6 lg:py-6 lg:pr-4 select-none">
+    <aside
+      aria-label="Kamolpop portfolio sidebar"
+      className="editorial-rail hidden lg:flex lg:w-[260px] xl:w-[292px] lg:shrink-0 lg:self-start lg:flex-col lg:gap-y-10 lg:sticky lg:top-6 lg:py-8 lg:pr-4 select-none"
+    >
       <div>
-        <div className="flex items-center justify-between w-full">
-          <div className="inline-flex items-center gap-2 rounded-full bg-cat/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/70">
+        <div className="flex items-center justify-between gap-4 w-full">
+          <a href="#about" aria-label="Kamolpop monogram" className="brand-mark">
+            kv
+          </a>
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/70">
             <span className="h-1.5 w-1.5 rounded-full bg-cat" />
             hi, i'm
           </div>
           <ThemeToggle />
         </div>
-        <h1 className="mt-4 text-[25px] xl:text-[29px] font-bold tracking-tight text-foreground leading-tight whitespace-nowrap">
+        <h1 className="mt-6 text-[25px] xl:text-[29px] font-bold tracking-tight text-foreground leading-tight whitespace-nowrap">
           {PROFILE.name}
         </h1>
         <p className="mt-1.5 text-base text-muted-foreground">
           aka <span className="text-foreground">"{PROFILE.nickname}"</span>
         </p>
-        <p className="mt-3 text-[14px] xl:text-[15px] font-semibold text-primary uppercase tracking-wider">
+        <p className="mt-4 max-w-[17rem] text-[14px] xl:text-[15px] font-semibold text-primary uppercase tracking-[0.18em] leading-relaxed">
           {PROFILE.role}
         </p>
 
-        <nav className="mt-8" aria-label="Section navigation">
-          <ul className="space-y-1">
+        <nav className="mt-10" aria-label="Primary section navigation">
+          <ul className="space-y-1.5">
             {NAV.map((item) => {
               const isActive = active === item.id;
               return (
@@ -45,7 +51,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
                   <a
                     href={`#${item.id}`}
                     className={cn(
-                      "group flex items-center gap-3 py-2 font-mono text-[13px] md:text-sm uppercase tracking-[0.2em] transition-colors",
+                      "editorial-nav-link group flex items-center gap-3 py-2 font-mono text-[13px] md:text-sm uppercase tracking-[0.2em] transition-colors",
                       isActive ? "text-primary" : "text-muted-foreground hover:text-foreground",
                     )}
                   >
@@ -72,7 +78,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
           achievementVisible={achievementVisible}
           onUnlock={onUnlockEasterEgg}
         />
-        <div className="flex items-center gap-5 text-muted-foreground">
+        <div className="flex items-center gap-5 border-t border-border/80 pt-4 text-muted-foreground">
           <a href={PROFILE.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="link-cyan">
             <Github className="h-[22px] w-[22px] transition-transform hover:scale-105" />
           </a>

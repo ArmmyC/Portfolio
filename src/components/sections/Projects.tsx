@@ -3,23 +3,23 @@ import { PROFILE, PROJECTS } from "@/data/portfolio";
 
 export function Projects() {
   return (
-    <section id="projects" className="scroll-mt-24 py-16 lg:py-24">
+    <section id="projects" className="editorial-section scroll-mt-24 py-16 lg:py-20">
       <h2 className="section-label reveal mb-5">projects</h2>
-      <div className="space-y-4">
+      <div className="grid gap-4 md:grid-cols-2">
         {PROJECTS.map((p) => (
           <a
             key={p.title}
             href={p.link ?? "#"}
             target="_blank"
             rel="noreferrer"
-            className="reveal soft-card group relative block p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_10px_30px_-12px_hsl(180_50%_45%/0.25)]"
+            className="reveal editorial-card group relative block p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_10px_30px_-12px_hsl(var(--primary)/0.25)]"
           >
             {p.image && (
               <div className="mb-4 overflow-hidden rounded-xl border border-border/70 bg-background/60">
                 <img
                   src={p.image}
                   alt={`${p.title} project preview`}
-                  className="h-40 w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]"
+                  className="h-32 w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]"
                 />
               </div>
             )}
@@ -43,7 +43,7 @@ export function Projects() {
 
             <div className="mt-4 flex flex-wrap gap-1.5">
               {p.tech.map((t) => (
-                <span key={t} className="tag">{t}</span>
+                <span key={t} className="editorial-tag">{t}</span>
               ))}
             </div>
           </a>

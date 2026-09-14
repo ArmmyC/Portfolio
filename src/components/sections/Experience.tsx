@@ -3,7 +3,7 @@ import { EXPERIENCES } from "@/data/portfolio";
 
 export function Experience() {
   return (
-    <section id="experience" className="scroll-mt-24 py-16 lg:py-24">
+    <section id="experience" className="editorial-section scroll-mt-24 py-16 lg:py-20">
       <h2 className="section-label reveal mb-5">experience</h2>
       <div className="space-y-4">
         {EXPERIENCES.map((experience) => {
@@ -53,7 +53,7 @@ export function Experience() {
                 href={experience.link}
                 target="_blank"
                 rel="noreferrer"
-                className="reveal soft-card group block p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_10px_30px_-12px_hsl(180_50%_45%/0.25)] md:p-6"
+                className="reveal editorial-card group block p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_10px_30px_-12px_hsl(var(--primary)/0.25)] md:p-6"
               >
                 {cardContent}
               </a>
@@ -61,7 +61,7 @@ export function Experience() {
           }
 
           return (
-            <article key={key} className="reveal soft-card group p-5 md:p-6">
+            <article key={key} className="reveal editorial-card group p-5 md:p-6">
               {cardContent}
             </article>
           );

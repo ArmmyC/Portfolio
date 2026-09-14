@@ -62,7 +62,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen relative">
+    <div className="portfolio-shell min-h-screen relative overflow-x-clip">
       {/* Interactive Ambient Mouse Glow */}
       <div
         id="ambient-glow"
@@ -77,8 +77,8 @@ const Index = () => {
 
       <MobileNav active={active} />
 
-      <div className="mx-auto max-w-6xl px-5 lg:px-12 relative z-10">
-        <div className="lg:flex lg:gap-12">
+      <div className="mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-10 xl:px-12 relative z-10">
+        <div className="lg:grid lg:grid-cols-[18rem_minmax(0,1fr)] lg:gap-14 xl:grid-cols-[18rem_minmax(0,1fr)] xl:gap-20">
           <Sidebar
             active={active}
             easterEggUnlocked={catTrailUnlocked}
@@ -86,7 +86,7 @@ const Index = () => {
             onUnlockEasterEgg={handleUnlockEasterEgg}
           />
 
-          <main className="lg:flex-1 lg:py-20">
+          <main className="min-w-0 lg:py-8 xl:py-10">
             <About />
             <Experience />
             <Projects />
@@ -94,7 +94,7 @@ const Index = () => {
             <Skills />
             <Contact />
 
-            <footer className="border-t border-border pb-10 pt-8 text-[13px] text-muted-foreground">
+            <footer className="editorial-footer border-t border-border/80 pb-10 pt-8 text-[13px] text-muted-foreground">
               <p>
                 Built with React, TypeScript and Tailwind | Designed and coded by {PROFILE.nickname}. <span className="text-cat">Cat approved.</span>
               </p>

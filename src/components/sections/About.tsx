@@ -9,12 +9,12 @@ const ABOUT_CHIPS = [
 
 export function About() {
   return (
-    <section id="about" className="scroll-mt-24 py-16 lg:py-24">
+    <section id="about" className="editorial-section scroll-mt-24 py-16 lg:py-20">
       <div className="reveal mb-6 flex max-w-3xl flex-wrap gap-2.5">
         {ABOUT_CHIPS.map((chip) => (
           <span
             key={chip}
-            className="inline-flex items-center rounded-2xl border border-primary/20 bg-primary px-3.5 py-2 text-[12px] font-medium text-primary-foreground shadow-[0_8px_24px_-16px_hsl(180_50%_45%/0.55)]"
+            className="editorial-pill inline-flex items-center rounded-full border border-primary/20 bg-primary px-3.5 py-2 text-[12px] font-medium text-primary-foreground shadow-[0_8px_24px_-16px_hsl(var(--primary)/0.55)]"
           >
             {chip}
           </span>
