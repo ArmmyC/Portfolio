@@ -38,6 +38,8 @@
     --status-built-foreground: 222 69% 32%;
     --status-neutral: 215 10% 42%;
     --status-neutral-foreground: 215 12% 30%;
+    --badge-dark: 226 51% 11%;
+    --badge-dark-foreground: 36 67% 98%;
     --paw-trail: 220 30% 30%;
     --paw-trail-alpha: 0.34;
     --paw-trail-peak: 1;
@@ -210,6 +212,12 @@
 
   .status-pill {
     @apply inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[12px] uppercase tracking-[0.06em];
+  }
+
+  .focus-badge {
+    color: hsl(var(--badge-dark-foreground));
+    background-color: hsl(var(--badge-dark));
+    border-color: hsl(var(--badge-dark));
   }
 
   .status-pill--live {

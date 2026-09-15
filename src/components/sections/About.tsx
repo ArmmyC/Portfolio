@@ -4,10 +4,10 @@ export function About() {
   return (
     <section id="about" className="editorial-section scroll-mt-24 py-16 lg:py-20">
       <div aria-label="Availability and areas of practice" className="reveal mb-7 flex max-w-3xl flex-wrap gap-2">
-        <span className="status-pill status-pill--live !tracking-[0.03em]">Open to internships</span>
-        <span className="status-pill status-pill--built !tracking-[0.03em]">AI engineer</span>
-        <span className="status-pill status-pill--built !tracking-[0.03em]">DevOps</span>
-        <span className="status-pill status-pill--built !tracking-[0.03em]">Systems engineer</span>
+        <span className="status-pill focus-badge !tracking-[0.03em]">Open to internships</span>
+        <span className="status-pill focus-badge !tracking-[0.03em]">AI engineer</span>
+        <span className="status-pill focus-badge !tracking-[0.03em]">DevOps</span>
+        <span className="status-pill focus-badge !tracking-[0.03em]">Systems engineer</span>
       </div>
 
       <h2 className="section-label reveal mb-5">about</h2>

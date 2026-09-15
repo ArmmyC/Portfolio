@@ -188,10 +188,9 @@ describe("editorial portfolio shell", () => {
   it("shows concise role badges for quick scanning", () => {
     render(<About />);
 
-    expect(screen.getByText("Open to internships", { exact: true })).toHaveClass("status-pill", "status-pill--live");
-    expect(screen.getByText("AI engineer", { exact: true })).toHaveClass("status-pill", "status-pill--built");
-    expect(screen.getByText("DevOps", { exact: true })).toHaveClass("status-pill", "status-pill--built");
-    expect(screen.getByText("Systems engineer", { exact: true })).toHaveClass("status-pill", "status-pill--built");
+    for (const label of ["Open to internships", "AI engineer", "DevOps", "Systems engineer"]) {
+      expect(screen.getByText(label, { exact: true })).toHaveClass("status-pill", "focus-badge");
+    }
   });
 
   it("keeps experience entries concise and outcome-led", () => {
@@ -486,6 +485,7 @@ describe("editorial portfolio shell", () => {
     expect(styles).toContain("--cat: 221");
     expect(styles).toContain("--nav-rule");
     expect(styles).toContain("--status-live");
+    expect(styles).toContain("--badge-dark");
     expect(styles).toContain("text-[13px]");
   });
 });
