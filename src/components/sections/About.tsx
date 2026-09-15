@@ -1,17 +1,10 @@
-import { ArrowDown, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { PROFILE } from "@/data/portfolio";
 
 export function About() {
   return (
     <section id="about" className="editorial-section scroll-mt-24 py-16 lg:py-20">
       <div className="reveal mb-8 flex max-w-3xl flex-wrap items-center gap-x-4 gap-y-3">
-        <a
-          href="#projects"
-          className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-[15px] font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-        >
-          View selected work
-          <ArrowDown aria-hidden="true" className="h-4 w-4" />
-        </a>
         <a
           href={`mailto:${PROFILE.email}`}
           className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-[15px] font-medium text-foreground transition-colors hover:border-primary/45 hover:text-primary"

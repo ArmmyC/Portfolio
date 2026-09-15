@@ -177,10 +177,10 @@ describe("editorial portfolio shell", () => {
     ).toBeInTheDocument();
   });
 
-  it("turns the first fold into clear navigation actions", () => {
+  it("keeps the first fold focused on direct contact", () => {
     render(<About />);
 
-    expect(screen.getByRole("link", { name: "View selected work" })).toHaveAttribute("href", "#projects");
+    expect(screen.queryByRole("link", { name: "View selected work" })).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Get in touch" })).toHaveAttribute(
       "href",
       "mailto:k.kamolpopv@gmail.com",
