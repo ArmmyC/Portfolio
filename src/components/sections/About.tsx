@@ -3,6 +3,13 @@ import { PROFILE } from "@/data/portfolio";
 export function About() {
   return (
     <section id="about" className="editorial-section scroll-mt-24 py-16 lg:py-20">
+      <div aria-label="Availability and areas of practice" className="reveal mb-7 flex max-w-3xl flex-wrap gap-2">
+        <span className="status-pill status-pill--live !tracking-[0.03em]">Open to internships</span>
+        <span className="status-pill status-pill--built !tracking-[0.03em]">AI engineer</span>
+        <span className="status-pill status-pill--built !tracking-[0.03em]">DevOps</span>
+        <span className="status-pill status-pill--built !tracking-[0.03em]">Systems engineer</span>
+      </div>
+
       <h2 className="section-label reveal mb-5">about</h2>
 
       <div className="reveal max-w-[72ch] space-y-5 text-[17px] leading-relaxed text-muted-foreground md:text-[19px]">

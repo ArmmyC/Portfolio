@@ -183,7 +183,15 @@ describe("editorial portfolio shell", () => {
     expect(screen.queryByRole("link", { name: "View selected work" })).not.toBeInTheDocument();
     expect(screen.queryByRole("link", { name: "Get in touch" })).not.toBeInTheDocument();
     expect(screen.queryByText("Focus: AI · DevOps · Systems · Embedded", { exact: true })).not.toBeInTheDocument();
-    expect(screen.queryByText("Open to internships", { exact: true })).not.toBeInTheDocument();
+  });
+
+  it("shows concise role badges for quick scanning", () => {
+    render(<About />);
+
+    expect(screen.getByText("Open to internships", { exact: true })).toHaveClass("status-pill", "status-pill--live");
+    expect(screen.getByText("AI engineer", { exact: true })).toHaveClass("status-pill", "status-pill--built");
+    expect(screen.getByText("DevOps", { exact: true })).toHaveClass("status-pill", "status-pill--built");
+    expect(screen.getByText("Systems engineer", { exact: true })).toHaveClass("status-pill", "status-pill--built");
   });
 
   it("keeps experience entries concise and outcome-led", () => {
