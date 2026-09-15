@@ -222,6 +222,22 @@ describe("editorial portfolio shell", () => {
     expect(lanta).not.toHaveClass("md:col-span-2");
   });
 
+  it("gives visual project cards a framed preview and clearer metadata", () => {
+    render(<Projects />);
+
+    const rally = screen.getByRole("link", { name: /Rally/i });
+    const preview = rally.querySelector('[data-project-preview="true"]');
+    const content = rally.querySelector('[data-project-content="true"]');
+    const status = within(rally).getByText("Live", { exact: true });
+
+    expect(rally).toHaveClass("overflow-hidden", "border-border/80");
+    expect(rally).toHaveClass("md:grid-cols-[minmax(15rem,0.82fr)_minmax(0,1.45fr)]");
+    expect(preview).toHaveClass("aspect-[16/9]", "border-primary/20", "bg-secondary/80");
+    expect(content).toHaveClass("min-w-0");
+    expect(status).toHaveClass("status-pill--live", "gap-1.5");
+    expect(status.querySelector('[data-status-dot="true"]')).toHaveClass("h-1.5", "w-1.5", "rounded-full");
+  });
+
   it("uses date ranges instead of status badges for experience entries", () => {
     render(<Experience />);
 

@@ -19,14 +19,17 @@ export function Projects() {
               rel="noreferrer"
               data-project-layout={p.image ? "media" : "text"}
               className={cn(
-                "reveal editorial-card group relative block transition-colors hover:border-primary/40",
+                "reveal editorial-card group relative block overflow-hidden border-border/80 transition-colors duration-300 hover:border-primary/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary/60",
                 p.image
-                  ? "p-3.5 md:col-span-2 md:grid md:grid-cols-[minmax(13rem,0.82fr)_minmax(0,1.45fr)] md:items-center md:gap-6 md:p-4"
+                  ? "p-3.5 md:col-span-2 md:grid md:grid-cols-[minmax(15rem,0.82fr)_minmax(0,1.45fr)] md:items-center md:gap-6 md:p-4"
                   : "p-5",
               )}
             >
               {p.image && (
-                <div className="mb-4 overflow-hidden rounded-xl border border-primary/15 bg-secondary/80 md:mb-0">
+                <div
+                  data-project-preview="true"
+                  className="mb-4 aspect-[16/9] overflow-hidden rounded-xl border border-primary/20 bg-secondary/80 md:mb-0"
+                >
                   <img
                     src={p.image}
                     alt={`${p.title} project preview`}
@@ -35,34 +38,37 @@ export function Projects() {
                     loading="lazy"
                     decoding="async"
                     sizes="(min-width: 768px) 32rem, 100vw"
-                    className="h-36 w-full object-cover object-left-top transition duration-500 group-hover:scale-[1.02] md:h-40"
+                    className="h-full w-full object-cover object-left-top transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
               )}
               {p.image ? (
-                <div className="min-w-0">
+                <div data-project-content="true" className="flex min-w-0 flex-col">
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                    <span className={cn("status-pill", `status-pill--${tone}`)}>{p.status}</span>
-                    <div className="font-mono text-[12px] uppercase tracking-[0.06em] text-primary/75">
+                    <span className={cn("status-pill gap-1.5", `status-pill--${tone}`)}>
+                      <span aria-hidden="true" data-status-dot="true" className="h-1.5 w-1.5 rounded-full bg-current" />
+                      {p.status}
+                    </span>
+                    <div className="font-mono text-[12px] uppercase tracking-[0.08em] text-primary/80">
                       {p.category}
                     </div>
                   </div>
 
                   <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                    <h3 className="text-[20px] font-semibold text-foreground transition-colors group-hover:text-primary md:text-[22px]">
+                    <h3 className="text-[21px] font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary md:text-[23px]">
                       {p.title}
                     </h3>
                     <ArrowUpRight
                       aria-hidden="true"
-                      className="h-4 w-4 text-muted-foreground transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                      className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
                     />
                   </div>
 
-                  <p className="mt-2 max-w-2xl text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
+                  <p className="mt-3 max-w-2xl text-[16px] leading-7 text-muted-foreground md:text-[17px]">
                     {p.description}
                   </p>
 
-                  <div className="mt-4 flex flex-wrap gap-1.5">
+                  <div className="mt-5 flex flex-wrap gap-1.5">
                     {p.tech.map((t) => (
                       <span key={t} className="editorial-tag">{t}</span>
                     ))}
@@ -76,9 +82,12 @@ export function Projects() {
                     </h3>
                     <ArrowUpRight
                       aria-hidden="true"
-                      className="h-4 w-4 text-muted-foreground transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                      className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
                     />
-                    <span className={cn("status-pill ml-auto", `status-pill--${tone}`)}>{p.status}</span>
+                    <span className={cn("status-pill ml-auto gap-1.5", `status-pill--${tone}`)}>
+                      <span aria-hidden="true" data-status-dot="true" className="h-1.5 w-1.5 rounded-full bg-current" />
+                      {p.status}
+                    </span>
                   </div>
 
                   <div className="mt-1 font-mono text-[13px] uppercase tracking-[0.06em] text-accent-foreground/75">
