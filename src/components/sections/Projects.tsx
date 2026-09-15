@@ -21,14 +21,14 @@ export function Projects() {
               className={cn(
                 "reveal editorial-card group relative block overflow-hidden border-border/80 transition-colors duration-300 hover:border-primary/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary/60",
                 p.image
-                  ? "p-3.5 md:col-span-2 md:grid md:grid-cols-[minmax(15rem,0.82fr)_minmax(0,1.45fr)] md:items-center md:gap-6 md:p-4"
+                  ? "p-3.5 md:col-span-2 md:grid md:grid-cols-[minmax(15rem,0.82fr)_minmax(0,1.45fr)] md:items-stretch md:gap-6 md:p-4"
                   : "p-5",
               )}
             >
               {p.image && (
                 <div
                   data-project-preview="true"
-                  className="mb-4 aspect-[16/9] overflow-hidden rounded-xl border border-primary/20 bg-secondary/80 md:mb-0"
+                  className="mb-4 aspect-[16/9] overflow-hidden rounded-xl border border-primary/20 bg-secondary/80 md:-my-4 md:-ml-4 md:aspect-auto md:rounded-l-none"
                 >
                   <img
                     src={p.image}

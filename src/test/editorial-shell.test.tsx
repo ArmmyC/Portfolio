@@ -238,6 +238,17 @@ describe("editorial portfolio shell", () => {
     expect(status.querySelector('[data-status-dot="true"]')).toHaveClass("h-1.5", "w-1.5", "rounded-full");
   });
 
+  it("stretches visual project previews across the desktop card height", () => {
+    render(<Projects />);
+
+    const rally = screen.getByRole("link", { name: /Rally/i });
+    const preview = rally.querySelector('[data-project-preview="true"]');
+
+    expect(rally).toHaveClass("md:items-stretch");
+    expect(preview).toHaveClass("md:aspect-auto", "md:-my-4", "md:-ml-4");
+    expect(preview).not.toHaveClass("md:mb-0");
+  });
+
   it("uses date ranges instead of status badges for experience entries", () => {
     render(<Experience />);
 
