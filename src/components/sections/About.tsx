@@ -1,22 +1,8 @@
-import { Mail } from "lucide-react";
 import { PROFILE } from "@/data/portfolio";
 
 export function About() {
   return (
     <section id="about" className="editorial-section scroll-mt-24 py-16 lg:py-20">
-      <div className="reveal mb-8 flex max-w-3xl flex-wrap items-center gap-x-4 gap-y-3">
-        <a
-          href={`mailto:${PROFILE.email}`}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-[15px] font-medium text-foreground transition-colors hover:border-primary/45 hover:text-primary"
-        >
-          Get in touch
-          <Mail aria-hidden="true" className="h-4 w-4" />
-        </a>
-        <span className="about-focus font-mono text-[12px] text-muted-foreground">
-          Focus: AI · DevOps · Systems · Embedded
-        </span>
-      </div>
-
       <h2 className="section-label reveal mb-5">about</h2>
 
       <div className="reveal max-w-[72ch] space-y-5 text-[17px] leading-relaxed text-muted-foreground md:text-[19px]">

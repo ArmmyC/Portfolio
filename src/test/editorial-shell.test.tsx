@@ -177,14 +177,12 @@ describe("editorial portfolio shell", () => {
     ).toBeInTheDocument();
   });
 
-  it("keeps the first fold focused on direct contact", () => {
+  it("keeps the first fold focused on the introduction", () => {
     render(<About />);
 
     expect(screen.queryByRole("link", { name: "View selected work" })).not.toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Get in touch" })).toHaveAttribute(
-      "href",
-      "mailto:k.kamolpopv@gmail.com",
-    );
+    expect(screen.queryByRole("link", { name: "Get in touch" })).not.toBeInTheDocument();
+    expect(screen.queryByText("Focus: AI · DevOps · Systems · Embedded", { exact: true })).not.toBeInTheDocument();
     expect(screen.queryByText("Open to internships", { exact: true })).not.toBeInTheDocument();
   });
 
