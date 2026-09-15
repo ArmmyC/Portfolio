@@ -485,7 +485,8 @@ describe("editorial portfolio shell", () => {
     expect(styles).toContain("--cat: 221");
     expect(styles).toContain("--nav-rule");
     expect(styles).toContain("--status-live");
-    expect(styles).toContain("--badge-dark");
+    expect(styles).toContain("--badge-cobalt");
+    expect(styles).not.toContain("--badge-dark");
     expect(styles).toContain("text-[13px]");
   });
 });
