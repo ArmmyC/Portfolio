@@ -238,15 +238,15 @@ describe("editorial portfolio shell", () => {
     expect(status.querySelector('[data-status-dot="true"]')).toHaveClass("h-1.5", "w-1.5", "rounded-full");
   });
 
-  it("stretches visual project previews across the desktop card height", () => {
+  it("keeps visual project previews aligned with the desktop card padding", () => {
     render(<Projects />);
 
     const rally = screen.getByRole("link", { name: /Rally/i });
     const preview = rally.querySelector('[data-project-preview="true"]');
 
     expect(rally).toHaveClass("md:items-stretch");
-    expect(preview).toHaveClass("md:aspect-auto", "md:-my-4", "md:-ml-4");
-    expect(preview).not.toHaveClass("md:mb-0");
+    expect(preview).toHaveClass("aspect-[16/9]", "md:aspect-auto", "md:h-full", "md:mb-0");
+    expect(preview).not.toHaveClass("md:-my-4", "md:-ml-4");
   });
 
   it("uses date ranges instead of status badges for experience entries", () => {

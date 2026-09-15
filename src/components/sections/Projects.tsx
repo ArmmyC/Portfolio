@@ -28,7 +28,7 @@ export function Projects() {
               {p.image && (
                 <div
                   data-project-preview="true"
-                  className="mb-4 aspect-[16/9] overflow-hidden rounded-xl border border-primary/20 bg-secondary/80 md:-my-4 md:-ml-4 md:aspect-auto md:rounded-l-none"
+                  className="mb-4 aspect-[16/9] overflow-hidden rounded-xl border border-primary/20 bg-secondary/80 md:mb-0 md:aspect-auto md:h-full"
                 >
                   <img
                     src={p.image}
