@@ -37,6 +37,8 @@ export type Experience = {
   period: string;
   status: string;
   summary: string;
+  tools: string[];
+  toolsLabel?: string;
   responsibilities: string[];
 };
 
@@ -51,6 +53,7 @@ export const EXPERIENCES: Experience[] = [
     status: "Current",
     summary:
       "Interning as a DevOps Engineer across Kubernetes, delivery tooling, and observability.",
+    tools: ["Kubernetes", "RKE2", "Jenkins", "Harbor", "Argo CD", "Helm", "Docker", "Grafana", "Prometheus"],
     responsibilities: [
       "Operate Kubernetes and RKE2 environments.",
       "Build delivery workflows with Jenkins, Harbor, Argo CD, Helm, and Docker.",
@@ -67,6 +70,8 @@ export const EXPERIENCES: Experience[] = [
     status: "Current",
     summary:
       "System Engineer in KMUTT's Innosoft program, working from infrastructure fundamentals to reliable backups and document systems.",
+    tools: ["Networking", "Fortinet", "Proxmox", "Database backup", "Paperless"],
+    toolsLabel: "Tools / systems",
     responsibilities: [
       "Worked with networking, backup design, Fortinet firewalls, and Proxmox virtualization.",
       "Designed a backup strategy for a production database with availability and consistency in mind.",
@@ -83,6 +88,7 @@ export const EXPERIENCES: Experience[] = [
     status: "Completed",
     summary:
       "Built a private engineering assistant that lets semiconductor teams search documents, validate specs, and get cited answers.",
+    tools: ["Embeddings", "Hybrid retrieval", "OpenWebUI", "LiteLLM", "Control Plane"],
     responsibilities: [
       "Ingested PDFs, datasheets, reports, and experiment files with metadata, embeddings, and hybrid retrieval.",
       "Connected grounded Q&A to OpenWebUI and the Control Plane, with LiteLLM as the model gateway.",
@@ -103,6 +109,8 @@ export const EXPERIENCES: Experience[] = [
     status: "Completed",
     summary:
       "Completed Super AI Engineer Season 6 across Levels 1-3, from AI foundations to edge AI and LLM safety.",
+    tools: ["Applied ML", "Agents", "Edge AI", "AIoT", "LLM safety"],
+    toolsLabel: "Focus areas",
     responsibilities: [
       "Moved from AI foundations into applied ML, agents, edge AI, AIoT, cybersecurity, and LLM safety.",
       "Placed 1st, 2nd, 6th, 20th, and 21st across individual hackathon tracks.",

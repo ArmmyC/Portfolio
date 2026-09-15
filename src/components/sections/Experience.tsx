@@ -56,6 +56,19 @@ export function Experience() {
                 {experience.summary}
               </p>
 
+              <div
+                aria-label={`${experience.toolsLabel ?? "Tools"} for ${experience.organization}`}
+                data-experience-stack="true"
+                className="mt-4 flex flex-wrap items-center gap-2"
+              >
+                <span className="stack-label">{experience.toolsLabel ?? "Tools"}</span>
+                {experience.tools.map((tool) => (
+                  <span key={tool} className="stack-chip">
+                    {tool}
+                  </span>
+                ))}
+              </div>
+
               <ul className="mt-4 space-y-1.5 text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
                 {experience.responsibilities.map((responsibility) => (
                   <li key={responsibility} className="flex gap-3">

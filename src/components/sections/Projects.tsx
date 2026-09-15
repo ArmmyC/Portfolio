@@ -69,10 +69,10 @@ export function Projects() {
                     {p.description}
                   </p>
 
-                  <div className="mt-5 flex flex-wrap gap-x-3 gap-y-1.5 text-[13px] text-muted-foreground">
+                  <div data-project-stack="true" className="mt-5 flex flex-wrap items-center gap-2">
+                    <span className="stack-label">Stack</span>
                     {p.tech.map((t) => (
-                      <span key={t} data-project-tech="true" className="inline-flex items-center gap-2 font-mono">
-                        <span aria-hidden="true" className="h-1 w-1 rounded-full bg-accent-foreground/40" />
+                      <span key={t} data-project-tech="true" className="stack-chip">
                         {t}
                       </span>
                     ))}
@@ -102,10 +102,10 @@ export function Projects() {
                     {p.description}
                   </p>
 
-                  <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1.5 text-[13px] text-muted-foreground">
+                  <div data-project-stack="true" className="mt-4 flex flex-wrap items-center gap-2">
+                    <span className="stack-label">Stack</span>
                     {p.tech.map((t) => (
-                      <span key={t} data-project-tech="true" className="inline-flex items-center gap-2 font-mono">
-                        <span aria-hidden="true" className="h-1 w-1 rounded-full bg-accent-foreground/40" />
+                      <span key={t} data-project-tech="true" className="stack-chip">
                         {t}
                       </span>
                     ))}

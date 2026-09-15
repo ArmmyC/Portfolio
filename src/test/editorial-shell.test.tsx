@@ -208,6 +208,20 @@ describe("editorial portfolio shell", () => {
     expect(siliconCraft.querySelectorAll("ul > li")).toHaveLength(3);
   });
 
+  it("highlights tools in experience entries for quick scanning", () => {
+    render(<Experience />);
+
+    const timeline = screen.getByRole("list", { name: "Career experience timeline" });
+    const blendata = within(timeline).getByRole("link", { name: /Blendata/i });
+    const aiat = within(timeline).getByRole("link", { name: /Artificial Intelligence Association of Thailand/i });
+
+    expect(within(blendata).getByText("Tools", { exact: true })).toHaveClass("stack-label");
+    expect(within(blendata).getByText("Kubernetes", { exact: true })).toHaveClass("stack-chip");
+    expect(within(blendata).getByText("Argo CD", { exact: true })).toHaveClass("stack-chip");
+    expect(within(aiat).getByText("Focus areas", { exact: true })).toHaveClass("stack-label");
+    expect(within(aiat).getByText("Edge AI", { exact: true })).toHaveClass("stack-chip");
+  });
+
   it("keeps mobile navigation keyboard-dismissible and stateful", () => {
     render(
       <ThemeProvider attribute="class" defaultTheme="light">
@@ -321,6 +335,15 @@ describe("editorial portfolio shell", () => {
     expect(rally.querySelectorAll('[data-project-tech="true"]')).toHaveLength(5);
     expect(rally.querySelectorAll(".editorial-tag")).toHaveLength(0);
     expect(within(rally).getByText("Opportunity Directory", { exact: true })).toHaveClass("project-category");
+  });
+
+  it("labels project technology metadata as a visible stack", () => {
+    render(<Projects />);
+
+    const rally = screen.getByRole("link", { name: /Rally/i });
+
+    expect(within(rally).getByText("Stack", { exact: true })).toHaveClass("stack-label");
+    expect(within(rally).getByText("Next.js", { exact: true })).toHaveClass("stack-chip");
   });
 
   it("uses readable display headings for the supporting sections", () => {
