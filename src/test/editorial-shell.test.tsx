@@ -6,8 +6,11 @@ import { Sidebar } from "@/components/Sidebar";
 import { MobileNav } from "@/components/MobileNav";
 import { MaewCore } from "@/components/MaewCore";
 import { About } from "@/components/sections/About";
+import { Contact } from "@/components/sections/Contact";
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
+import { Recognition } from "@/components/sections/Recognition";
+import { Skills } from "@/components/sections/Skills";
 import { ThemeFavicon } from "@/components/ThemeFavicon";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
@@ -30,7 +33,7 @@ describe("editorial portfolio shell", () => {
     expect(screen.getByRole("navigation", { name: "Primary section navigation" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /about/i })).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("button", { name: "Switch to dark mode" })).toHaveAttribute("aria-pressed", "false");
-    expect(screen.getByText("AI, DevOps, Systems & Embedded Engineer")).toBeInTheDocument();
+    expect(screen.getByText("AI, DevOps, Systems & Embedded Engineer")).toHaveClass("tracking-[0.05em]");
   });
 
   it("keeps the sidebar social links free of a divider", () => {
@@ -174,6 +177,32 @@ describe("editorial portfolio shell", () => {
     ).toBeInTheDocument();
   });
 
+  it("turns the first fold into clear navigation actions", () => {
+    render(<About />);
+
+    expect(screen.getByRole("link", { name: "View selected work" })).toHaveAttribute("href", "#projects");
+    expect(screen.getByRole("link", { name: "Get in touch" })).toHaveAttribute(
+      "href",
+      "mailto:k.kamolpopv@gmail.com",
+    );
+    expect(screen.queryByText("Open to internships", { exact: true })).not.toBeInTheDocument();
+  });
+
+  it("keeps experience entries concise and outcome-led", () => {
+    render(<Experience />);
+
+    const timeline = screen.getByRole("list", { name: "Career experience timeline" });
+    const blendata = within(timeline).getByRole("link", { name: /Blendata/i });
+    const siliconCraft = within(timeline).getByRole("link", { name: /Silicon Craft/i });
+
+    expect(within(blendata).getByText("Operate Kubernetes and RKE2 environments.", { exact: true })).toBeInTheDocument();
+    expect(
+      within(siliconCraft).getByText(/Built a private engineering assistant that lets semiconductor teams search documents/i),
+    ).toBeInTheDocument();
+    expect(blendata.querySelectorAll("ul > li")).toHaveLength(3);
+    expect(siliconCraft.querySelectorAll("ul > li")).toHaveLength(3);
+  });
+
   it("keeps mobile navigation keyboard-dismissible and stateful", () => {
     render(
       <ThemeProvider attribute="class" defaultTheme="light">
@@ -194,6 +223,24 @@ describe("editorial portfolio shell", () => {
     fireEvent.keyDown(window, { key: "Escape" });
 
     expect(screen.getByRole("button", { name: "Open navigation menu" })).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("keeps the mobile Maew helper inside the navigation flow", () => {
+    render(<MobileNav active="about" />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Open navigation menu" }));
+
+    const navigation = screen.getByRole("navigation", { name: "Primary section navigation" });
+    const helper = within(navigation).getByTestId("mobile-maew");
+
+    expect(helper).toBeInTheDocument();
+    expect(helper).not.toHaveClass("fixed");
+  });
+
+  it("uses a shorter mobile role label without truncation", () => {
+    render(<MobileNav active="about" />);
+
+    expect(screen.getByText("AI, DevOps & Systems", { exact: true })).toBeInTheDocument();
   });
 
   it("loads project previews lazily with reserved dimensions", () => {
@@ -222,6 +269,17 @@ describe("editorial portfolio shell", () => {
     expect(lanta).not.toHaveClass("md:col-span-2");
   });
 
+  it("labels external work links before opening a new tab", () => {
+    render(<Projects />);
+
+    expect(screen.getByRole("link", { name: /Rally/i })).toHaveAttribute("title", "Open Rally in a new tab");
+
+    const { unmount } = render(<Experience />);
+    expect(screen.getByRole("link", { name: /Blendata/i })).toHaveAttribute("title", "Open Blendata in a new tab");
+
+    unmount();
+  });
+
   it("gives visual project cards a framed preview and clearer metadata", () => {
     render(<Projects />);
 
@@ -247,6 +305,46 @@ describe("editorial portfolio shell", () => {
     expect(rally).toHaveClass("md:items-stretch");
     expect(preview).toHaveClass("aspect-[16/9]", "md:aspect-auto", "md:h-full", "md:mb-0");
     expect(preview).not.toHaveClass("md:-my-4", "md:-ml-4");
+  });
+
+  it("uses a stronger project heading and plain technical metadata", () => {
+    render(<Projects />);
+
+    expect(screen.getByRole("heading", { name: "Selected work", exact: true })).toHaveClass("section-heading");
+
+    const rally = screen.getByRole("link", { name: /Rally/i });
+    expect(rally.querySelectorAll('[data-project-tech="true"]')).toHaveLength(5);
+    expect(rally.querySelectorAll(".editorial-tag")).toHaveLength(0);
+    expect(within(rally).getByText("Opportunity Directory", { exact: true })).toHaveClass("project-category");
+  });
+
+  it("uses readable display headings for the supporting sections", () => {
+    const sections = [
+      [Experience, "Experience"],
+      [Recognition, "Recognition"],
+      [Skills, "Skills"],
+      [Contact, "Contact"],
+    ] as const;
+
+    sections.forEach(([Section, heading]) => {
+      const { unmount } = render(<Section />);
+
+      expect(screen.getByRole("heading", { name: heading, exact: true })).toHaveClass("section-heading");
+
+      unmount();
+    });
+  });
+
+  it("keeps supporting metadata quiet instead of pill-heavy", () => {
+    const { unmount } = render(<Skills />);
+
+    expect(screen.getAllByTestId("skill-item").length).toBeGreaterThan(0);
+    expect(document.querySelectorAll(".editorial-tag")).toHaveLength(0);
+
+    unmount();
+    render(<Recognition />);
+
+    expect(screen.getAllByText("Award", { exact: true })[0]).not.toHaveClass("editorial-tag");
   });
 
   it("uses date ranges instead of status badges for experience entries", () => {
@@ -334,7 +432,9 @@ describe("editorial portfolio shell", () => {
     const siliconCraft = within(timeline).getByRole("link", { name: /Silicon Craft/i });
     expect(within(siliconCraft).getByText("Jun 2026 - Jul 2026", { exact: true })).toBeInTheDocument();
     expect(within(siliconCraft).queryByText("Completed", { exact: true })).not.toBeInTheDocument();
-    expect(within(siliconCraft).getByText(/Completed internship building a private IC/i)).toBeInTheDocument();
+    expect(
+      within(siliconCraft).getByText(/Built a private engineering assistant that lets semiconductor teams/i),
+    ).toBeInTheDocument();
     expect(within(timeline).getByRole("link", { name: /Artificial Intelligence Association of Thailand/i })).toHaveAttribute(
       "href",
       "https://aiat.or.th/",

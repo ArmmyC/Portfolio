@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 export function Projects() {
   return (
     <section id="projects" className="editorial-section scroll-mt-24 py-16 lg:py-20">
-      <h2 className="section-label reveal mb-5">projects</h2>
+      <h2 className="section-heading reveal mb-6">Selected work</h2>
       <div className="grid gap-4 md:grid-cols-2">
         {PROJECTS.map((p) => {
           const tone = getStatusTone(p.status);
@@ -17,6 +17,7 @@ export function Projects() {
               href={p.link ?? "#"}
               target="_blank"
               rel="noreferrer"
+              title={`Open ${p.title} in a new tab`}
               data-project-layout={p.image ? "media" : "text"}
               className={cn(
                 "reveal editorial-card group relative block overflow-hidden border-border/80 transition-colors duration-300 hover:border-primary/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary/60",
@@ -49,7 +50,7 @@ export function Projects() {
                       <span aria-hidden="true" data-status-dot="true" className="h-1.5 w-1.5 rounded-full bg-current" />
                       {p.status}
                     </span>
-                    <div className="font-mono text-[12px] uppercase tracking-[0.08em] text-primary/80">
+                    <div className="project-category font-mono text-[12px] uppercase tracking-[0.06em] text-muted-foreground">
                       {p.category}
                     </div>
                   </div>
@@ -68,9 +69,12 @@ export function Projects() {
                     {p.description}
                   </p>
 
-                  <div className="mt-5 flex flex-wrap gap-1.5">
+                  <div className="mt-5 flex flex-wrap gap-x-3 gap-y-1.5 text-[13px] text-muted-foreground">
                     {p.tech.map((t) => (
-                      <span key={t} className="editorial-tag">{t}</span>
+                      <span key={t} data-project-tech="true" className="inline-flex items-center gap-2 font-mono">
+                        <span aria-hidden="true" className="h-1 w-1 rounded-full bg-accent-foreground/40" />
+                        {t}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -90,7 +94,7 @@ export function Projects() {
                     </span>
                   </div>
 
-                  <div className="mt-1 font-mono text-[13px] uppercase tracking-[0.06em] text-accent-foreground/75">
+                  <div className="project-category mt-1 font-mono text-[13px] uppercase tracking-[0.05em] text-muted-foreground">
                     {p.category}
                   </div>
 
@@ -98,9 +102,12 @@ export function Projects() {
                     {p.description}
                   </p>
 
-                  <div className="mt-4 flex flex-wrap gap-1.5">
+                  <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1.5 text-[13px] text-muted-foreground">
                     {p.tech.map((t) => (
-                      <span key={t} className="editorial-tag">{t}</span>
+                      <span key={t} data-project-tech="true" className="inline-flex items-center gap-2 font-mono">
+                        <span aria-hidden="true" className="h-1 w-1 rounded-full bg-accent-foreground/40" />
+                        {t}
+                      </span>
                     ))}
                   </div>
                 </>
@@ -115,6 +122,7 @@ export function Projects() {
           href={PROFILE.github}
           target="_blank"
           rel="noreferrer"
+          title="Open GitHub in a new tab"
           className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-[15px] font-medium text-foreground transition hover:border-primary/40 hover:text-primary"
         >
           More projects

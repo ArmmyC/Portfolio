@@ -200,8 +200,12 @@
   .link-cyan {
     @apply text-muted-foreground transition-colors hover:text-primary;
   }
+  .section-heading {
+    @apply text-[28px] font-semibold tracking-[-0.02em] text-foreground md:text-[32px];
+    text-wrap: balance;
+  }
   .section-label {
-    @apply font-mono text-[13px] uppercase tracking-[0.08em] text-primary md:text-[14px];
+    @apply font-mono text-[13px] uppercase tracking-[0.05em] text-primary md:text-[14px];
   }
 
   .status-pill {

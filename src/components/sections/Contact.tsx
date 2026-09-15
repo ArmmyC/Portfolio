@@ -7,7 +7,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="editorial-section scroll-mt-24 py-16 lg:py-20">
-      <h2 className="section-label reveal mb-5">contact</h2>
+      <h2 className="section-heading reveal mb-6">Contact</h2>
       <div className="reveal editorial-card p-6">
         <p className="text-[17px] leading-relaxed text-muted-foreground md:text-[19px]">
           Open to internships, collaborations, and engineering projects across{" "}

@@ -17,6 +17,7 @@ export const PROFILE = {
   thaiName: "กมลภพ วิทยารัฐ",
   nickname: "Arm",
   role: "AI, DevOps, Systems & Embedded Engineer",
+  shortRole: "AI, DevOps & Systems",
   intro:
     "My work has grown from AI and embedded systems into DevOps and systems engineering. I'm interested in building systems end to end, including how they are deployed, scaled, operated, and maintained.",
   location: "KMUTT, Bangkok, TH",
@@ -49,11 +50,11 @@ export const EXPERIENCES: Experience[] = [
     period: "Aug 2026 - Current",
     status: "Current",
     summary:
-      "Currently interning at Blendata as a DevOps Engineer, working across Kubernetes and RKE2, CI/CD and artifact tooling, and company-wide observability deployment.",
+      "Interning as a DevOps Engineer across Kubernetes, delivery tooling, and observability.",
     responsibilities: [
-      "Currently working with Kubernetes and RKE2 cluster environments.",
-      "Currently working with Jenkins, Harbor, Argo CD, Helm, and Docker in DevOps workflows.",
-      "Deployed Grafana, Prometheus, Loki, Alloy, Node Exporter, and cAdvisor across company VMs to improve observability and logging.",
+      "Operate Kubernetes and RKE2 environments.",
+      "Build delivery workflows with Jenkins, Harbor, Argo CD, Helm, and Docker.",
+      "Deployed Grafana, Prometheus, Loki, Alloy, Node Exporter, and cAdvisor across company VMs.",
     ],
   },
   {
@@ -65,11 +66,11 @@ export const EXPERIENCES: Experience[] = [
     period: "Aug 2026 - Current",
     status: "Current",
     summary:
-      "Currently participating in the Innosoft Student Associate Program as a System Engineer, learning infrastructure fundamentals while contributing to production backup and document-system design.",
+      "System Engineer in KMUTT's Innosoft program, working from infrastructure fundamentals to reliable backups and document systems.",
     responsibilities: [
-      "Learned about computer networking, backup design, Fortinet firewalls, and Proxmox virtualization.",
-      "Designed a backup strategy for a production database to support high availability and consistency requirements.",
-      "Designed a signed-PDF parser using tooling for the Paperless System.",
+      "Worked with networking, backup design, Fortinet firewalls, and Proxmox virtualization.",
+      "Designed a backup strategy for a production database with availability and consistency in mind.",
+      "Designed a signed-PDF parser for the Paperless System.",
     ],
   },
   {
@@ -81,12 +82,11 @@ export const EXPERIENCES: Experience[] = [
     period: "Jun 2026 - Jul 2026",
     status: "Completed",
     summary:
-      "Completed internship building a private IC and semiconductor engineering assistant and related AI systems.",
+      "Built a private engineering assistant that lets semiconductor teams search documents, validate specs, and get cited answers.",
     responsibilities: [
-      "Built a private IC and semiconductor engineering assistant for company PDFs, datasheets, test reports, CSV/XLSX experiment files, and other engineering documents.",
-      "Implemented parsing, chunking, metadata and embedding storage, hybrid search retrieval, and cited question answering through OpenWebUI and the Control Plane.",
-      "Used hybrid RAG, Cache-Augmented Generation, bounded ReAct-style read-only investigation workflows, and structured XLSX ingestion for grounded engineering support.",
-      "Integrated optional Docling PDF parsing, deterministic PASS/FAIL compliance validation, human approval for extracted spec or rule candidates, and LiteLLM as the model gateway.",
+      "Ingested PDFs, datasheets, reports, and experiment files with metadata, embeddings, and hybrid retrieval.",
+      "Connected grounded Q&A to OpenWebUI and the Control Plane, with LiteLLM as the model gateway.",
+      "Added deterministic compliance checks and human review for extracted specifications.",
     ],
   },
   {
@@ -102,12 +102,11 @@ export const EXPERIENCES: Experience[] = [
     period: "Mar 2026 - Sep 2026",
     status: "Completed",
     summary:
-      "Completed Super AI Engineer Season 6 across Levels 1-3, progressing from AI foundations to applied engineering, edge AI, AIoT, cybersecurity, and LLM safety.",
+      "Completed Super AI Engineer Season 6 across Levels 1-3, from AI foundations to edge AI and LLM safety.",
     responsibilities: [
-      "Level 1: completed AI foundations, RAG, OCR, image captioning, and selection-stage challenges.",
-      "Level 2: completed online learning and onsite bootcamp across machine learning, deep learning, NLP, AI agents, edge AI, AIoT, cybersecurity, and LLM safety.",
-      "Level 2: placed 1st, 2nd, 6th, 20th, and 21st across recorded individual hackathon tracks.",
-      "Level 3: completed the program and received a silver medal reward.",
+      "Moved from AI foundations into applied ML, agents, edge AI, AIoT, cybersecurity, and LLM safety.",
+      "Placed 1st, 2nd, 6th, 20th, and 21st across individual hackathon tracks.",
+      "Finished Level 3 with a silver medal.",
     ],
   },
 ];

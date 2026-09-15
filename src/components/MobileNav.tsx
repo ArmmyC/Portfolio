@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { NAV, PROFILE } from "@/data/portfolio";
 import { ThemeToggle } from "./ThemeToggle";
 import { BrandMark } from "./BrandMark";
+import { MaewCore } from "./MaewCore";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -34,7 +35,7 @@ export function MobileNav({ active }: Props) {
             <h1 className="truncate text-[17px] font-semibold text-foreground">
               {PROFILE.name}
             </h1>
-            <span className="block truncate text-[13px] text-muted-foreground">{PROFILE.role}</span>
+            <span className="block whitespace-nowrap text-[12px] text-muted-foreground">{PROFILE.shortRole}</span>
           </span>
         </a>
         <div className="flex items-center gap-3">
@@ -61,7 +62,7 @@ export function MobileNav({ active }: Props) {
                   onClick={() => setOpen(false)}
                   aria-current={active === item.id ? "page" : undefined}
                   className={cn(
-                    "flex min-h-11 items-center py-2 font-mono text-[14px] uppercase tracking-[0.08em]",
+                    "flex min-h-11 items-center py-2 font-mono text-[14px] uppercase tracking-[0.05em]",
                     active === item.id ? "text-primary" : "text-muted-foreground",
                   )}
                 >
@@ -70,6 +71,9 @@ export function MobileNav({ active }: Props) {
               </li>
             ))}
           </ul>
+          <div data-testid="mobile-maew" className="mt-3 border-t border-border/60 pt-3">
+            <MaewCore active={active} compact />
+          </div>
         </nav>
       )}
     </header>

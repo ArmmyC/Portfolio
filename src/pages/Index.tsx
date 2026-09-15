@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { PawTrail } from "@/components/PawTrail";
 import { Sidebar } from "@/components/Sidebar";
 import { MobileNav } from "@/components/MobileNav";
-import { MaewCore } from "@/components/MaewCore";
 import { About } from "@/components/sections/About";
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
@@ -37,7 +36,7 @@ const Index = () => {
     if (!glowEl) return;
 
     const handleMouseMove = (event: MouseEvent) => {
-      glowEl.style.background = `radial-gradient(circle 500px at ${event.clientX}px ${event.clientY}px, hsl(var(--primary) / 0.12), transparent 80%)`;
+      glowEl.style.background = `radial-gradient(circle 500px at ${event.clientX}px ${event.clientY}px, hsl(var(--primary) / 0.08), transparent 80%)`;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -103,10 +102,6 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Floating mascot on mobile */}
-      <div className="fixed bottom-4 right-4 z-30 max-w-[260px] lg:hidden">
-        <MaewCore active={active} compact achievementVisible={false} />
-      </div>
     </div>
   );
 };

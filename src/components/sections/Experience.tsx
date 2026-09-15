@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 export function Experience() {
   return (
     <section id="experience" className="editorial-section scroll-mt-24 py-16 lg:py-20">
-      <h2 className="section-label reveal mb-5">experience</h2>
+      <h2 className="section-heading reveal mb-6">Experience</h2>
 
       <ol
         aria-label="Career experience timeline"
@@ -15,9 +15,9 @@ export function Experience() {
         {EXPERIENCES.map((experience) => {
           const tone = getStatusTone(experience.status);
           const content = (
-            <div className="rounded-xl border border-transparent px-2 py-1 transition-colors group-hover:border-border/80 group-hover:bg-card/60 md:px-4 md:py-3">
+            <div className="max-w-[72ch] px-1 py-1 md:px-3 md:py-2">
               <div className="flex flex-wrap items-baseline">
-                <span className="font-mono text-[13px] text-primary md:text-[14px]">{experience.period}</span>
+                <span className="font-mono text-[13px] text-muted-foreground md:text-[14px]">{experience.period}</span>
               </div>
 
               <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
@@ -37,7 +37,7 @@ export function Experience() {
                       : "border border-primary/20 bg-white object-contain p-1",
                   )}
                 />
-                <span className="inline-flex items-center gap-1 font-mono text-[13px] uppercase tracking-[0.06em] text-primary/85 transition-colors group-hover:text-primary md:text-[14px]">
+                <span className="inline-flex items-center gap-1 font-mono text-[13px] uppercase tracking-[0.05em] text-foreground/80 transition-colors group-hover:text-primary md:text-[14px]">
                   {experience.organization}
                   {experience.link && (
                     <ArrowUpRight
@@ -52,14 +52,14 @@ export function Experience() {
                 {experience.title}
               </h3>
 
-              <p className="mt-3 max-w-3xl text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
+              <p className="mt-3 text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
                 {experience.summary}
               </p>
 
-              <ul className="mt-4 space-y-2 text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
+              <ul className="mt-4 space-y-1.5 text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
                 {experience.responsibilities.map((responsibility) => (
                   <li key={responsibility} className="flex gap-3">
-                    <span aria-hidden="true" className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" />
+                    <span aria-hidden="true" className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/35" />
                     <span>{responsibility}</span>
                   </li>
                 ))}
@@ -81,7 +81,13 @@ export function Experience() {
               </span>
 
               {experience.link ? (
-                <a href={experience.link} target="_blank" rel="noreferrer" className="group block">
+                <a
+                  href={experience.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  title={`Open ${experience.organization} in a new tab`}
+                  className="group block"
+                >
                   {content}
                 </a>
               ) : (

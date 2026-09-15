@@ -35,7 +35,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
         <p className="mt-1.5 text-[17px] text-muted-foreground">
           aka <span className="text-foreground">"{PROFILE.nickname}"</span>
         </p>
-        <p className="mt-4 max-w-[17rem] text-[15px] font-semibold text-primary uppercase tracking-[0.08em] leading-relaxed xl:text-[16px]">
+        <p className="mt-4 max-w-[17rem] text-[15px] font-semibold text-primary uppercase tracking-[0.05em] leading-relaxed xl:text-[16px]">
           {PROFILE.role}
         </p>
 
@@ -49,7 +49,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
                     href={`#${item.id}`}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "editorial-nav-link group flex items-center gap-3 py-2 font-mono text-[14px] uppercase tracking-[0.08em] transition-colors md:text-[15px]",
+                      "editorial-nav-link group flex items-center gap-3 py-2 font-mono text-[14px] uppercase tracking-[0.05em] transition-colors md:text-[15px]",
                       isActive ? "text-primary" : "text-muted-foreground hover:text-foreground",
                     )}
                   >
@@ -77,24 +77,24 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
           onUnlock={onUnlockEasterEgg}
         />
         <div className="flex items-center gap-5 pt-4 text-muted-foreground">
-          <a href={PROFILE.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="link-cyan">
+          <a href={PROFILE.github} target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub" className="link-cyan">
             <Github className="h-[22px] w-[22px] transition-transform hover:scale-105" />
           </a>
-          <a href={`mailto:${PROFILE.email}`} aria-label="Email" className="link-cyan">
+          <a href={`mailto:${PROFILE.email}`} aria-label="Email" title="Email" className="link-cyan">
             <Mail className="h-[22px] w-[22px] transition-transform hover:scale-105" />
           </a>
           {hasLinkedIn && (
-            <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="link-cyan">
+            <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn" className="link-cyan">
               <Linkedin className="h-[22px] w-[22px] transition-transform hover:scale-105" />
             </a>
           )}
           {hasHub && (
-            <a href={PROFILE.hub} target="_blank" rel="noreferrer" aria-label="Website Hub" className="link-cyan">
+            <a href={PROFILE.hub} target="_blank" rel="noreferrer" aria-label="Website Hub" title="Website Hub" className="link-cyan">
               <LayoutGrid className="h-[22px] w-[22px] transition-transform hover:scale-105" />
             </a>
           )}
           {hasResume && (
-            <a href={PROFILE.resume} aria-label="Resume" className="link-cyan">
+            <a href={PROFILE.resume} aria-label="Resume" title="Resume" className="link-cyan">
               <FileText className="h-[22px] w-[22px] transition-transform hover:scale-105" />
             </a>
           )}
