@@ -18,7 +18,7 @@ const brands: Record<string, Brand> = {
 };
 
 export function RecognitionLogo({ item, compact = false }: { item: Recognition; compact?: boolean }) {
-  const keys = item.highlight === "Google DeepMind Prize" ? ["google", "amd"]
+  const keys = item.highlight === "Google DeepMind 1st Prize" ? ["google", "amd"]
     : item.title.includes("Super AI") ? ["aiat", "superai"]
     : item.title.includes("Benchmark") ? ["nectec", "nstda"]
     : item.title.includes("MakeX") ? ["makex"]

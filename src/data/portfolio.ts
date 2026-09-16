@@ -206,7 +206,8 @@ export const RECOGNITION: Recognition[] = [
   // user-confirmed records pending official award evidence.
   {
     title: "AMD Developer Hackathon: ACT II",
-    highlight: "Google DeepMind Prize",
+    // First prize confirmed directly by the user on 2026-09-17.
+    highlight: "Google DeepMind 1st Prize",
     issuer: "lablab.ai / NativelyAI",
     year: "2026",
     category: "Award",

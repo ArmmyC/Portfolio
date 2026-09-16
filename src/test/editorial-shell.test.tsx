@@ -255,9 +255,9 @@ describe("editorial portfolio shell", () => {
     const sectionHeadingStyles = styles.match(/\.section-heading \{[\s\S]*?\n\s*\}/)?.[0] ?? "";
 
     expect(screen.getByRole("heading", { name: "About", exact: true })).toHaveClass("section-heading");
-    expect(sectionHeadingStyles).toContain("text-[28px]");
-    expect(sectionHeadingStyles).toContain("font-semibold");
-    expect(sectionHeadingStyles).toContain("md:text-[32px]");
+    expect(sectionHeadingStyles).toContain("clamp(1.75rem, 2.2vw, 2rem)");
+    expect(sectionHeadingStyles).toContain("font-weight: 650");
+    expect(sectionHeadingStyles).toContain("letter-spacing: -0.035em");
   });
 
   it("keeps the first fold focused on the introduction", () => {

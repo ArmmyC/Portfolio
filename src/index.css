@@ -2,10 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Alternate graphite identity. Geometry and section order stay unchanged. */
+body, .dark body {
+  background-image: none !important;
+}
+
+.editorial-section .section-heading {
+  font-size: clamp(1.75rem, 2.2vw, 2rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+
+.editorial-rail > div > p:last-of-type {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+[data-project-layout], #recognition ul[aria-label="Awards"] > li {
+  border-radius: 5px;
+  background: hsl(var(--card));
+  border-color: hsl(var(--border));
+}
+
+[data-project-layout]:hover {
+  border-color: hsl(var(--primary) / 0.65);
+}
+
+#recognition ul[aria-label="Awards"] > li > p:first-of-type {
+  font-size: 21px;
+  letter-spacing: -0.025em;
+}
+
+.editorial-section .status-pill {
+  border-radius: 3px;
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+  text-transform: none;
+  background: transparent;
+}
+
+.editorial-rail .editorial-card {
+  border-radius: 6px;
+  background: hsl(var(--card));
+}
+
 @layer base {
   :root {
     /* Kamolpop editorial identity: soft white, cobalt, graphite */
-    --background: 36 67% 98%;            /* #FEFAF6 */
+    --background: 220 14% 97%;
     --foreground: 220 13% 15%;           /* #23262D */
 
     --card: 0 0% 100%;
@@ -49,7 +94,7 @@
     --destructive: 0 70% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 218 32% 89%;              /* #D8E0EC */
+    --border: 220 13% 85%;
     --nav-rule: 218 24% 84%;
     --input: 218 32% 89%;
     --ring: 222 69% 54%;
@@ -62,22 +107,22 @@
 
   .dark {
     /* Dark counterpart: deep navy, soft white, light cobalt */
-    --background: 226 51% 11%;            /* #0D132A */
+    --background: 225 10% 8%;
     --foreground: 220 20% 95%;            /* #F0F2F5 */
 
-    --card: 220 13% 11%;                  /* #191C21 */
+    --card: 225 9% 11%;
     --card-foreground: 220 20% 95%;
 
     --popover: 226 42% 14%;
     --popover-foreground: 220 20% 95%;
 
-    --primary: 221 100% 79%;              /* #95B6FF */
+    --primary: 220 100% 74%;
     --primary-foreground: 226 51% 11%;
 
-    --secondary: 222 43% 19%;
+    --secondary: 225 10% 15%;
     --secondary-foreground: 220 20% 95%;
 
-    --muted: 222 43% 18%;
+    --muted: 225 10% 15%;
     --muted-foreground: 216 14% 66%;     /* #9AA6B6 */
 
     --accent: 222 69% 46%;
@@ -102,8 +147,8 @@
     --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 218 43% 33%;                /* #304A78 */
-    --nav-rule: 218 34% 40%;
+    --border: 225 10% 25%;
+    --nav-rule: 225 10% 37%;
     --input: 218 43% 33%;
     --ring: 221 100% 79%;
   }
@@ -223,12 +268,14 @@
 
   .stack-item {
     @apply inline-flex max-w-full items-center gap-2.5 border border-primary/25 bg-primary/5 px-3 py-2 text-[14px] leading-5 text-foreground;
-    border-radius: 6px;
+    border-radius: 3px;
+    border-color: hsl(var(--border));
+    background-color: hsl(var(--card));
   }
 
   .dark .stack-item {
-    background: hsl(222 45% 15%);
-    border-color: hsl(220 55% 38% / 0.65);
+    background: hsl(var(--secondary));
+    border-color: hsl(var(--border));
   }
 
   .technology-icon {
