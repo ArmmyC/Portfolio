@@ -25,7 +25,7 @@ export function Projects() {
               title={`Open ${p.title} in a new tab`}
               data-project-layout={p.image ? "media" : "text"}
               className={cn(
-                "reveal group relative block min-w-0 overflow-hidden rounded-lg border border-border/80 bg-card/80 transition-colors duration-300 hover:border-primary/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary",
+                "project-card reveal group relative block min-w-0 overflow-hidden rounded-lg border border-border/80 bg-card/80 transition-colors duration-300 hover:border-primary/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary",
                 "p-4 sm:p-5",
               )}
             >

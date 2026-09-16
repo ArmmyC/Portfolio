@@ -2,51 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Alternate graphite identity. Geometry and section order stay unchanged. */
-body, .dark body {
-  background-image: none !important;
-}
-
-.editorial-section .section-heading {
-  font-size: clamp(1.75rem, 2.2vw, 2rem);
-  font-weight: 650;
-  letter-spacing: -0.035em;
-}
-
-.editorial-rail > div > p:last-of-type {
-  text-transform: none;
-  letter-spacing: 0;
-  font-weight: 500;
-}
-
-[data-project-layout], #recognition ul[aria-label="Awards"] > li {
-  border-radius: 5px;
-  background: hsl(var(--card));
-  border-color: hsl(var(--border));
-}
-
-[data-project-layout]:hover {
-  border-color: hsl(var(--primary) / 0.65);
-}
-
-#recognition ul[aria-label="Awards"] > li > p:first-of-type {
-  font-size: 21px;
-  letter-spacing: -0.025em;
-}
-
-.editorial-section .status-pill {
-  border-radius: 3px;
-  font-family: var(--font-sans);
-  letter-spacing: 0;
-  text-transform: none;
-  background: transparent;
-}
-
-.editorial-rail .editorial-card {
-  border-radius: 6px;
-  background: hsl(var(--card));
-}
-
 @layer base {
   :root {
     /* Kamolpop editorial identity: soft white, cobalt, graphite */
@@ -180,20 +135,12 @@ body, .dark body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
     background-color: hsl(var(--background));
-    background-image:
-      radial-gradient(ellipse 58% 46% at 7% 0%, hsl(221 100% 92% / 0.45), transparent 64%),
-      radial-gradient(ellipse 55% 45% at 96% 8%, hsl(205 88% 91% / 0.5), transparent 65%),
-      radial-gradient(ellipse 58% 46% at 80% 96%, hsl(230 90% 94% / 0.62), transparent 66%),
-      radial-gradient(ellipse 48% 38% at 10% 90%, hsl(190 80% 94% / 0.65), transparent 64%);
+    background-image: none;
     background-attachment: fixed;
   }
 
   .dark body {
-    background-image:
-      radial-gradient(ellipse 58% 46% at 7% 0%, hsl(221 45% 16% / 0.45), transparent 64%),
-      radial-gradient(ellipse 55% 45% at 96% 8%, hsl(215 55% 20% / 0.45), transparent 65%),
-      radial-gradient(ellipse 58% 46% at 80% 96%, hsl(230 45% 20% / 0.4), transparent 66%),
-      radial-gradient(ellipse 48% 38% at 10% 90%, hsl(195 45% 16% / 0.34), transparent 64%);
+    background-image: none;
   }
 
   ::selection {
@@ -255,7 +202,10 @@ body, .dark body {
     @apply text-muted-foreground transition-colors hover:text-primary;
   }
   .section-heading {
-    @apply text-[28px] font-semibold tracking-[-0.02em] text-foreground md:text-[32px];
+    @apply text-foreground;
+    font-size: clamp(1.75rem, 2.2vw, 2rem);
+    font-weight: 650;
+    letter-spacing: -0.035em;
     text-wrap: balance;
   }
   .section-label {
@@ -310,7 +260,12 @@ body, .dark body {
   }
 
   .status-pill {
-    @apply inline-flex items-center whitespace-nowrap rounded-full border px-2.5 py-1 font-mono text-[12px] uppercase tracking-[0.06em];
+    @apply inline-flex items-center whitespace-nowrap border px-2.5 py-1 text-[12px];
+    border-radius: 3px;
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+    text-transform: none;
+    background: transparent;
   }
 
   .focus-badge {

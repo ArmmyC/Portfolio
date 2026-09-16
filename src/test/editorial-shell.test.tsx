@@ -11,6 +11,7 @@ import { Contact } from "@/components/sections/Contact";
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
 import { Recognition } from "@/components/sections/Recognition";
+import { RecognitionLogo } from "@/components/RecognitionLogo";
 import { Skills } from "@/components/sections/Skills";
 import { ThemeFavicon } from "@/components/ThemeFavicon";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -510,6 +511,21 @@ describe("editorial portfolio shell", () => {
 
       unmount();
     });
+  });
+
+  it("uses explicit sponsor metadata for recognition logos", () => {
+    const item = {
+      title: "First place",
+      issuer: "Event partner",
+      year: "2026",
+      category: "Award",
+      logoKeys: ["google", "amd"],
+    } as Parameters<typeof RecognitionLogo>[0]["item"];
+
+    render(<RecognitionLogo item={item} />);
+
+    expect(screen.getByAltText("Google logo")).toBeInTheDocument();
+    expect(screen.getByAltText("AMD logo")).toBeInTheDocument();
   });
 
   it("keeps supporting metadata quiet instead of pill-heavy", () => {

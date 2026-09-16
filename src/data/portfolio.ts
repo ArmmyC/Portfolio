@@ -199,6 +199,7 @@ export type Recognition = {
   link?: string;
   detail?: string;
   highlight?: string;
+  logoKeys?: string[];
 };
 
 export const RECOGNITION: Recognition[] = [
@@ -208,6 +209,7 @@ export const RECOGNITION: Recognition[] = [
     title: "AMD Developer Hackathon: ACT II",
     // First prize confirmed directly by the user on 2026-09-17.
     highlight: "Google DeepMind 1st Prize",
+    logoKeys: ["google", "amd"],
     issuer: "lablab.ai / NativelyAI",
     year: "2026",
     category: "Award",
@@ -216,6 +218,7 @@ export const RECOGNITION: Recognition[] = [
   {
     title: "Super AI Engineer Level 3",
     highlight: "Silver medal",
+    logoKeys: ["aiat", "superai"],
     issuer: "Artificial Intelligence Association of Thailand",
     year: "2026",
     category: "Award",
@@ -223,6 +226,7 @@ export const RECOGNITION: Recognition[] = [
   {
     title: "AI Thailand Benchmark Programs",
     highlight: "AI Engineer Award",
+    logoKeys: ["nectec", "nstda"],
     issuer: "NECTEC / NSTDA",
     year: "2026",
     category: "Award",
@@ -230,6 +234,7 @@ export const RECOGNITION: Recognition[] = [
   {
     title: "Super AI Engineer Season 6 Average 5 Domain Individual Rank 1",
     highlight: "1st place",
+    logoKeys: ["aiat"],
     issuer: "Artificial Intelligence Association of Thailand",
     year: "2026",
     category: "Award",
@@ -239,24 +244,28 @@ export const RECOGNITION: Recognition[] = [
     issuer: "AI Ready ASEAN",
     year: "2026",
     category: "Certificate",
+    logoKeys: ["asean"],
   },
   {
     title: "Huawei Cloud HCCDA-AI Developer Certification",
     issuer: "Huawei Cloud",
     year: "2026",
     category: "Certification",
+    logoKeys: ["huawei"],
   },
   {
     title: "Huawei Cloud HCCDA-Tech Essentials Developer Certification",
     issuer: "Huawei Cloud",
     year: "2026",
     category: "Certification",
+    logoKeys: ["huawei"],
   },
   {
     title: "Hour of Code Certificate of Completion",
     issuer: "Code.org",
     year: "2026",
     category: "Certificate",
+    logoKeys: ["code"],
   },
   {
     title: "MakeX Asian Intercontinental Tournament Energy Innovator Runner-up",
@@ -264,16 +273,17 @@ export const RECOGNITION: Recognition[] = [
     issuer: "MakeX Robotics Competition Committee",
     year: "2023",
     category: "Award",
+    logoKeys: ["makex"],
   },
 ];
 
 // Group related credentials without exposing credential IDs or private evidence.
 RECOGNITION.push(
-  { title: "TPQI / Huawei AI Literacy", issuer: "Thailand Professional Qualification Institute", year: "2026", category: "Certification", detail: "Certificate of competency for AI Literacy for Power Users." },
-  { title: "TPQI / Huawei Cloud Developer Level 5", issuer: "Thailand Professional Qualification Institute", year: "2026", category: "Certification", detail: "Certificate of competency and professional qualification." },
-  { title: "Super AI Engineer Season 6", issuer: "Artificial Intelligence Association of Thailand", year: "2026", category: "Certificate", detail: "AI Practitioner, Foundation AI Theory, and practice certificates for Data to Insight, Thai Election OCR, and FahMai RAG." },
-  { title: "AMD Developer Hackathon: ACT II Completion", issuer: "lablab.ai / NativelyAI", year: "2026", category: "Certificate" },
-  { title: "Student Council President", issuer: "Assumption College Rayong", year: "2022", category: "Leadership", detail: "Recognized for service during academic year 2021." },
+  { title: "TPQI / Huawei AI Literacy", issuer: "Thailand Professional Qualification Institute", year: "2026", category: "Certification", logoKeys: ["huawei"], detail: "Certificate of competency for AI Literacy for Power Users." },
+  { title: "TPQI / Huawei Cloud Developer Level 5", issuer: "Thailand Professional Qualification Institute", year: "2026", category: "Certification", logoKeys: ["huawei"], detail: "Certificate of competency and professional qualification." },
+  { title: "Super AI Engineer Season 6", issuer: "Artificial Intelligence Association of Thailand", year: "2026", category: "Certificate", logoKeys: ["aiat"], detail: "AI Practitioner, Foundation AI Theory, and practice certificates for Data to Insight, Thai Election OCR, and FahMai RAG." },
+  { title: "AMD Developer Hackathon: ACT II Completion", issuer: "lablab.ai / NativelyAI", year: "2026", category: "Certificate", logoKeys: ["amd"] },
+  { title: "Student Council President", issuer: "Assumption College Rayong", year: "2022", category: "Leadership", logoKeys: ["acr"], detail: "Recognized for service during academic year 2021." },
 );
 
 export const CORE_EXPERTISE = [

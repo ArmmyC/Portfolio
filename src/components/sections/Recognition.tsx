@@ -11,12 +11,12 @@ export function Recognition() {
         <h3 className="reveal mb-4 text-[18px] font-semibold">Awards</h3>
         <ul aria-label="Awards" className="grid gap-3 sm:grid-cols-2">
           {awards.map((award) => (
-            <li key={award.title} className="reveal min-w-0 rounded-lg border border-primary/20 bg-primary/5 p-5">
+            <li key={award.title} className="recognition-award-card reveal min-w-0 rounded-lg border border-primary/20 bg-primary/5 p-5">
               <div className="mb-4 flex flex-wrap items-start justify-between gap-3 text-[13px] text-muted-foreground">
                 <RecognitionLogo item={award} />
                 <div className="text-right"><span>Award</span><p>{award.year}</p></div>
               </div>
-              <p className="text-[22px] font-semibold leading-tight tracking-tight text-primary">{award.highlight}</p>
+              <p className="recognition-award-highlight text-[22px] font-semibold leading-tight tracking-tight text-primary">{award.highlight}</p>
               <h4 className="mt-2 text-[16px] font-medium leading-relaxed">{award.title}</h4>
               <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">{award.issuer}</p>
               {award.detail && <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">{award.detail}</p>}

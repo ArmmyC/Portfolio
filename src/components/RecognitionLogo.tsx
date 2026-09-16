@@ -18,15 +18,7 @@ const brands: Record<string, Brand> = {
 };
 
 export function RecognitionLogo({ item, compact = false }: { item: Recognition; compact?: boolean }) {
-  const keys = item.highlight === "Google DeepMind 1st Prize" ? ["google", "amd"]
-    : item.title.includes("Super AI") ? ["aiat", "superai"]
-    : item.title.includes("Benchmark") ? ["nectec", "nstda"]
-    : item.title.includes("MakeX") ? ["makex"]
-    : item.title.includes("Huawei") ? ["huawei"]
-    : item.title.includes("ASEAN") ? ["asean"]
-    : item.issuer === "Code.org" ? ["code"]
-    : item.title.includes("AMD") ? ["amd"]
-    : item.issuer === "Assumption College Rayong" ? ["acr"] : [];
+  const keys = item.logoKeys ?? [];
   return (
     <div className="flex min-w-0 flex-wrap items-center gap-2">
       {(compact ? keys.slice(0, 1) : keys).map((key) => {
