@@ -1,7 +1,7 @@
-import type { Recognition } from "@/data/portfolio";
+import type { Recognition, RecognitionBrandKey } from "@/data/portfolio";
 
 type Brand = { file: string; name: string; url?: string; full?: boolean; wide?: boolean; dark?: boolean };
-const brands: Record<string, Brand> = {
+const brands: Record<RecognitionBrandKey, Brand> = {
   google: { file: "google.png", name: "Google", url: "https://www.google.com/", wide: true },
   amd: { file: "amd.svg", name: "AMD", url: "https://www.amd.com/", wide: true, dark: true },
   superai: { file: "super-ai-banner.png", name: "Super AI Engineer Season 6", full: true, wide: true },

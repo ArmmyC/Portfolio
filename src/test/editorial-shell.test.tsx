@@ -448,8 +448,8 @@ describe("editorial portfolio shell", () => {
     const content = rally.querySelector('[data-project-content="true"]');
     const status = within(rally).getByText("Live", { exact: true });
 
-    expect(rally).toHaveClass("overflow-hidden", "border-border/80");
-    expect(rally).toHaveClass("block", "rounded-lg");
+    expect(rally).toHaveClass("overflow-hidden", "project-card");
+    expect(rally).toHaveClass("block");
     expect(preview).toHaveClass("aspect-[16/9]", "border-border/60", "bg-secondary/80", "flex", "items-center", "justify-center");
     expect(preview?.querySelector("img")).toHaveClass("object-contain");
     expect(content).toHaveClass("min-w-0");
@@ -526,6 +526,16 @@ describe("editorial portfolio shell", () => {
 
     expect(screen.getByAltText("Google logo")).toBeInTheDocument();
     expect(screen.getByAltText("AMD logo")).toBeInTheDocument();
+  });
+
+  it("keeps the real recognition awards paired with their sponsor marks", () => {
+    render(<Recognition />);
+
+    const superAiRank = screen.getByText("1st place", { exact: true }).closest("li");
+    const deepMindPrize = screen.getByText("Google DeepMind 1st Prize", { exact: true }).closest("li");
+
+    expect(superAiRank?.querySelectorAll("img")).toHaveLength(2);
+    expect(deepMindPrize?.querySelectorAll("img")).toHaveLength(2);
   });
 
   it("keeps supporting metadata quiet instead of pill-heavy", () => {

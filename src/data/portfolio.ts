@@ -191,6 +191,21 @@ export const PROJECTS: Project[] = [
   },
 ];
 
+export type RecognitionBrandKey =
+  | "google"
+  | "amd"
+  | "superai"
+  | "nstda"
+  | "acr"
+  | "deepmind"
+  | "aiat"
+  | "nectec"
+  | "makex"
+  | "huawei"
+  | "asean"
+  | "code"
+  | "lablab";
+
 export type Recognition = {
   title: string;
   issuer: string;
@@ -199,7 +214,7 @@ export type Recognition = {
   link?: string;
   detail?: string;
   highlight?: string;
-  logoKeys?: string[];
+  logoKeys?: RecognitionBrandKey[];
 };
 
 export const RECOGNITION: Recognition[] = [
@@ -234,7 +249,7 @@ export const RECOGNITION: Recognition[] = [
   {
     title: "Super AI Engineer Season 6 Average 5 Domain Individual Rank 1",
     highlight: "1st place",
-    logoKeys: ["aiat"],
+    logoKeys: ["aiat", "superai"],
     issuer: "Artificial Intelligence Association of Thailand",
     year: "2026",
     category: "Award",
@@ -281,7 +296,7 @@ export const RECOGNITION: Recognition[] = [
 RECOGNITION.push(
   { title: "TPQI / Huawei AI Literacy", issuer: "Thailand Professional Qualification Institute", year: "2026", category: "Certification", logoKeys: ["huawei"], detail: "Certificate of competency for AI Literacy for Power Users." },
   { title: "TPQI / Huawei Cloud Developer Level 5", issuer: "Thailand Professional Qualification Institute", year: "2026", category: "Certification", logoKeys: ["huawei"], detail: "Certificate of competency and professional qualification." },
-  { title: "Super AI Engineer Season 6", issuer: "Artificial Intelligence Association of Thailand", year: "2026", category: "Certificate", logoKeys: ["aiat"], detail: "AI Practitioner, Foundation AI Theory, and practice certificates for Data to Insight, Thai Election OCR, and FahMai RAG." },
+  { title: "Super AI Engineer Season 6", issuer: "Artificial Intelligence Association of Thailand", year: "2026", category: "Certificate", logoKeys: ["aiat", "superai"], detail: "AI Practitioner, Foundation AI Theory, and practice certificates for Data to Insight, Thai Election OCR, and FahMai RAG." },
   { title: "AMD Developer Hackathon: ACT II Completion", issuer: "lablab.ai / NativelyAI", year: "2026", category: "Certificate", logoKeys: ["amd"] },
   { title: "Student Council President", issuer: "Assumption College Rayong", year: "2022", category: "Leadership", logoKeys: ["acr"], detail: "Recognized for service during academic year 2021." },
 );
