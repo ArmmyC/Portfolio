@@ -23,7 +23,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
       className="editorial-rail hidden lg:flex lg:w-[260px] xl:w-[292px] lg:shrink-0 lg:self-start lg:flex-col lg:gap-y-10 lg:sticky lg:top-6 lg:py-8 lg:pr-4 select-none"
     >
       <div>
-        <div className="flex items-center justify-between gap-4 w-full">
+        <div className="flex w-full items-center justify-between gap-4">
           <a href="#about" aria-label="Kamolpop monogram" className="brand-mark">
             <BrandMark className="h-full w-full" />
           </a>
@@ -68,7 +68,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
         </nav>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         <MaewCore
           active={active}
           allowEasterEgg
@@ -76,25 +76,56 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
           achievementVisible={achievementVisible}
           onUnlock={onUnlockEasterEgg}
         />
-        <div className="flex items-center gap-5 pt-4 text-muted-foreground">
-          <a href={PROFILE.github} target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub" className="link-cyan">
+        <div className="flex items-center gap-1.5 pt-3 text-muted-foreground">
+          <a
+            href={PROFILE.github}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            title="GitHub"
+            className="link-cyan inline-flex h-11 w-11 items-center justify-center rounded-full"
+          >
             <Github className="h-[22px] w-[22px] transition-transform hover:scale-105" />
           </a>
-          <a href={`mailto:${PROFILE.email}`} aria-label="Email" title="Email" className="link-cyan">
+          <a
+            href={`mailto:${PROFILE.email}`}
+            aria-label="Email"
+            title="Email"
+            className="link-cyan inline-flex h-11 w-11 items-center justify-center rounded-full"
+          >
             <Mail className="h-[22px] w-[22px] transition-transform hover:scale-105" />
           </a>
           {hasLinkedIn && (
-            <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn" className="link-cyan">
+            <a
+              href={PROFILE.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              title="LinkedIn"
+              className="link-cyan inline-flex h-11 w-11 items-center justify-center rounded-full"
+            >
               <Linkedin className="h-[22px] w-[22px] transition-transform hover:scale-105" />
             </a>
           )}
           {hasHub && (
-            <a href={PROFILE.hub} target="_blank" rel="noreferrer" aria-label="Website Hub" title="Website Hub" className="link-cyan">
+            <a
+              href={PROFILE.hub}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Website Hub"
+              title="Website Hub"
+              className="link-cyan inline-flex h-11 w-11 items-center justify-center rounded-full"
+            >
               <LayoutGrid className="h-[22px] w-[22px] transition-transform hover:scale-105" />
             </a>
           )}
           {hasResume && (
-            <a href={PROFILE.resume} aria-label="Resume" title="Resume" className="link-cyan">
+            <a
+              href={PROFILE.resume}
+              aria-label="Resume"
+              title="Resume"
+              className="link-cyan inline-flex h-11 w-11 items-center justify-center rounded-full"
+            >
               <FileText className="h-[22px] w-[22px] transition-transform hover:scale-105" />
             </a>
           )}

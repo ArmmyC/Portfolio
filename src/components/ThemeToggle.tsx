@@ -33,7 +33,7 @@ export function ThemeToggle() {
         className={`absolute left-1 top-1 flex h-8 w-8 items-center justify-center rounded-full text-foreground transition-transform duration-500 ease-out ${
           isDark
             ? "translate-x-[38px] rotate-[360deg] bg-primary text-primary-foreground"
-            : "translate-x-0 rotate-0 bg-cat text-cat-foreground"
+            : "translate-x-0 rotate-0 theme-toggle-knob--light"
         }`}
         aria-hidden="true"
       >

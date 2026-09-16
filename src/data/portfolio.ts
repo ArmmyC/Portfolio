@@ -1,5 +1,5 @@
-import rallyScreenshot from "@/assets/projects/rally-user.png";
-import freedomainScreenshot from "@/assets/projects/freedomain-user.png";
+import rallyScreenshot from "@/assets/projects/rally-home-clean.png";
+import freedomainScreenshot from "@/assets/projects/webpad-home.png";
 
 export type NavItem = { id: string; label: string };
 
@@ -8,7 +8,7 @@ export const NAV: NavItem[] = [
   { id: "experience", label: "/experience" },
   { id: "projects", label: "/projects" },
   { id: "recognition", label: "/recognition" },
-  { id: "skills", label: "/skills" },
+  { id: "skills", label: "/core expertise" },
   { id: "contact", label: "/contact" },
 ];
 
@@ -38,10 +38,12 @@ export type Experience = {
   status: string;
   summary: string;
   tools: string[];
-  toolsLabel?: string;
   responsibilities: string[];
 };
 
+// Technology lists checked against ArmmyC/CareerDatabase/manifests/entities.yml
+// Innosoft and WebPad refreshed on 2026-09-16; Super AI confirmed by the user.
+// Keep representative named technologies; omit broad concepts and unverified tools.
 export const EXPERIENCES: Experience[] = [
   {
     id: "EXP-2026-004",
@@ -53,11 +55,11 @@ export const EXPERIENCES: Experience[] = [
     status: "Current",
     summary:
       "Interning as a DevOps Engineer across Kubernetes, delivery tooling, and observability.",
-    tools: ["Kubernetes", "RKE2", "Jenkins", "Harbor", "Argo CD", "Helm", "Docker", "Grafana", "Prometheus"],
+    tools: ["Kubernetes", "Jenkins", "Argo CD", "Docker", "Grafana", "Prometheus"],
     responsibilities: [
       "Operate Kubernetes and RKE2 environments.",
       "Build delivery workflows with Jenkins, Harbor, Argo CD, Helm, and Docker.",
-      "Deployed Grafana, Prometheus, Loki, Alloy, Node Exporter, and cAdvisor across company VMs.",
+      "Deploy Grafana, Prometheus, Loki, Alloy, Node Exporter, and cAdvisor across company VMs.",
     ],
   },
   {
@@ -69,9 +71,8 @@ export const EXPERIENCES: Experience[] = [
     period: "Aug 2026 - Current",
     status: "Current",
     summary:
-      "System Engineer in KMUTT's Innosoft program, working from infrastructure fundamentals to reliable backups and document systems.",
-    tools: ["Networking", "Fortinet", "Proxmox", "Database backup", "Paperless"],
-    toolsLabel: "Tools / systems",
+      "In KMUTT's Innosoft program, building from infrastructure fundamentals to reliable backups and document systems.",
+    tools: ["Fortinet", "Proxmox", "Ceph", "PostgreSQL", "SQL Server", "Bash"],
     responsibilities: [
       "Worked with networking, backup design, Fortinet firewalls, and Proxmox virtualization.",
       "Designed a backup strategy for a production database with availability and consistency in mind.",
@@ -88,7 +89,7 @@ export const EXPERIENCES: Experience[] = [
     status: "Completed",
     summary:
       "Built a private engineering assistant that lets semiconductor teams search documents, validate specs, and get cited answers.",
-    tools: ["Embeddings", "Hybrid retrieval", "OpenWebUI", "LiteLLM", "Control Plane"],
+    tools: ["OpenWebUI", "LiteLLM", "Docling"],
     responsibilities: [
       "Ingested PDFs, datasheets, reports, and experiment files with metadata, embeddings, and hybrid retrieval.",
       "Connected grounded Q&A to OpenWebUI and the Control Plane, with LiteLLM as the model gateway.",
@@ -108,9 +109,9 @@ export const EXPERIENCES: Experience[] = [
     period: "Mar 2026 - Sep 2026",
     status: "Completed",
     summary:
-      "Completed Super AI Engineer Season 6 across Levels 1-3, from AI foundations to edge AI and LLM safety.",
-    tools: ["Applied ML", "Agents", "Edge AI", "AIoT", "LLM safety"],
-    toolsLabel: "Focus areas",
+      "AI, edge, and safety training across Levels 1-3, including a silver medal in Level 3 and placements across individual hackathon tracks.",
+    // Technology use confirmed directly by the user on 2026-09-16.
+    tools: ["Python", "vLLM", "DuckDB", "C++ (Arduino)", "FastAPI", "pgvector", "Google / Gemma API", "Slurm"],
     responsibilities: [
       "Moved from AI foundations into applied ML, agents, edge AI, AIoT, cybersecurity, and LLM safety.",
       "Placed 1st, 2nd, 6th, 20th, and 21st across individual hackathon tracks.",
@@ -147,7 +148,8 @@ export const PROJECTS: Project[] = [
     status: "Live",
     description:
       "A self-service web namespace and DNS control plane for claiming memorable addresses and connecting them to hosted projects.",
-    tech: ["Next.js", "TypeScript", "React", "DNS"],
+    // Curated from CareerDatabase PROJ-2026-025 technologies.
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Clerk", "PostgreSQL", "Cloudflare DNS API"],
     link: "https://freedomain.kamolpop.dev/",
     image: freedomainScreenshot,
   },
@@ -157,7 +159,7 @@ export const PROJECTS: Project[] = [
     status: "Built / Ops",
     description:
       "A private LLM hosting and operations stack serving Slurm-hosted vLLM models through SSH tunnels, a LiteLLM gateway, OpenWebUI, and Prometheus/Grafana monitoring.",
-    tech: ["FastAPI", "vLLM", "LiteLLM", "Docker", "Grafana", "Slurm"],
+    tech: ["vLLM", "LiteLLM", "Slurm", "Docker Compose", "FastAPI", "Grafana"],
     link: "https://github.com/ArmmyC/Lanta-LLM-Hosting",
   },
   {
@@ -166,7 +168,7 @@ export const PROJECTS: Project[] = [
     status: "Prototype",
     description:
       "A local-first smart stretching kiosk prototype using camera pose tracking, web session UI, and Arduino wearable and hub firmware for guided stretch feedback.",
-    tech: ["Python", "FastAPI", "OpenCV", "MediaPipe", "MoveNet", "Arduino", "BLE", "WebSocket"],
+    tech: ["Python", "FastAPI", "OpenCV", "MediaPipe", "MoveNet", "Arduino"],
     link: "https://github.com/ArmmyC/Stretching",
   },
   {
@@ -175,7 +177,7 @@ export const PROJECTS: Project[] = [
     status: "Built",
     description:
       "A custom 32-bit RISC-V RV32I single-cycle softcore CPU and System-on-Chip implemented in Verilog for FPGA, with memory-mapped I/O and UART firmware.",
-    tech: ["Verilog", "RISC-V", "Vivado", "Basys 3", "C", "Assembly"],
+    tech: ["Verilog", "Xilinx Vivado", "Digilent Basys 3", "C", "Assembly"],
     link: "https://github.com/ArmmyC/HolySoC",
   },
   {
@@ -184,7 +186,7 @@ export const PROJECTS: Project[] = [
     status: "Prototype",
     description:
       "A planning dashboard using MapLibre GL, weighted opportunity scoring, and Python data pipelines to visualize tourism expansion zones.",
-    tech: ["Next.js", "TypeScript", "MapLibre GL", "Python", "Tailwind", "GeoJSON"],
+    tech: ["Next.js", "TypeScript", "MapLibre GL JS", "Recharts", "Python"],
     link: "https://github.com/ArmmyC/Miti",
   },
 ];
@@ -195,11 +197,38 @@ export type Recognition = {
   year: string;
   category: string;
   link?: string;
+  detail?: string;
+  highlight?: string;
 };
 
 export const RECOGNITION: Recognition[] = [
+  // CareerDatabase reviewed 2026-09-16. Prize and medal below are
+  // user-confirmed records pending official award evidence.
+  {
+    title: "AMD Developer Hackathon: ACT II",
+    highlight: "Google DeepMind Prize",
+    issuer: "lablab.ai / NativelyAI",
+    year: "2026",
+    category: "Award",
+    detail: "Team KMUTT Ma Laew.",
+  },
+  {
+    title: "Super AI Engineer Level 3",
+    highlight: "Silver medal",
+    issuer: "Artificial Intelligence Association of Thailand",
+    year: "2026",
+    category: "Award",
+  },
+  {
+    title: "AI Thailand Benchmark Programs",
+    highlight: "AI Engineer Award",
+    issuer: "NECTEC / NSTDA",
+    year: "2026",
+    category: "Award",
+  },
   {
     title: "Super AI Engineer Season 6 Average 5 Domain Individual Rank 1",
+    highlight: "1st place",
     issuer: "Artificial Intelligence Association of Thailand",
     year: "2026",
     category: "Award",
@@ -230,9 +259,34 @@ export const RECOGNITION: Recognition[] = [
   },
   {
     title: "MakeX Asian Intercontinental Tournament Energy Innovator Runner-up",
+    highlight: "Runner-up",
     issuer: "MakeX Robotics Competition Committee",
     year: "2023",
     category: "Award",
+  },
+];
+
+// Group related credentials without exposing credential IDs or private evidence.
+RECOGNITION.push(
+  { title: "TPQI / Huawei AI Literacy", issuer: "Thailand Professional Qualification Institute", year: "2026", category: "Certification", detail: "Certificate of competency for AI Literacy for Power Users." },
+  { title: "TPQI / Huawei Cloud Developer Level 5", issuer: "Thailand Professional Qualification Institute", year: "2026", category: "Certification", detail: "Certificate of competency and professional qualification." },
+  { title: "Super AI Engineer Season 6", issuer: "Artificial Intelligence Association of Thailand", year: "2026", category: "Certificate", detail: "AI Practitioner, Foundation AI Theory, and practice certificates for Data to Insight, Thai Election OCR, and FahMai RAG." },
+  { title: "AMD Developer Hackathon: ACT II Completion", issuer: "lablab.ai / NativelyAI", year: "2026", category: "Certificate" },
+  { title: "Student Council President", issuer: "Assumption College Rayong", year: "2022", category: "Leadership", detail: "Recognized for service during academic year 2021." },
+);
+
+export const CORE_EXPERTISE = [
+  {
+    title: "AI engineering",
+    description: "Build document-grounded assistants, serve language models, and develop computer vision applications.",
+  },
+  {
+    title: "DevOps & systems",
+    description: "Work across infrastructure, container deployments, CI/CD, observability, and reliable backups.",
+  },
+  {
+    title: "Embedded & digital design",
+    description: "Connect software to hardware through microcontroller firmware, FPGA design, and RISC-V systems.",
   },
 ];
 

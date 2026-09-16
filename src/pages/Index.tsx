@@ -32,6 +32,34 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
+    const scrollToHashTarget = () => {
+      const hash = window.location.hash.slice(1);
+      if (!hash) return;
+
+      let targetId = hash;
+      try {
+        targetId = decodeURIComponent(hash);
+      } catch {
+        return;
+      }
+
+      const target = document.getElementById(targetId);
+      if (!target || typeof target.scrollIntoView !== "function") return;
+
+      const scroll = () => target.scrollIntoView({ behavior: "auto", block: "start" });
+      if (typeof window.requestAnimationFrame === "function") {
+        window.requestAnimationFrame(scroll);
+      } else {
+        window.setTimeout(scroll, 0);
+      }
+    };
+
+    scrollToHashTarget();
+    window.addEventListener("hashchange", scrollToHashTarget);
+    return () => window.removeEventListener("hashchange", scrollToHashTarget);
+  }, []);
+
+  useEffect(() => {
     const glowEl = document.getElementById("ambient-glow");
     if (!glowEl) return;
 
@@ -93,7 +121,7 @@ const Index = () => {
             <Skills />
             <Contact />
 
-            <footer className="editorial-footer border-t border-border/80 pb-10 pt-8 text-[13px] text-muted-foreground">
+            <footer className="editorial-footer pb-10 pt-8 text-[13px] text-muted-foreground">
               <p>
                 Built with React, TypeScript and Tailwind | Designed and coded by {PROFILE.nickname}. <span className="text-cat">Cat approved.</span>
               </p>

@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { ThemeProvider } from "next-themes";
+import { vi } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { Sidebar } from "@/components/Sidebar";
@@ -13,9 +14,21 @@ import { Recognition } from "@/components/sections/Recognition";
 import { Skills } from "@/components/sections/Skills";
 import { ThemeFavicon } from "@/components/ThemeFavicon";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import Index from "@/pages/Index";
+import { STATUS_TONE_CLASSES } from "@/lib/status";
 
 describe("editorial portfolio shell", () => {
-  it("exposes the monogram and primary section navigation from the sidebar", () => {
+  it("keeps status tones mapped to concrete utility classes", () => {
+    expect(STATUS_TONE_CLASSES).toEqual({
+      live: { pill: "status-pill--live", marker: "status-marker--live", dot: "status-dot--live" },
+      prototype: { pill: "status-pill--prototype", marker: "status-marker--prototype", dot: "status-dot--prototype" },
+      ops: { pill: "status-pill--ops", marker: "status-marker--ops", dot: "status-dot--ops" },
+      built: { pill: "status-pill--built", marker: "status-marker--built", dot: "status-dot--built" },
+      neutral: { pill: "status-pill--neutral", marker: "status-marker--neutral", dot: "status-dot--neutral" },
+    });
+  });
+
+  it("exposes the monogram, theme toggle, and primary section navigation from the sidebar", async () => {
     render(
       <ThemeProvider attribute="class" defaultTheme="light">
         <Sidebar
@@ -32,8 +45,47 @@ describe("editorial portfolio shell", () => {
     expect(monogram).toHaveAttribute("src", "/brand/kv-monogram-light.png");
     expect(screen.getByRole("navigation", { name: "Primary section navigation" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /about/i })).toHaveAttribute("aria-current", "page");
-    expect(screen.getByRole("button", { name: "Switch to dark mode" })).toHaveAttribute("aria-pressed", "false");
+    expect(await screen.findByRole("button", { name: "Switch to dark mode" })).toBeInTheDocument();
     expect(screen.getByText("AI, DevOps, Systems & Embedded Engineer")).toHaveClass("tracking-[0.05em]");
+  });
+
+  it("gives sidebar social links touch-sized hit areas", () => {
+    render(
+      <ThemeProvider attribute="class" defaultTheme="light">
+        <Sidebar
+          active="about"
+          easterEggUnlocked={false}
+          achievementVisible={false}
+          onUnlockEasterEgg={() => undefined}
+        />
+      </ThemeProvider>,
+    );
+
+    expect(screen.getByRole("link", { name: "GitHub" })).toHaveClass(
+      "inline-flex",
+      "h-11",
+      "w-11",
+      "items-center",
+      "justify-center",
+    );
+  });
+
+  it("keeps the sidebar social row close to the Maew helper", () => {
+    render(
+      <ThemeProvider attribute="class" defaultTheme="light">
+        <Sidebar
+          active="about"
+          easterEggUnlocked={false}
+          achievementVisible={false}
+          onUnlockEasterEgg={() => undefined}
+        />
+      </ThemeProvider>,
+    );
+
+    const github = screen.getByRole("link", { name: "GitHub" });
+
+    expect(github.parentElement).toHaveClass("pt-3");
+    expect(github.parentElement?.parentElement).toHaveClass("space-y-3");
   });
 
   it("keeps the sidebar social links free of a divider", () => {
@@ -110,6 +162,25 @@ describe("editorial portfolio shell", () => {
     expect(knob).not.toHaveClass("right-1", "translate-x-[36px]");
   });
 
+  it("defaults the shell to dark and uses a warm sun knob in light mode", async () => {
+    const appSource = readFileSync(resolve(process.cwd(), "src/App.tsx"), "utf8");
+    const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+
+    expect(appSource).toContain('defaultTheme="dark"');
+    expect(appSource).not.toContain('forcedTheme="light"');
+
+    render(
+      <ThemeProvider attribute="class" defaultTheme="light">
+        <ThemeToggle />
+      </ThemeProvider>,
+    );
+
+    const toggle = await screen.findByRole("button", { name: "Switch to dark mode" });
+
+    expect(toggle.firstElementChild).toHaveClass("theme-toggle-knob--light");
+    expect(styles).toContain("--theme-sun:");
+  });
+
   it("uses a concise status when Maew is purring", () => {
     render(
       <ThemeProvider attribute="class" defaultTheme="light">
@@ -177,6 +248,18 @@ describe("editorial portfolio shell", () => {
     ).toBeInTheDocument();
   });
 
+  it("gives the opening section heading enough hierarchy to anchor the first fold", () => {
+    render(<About />);
+
+    const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+    const sectionHeadingStyles = styles.match(/\.section-heading \{[\s\S]*?\n\s*\}/)?.[0] ?? "";
+
+    expect(screen.getByRole("heading", { name: "About", exact: true })).toHaveClass("section-heading");
+    expect(sectionHeadingStyles).toContain("text-[28px]");
+    expect(sectionHeadingStyles).toContain("font-semibold");
+    expect(sectionHeadingStyles).toContain("md:text-[32px]");
+  });
+
   it("keeps the first fold focused on the introduction", () => {
     render(<About />);
 
@@ -185,44 +268,87 @@ describe("editorial portfolio shell", () => {
     expect(screen.queryByText("Focus: AI · DevOps · Systems · Embedded", { exact: true })).not.toBeInTheDocument();
   });
 
-  it("shows concise role badges for quick scanning", () => {
+  it("keeps the introduction free of redundant role badges and closing asides", () => {
     render(<About />);
 
     for (const label of ["Open to internships", "AI engineer", "DevOps", "Systems engineer"]) {
-      expect(screen.getByText(label, { exact: true })).toHaveClass("status-pill", "focus-badge");
+      expect(screen.queryByText(label, { exact: true })).not.toBeInTheDocument();
     }
+
+    expect(screen.queryByText(/Outside engineering, I'm probably debugging something/i)).not.toBeInTheDocument();
   });
 
   it("keeps experience entries concise and outcome-led", () => {
     render(<Experience />);
 
     const timeline = screen.getByRole("list", { name: "Career experience timeline" });
-    const blendata = within(timeline).getByRole("link", { name: /Blendata/i });
-    const siliconCraft = within(timeline).getByRole("link", { name: /Silicon Craft/i });
+    const blendata = within(timeline).getByRole("heading", { name: "DevOps Engineer" }).closest("li");
+    const siliconCraft = within(timeline)
+      .getByRole("heading", { name: /Digital IC Design Intern and AI Engineer/i })
+      .closest("li");
 
-    expect(within(blendata).getByText("Operate Kubernetes and RKE2 environments.", { exact: true })).toBeInTheDocument();
+    expect(within(blendata!).getByText("Operate Kubernetes and RKE2 environments.", { exact: true })).toBeInTheDocument();
     expect(
-      within(siliconCraft).getByText(/Built a private engineering assistant that lets semiconductor teams search documents/i),
+      within(siliconCraft!).getByText(/Built a private engineering assistant that lets semiconductor teams search documents/i),
     ).toBeInTheDocument();
-    expect(blendata.querySelectorAll("ul > li")).toHaveLength(3);
-    expect(siliconCraft.querySelectorAll("ul > li")).toHaveLength(3);
+    expect(blendata?.querySelectorAll("ul > li")).toHaveLength(3);
+    expect(siliconCraft?.querySelectorAll("ul > li")).toHaveLength(3);
   });
 
   it("highlights tools in experience entries for quick scanning", () => {
     render(<Experience />);
 
     const timeline = screen.getByRole("list", { name: "Career experience timeline" });
-    const blendata = within(timeline).getByRole("link", { name: /Blendata/i });
-    const aiat = within(timeline).getByRole("link", { name: /Artificial Intelligence Association of Thailand/i });
+    const blendata = within(timeline).getByRole("heading", { name: "DevOps Engineer" }).closest("li");
+    const aiat = within(timeline)
+      .getByRole("heading", { name: /Super AI Engineer Season 6, Levels 1-3/i })
+      .closest("li");
+    const blendataStack = blendata?.querySelector('[data-experience-stack="true"]');
+    const aiatStack = aiat?.querySelector('[data-experience-stack="true"]');
 
-    expect(within(blendata).getByText("Tools", { exact: true })).toHaveClass("stack-label");
-    expect(within(blendata).getByText("Kubernetes", { exact: true })).toHaveClass("stack-chip");
-    expect(within(blendata).getByText("Argo CD", { exact: true })).toHaveClass("stack-chip");
-    expect(within(aiat).getByText("Focus areas", { exact: true })).toHaveClass("stack-label");
-    expect(within(aiat).getByText("Edge AI", { exact: true })).toHaveClass("stack-chip");
+    expect(blendataStack).toHaveClass("stack-band");
+    expect(within(blendata!).getByText("Kubernetes", { exact: true })).toHaveClass("stack-item");
+    expect(within(blendata!).getByText("Argo CD", { exact: true })).toHaveClass("stack-item");
+    expect(blendata?.querySelectorAll('[data-experience-tool="visible"]')).toHaveLength(6);
+    expect(within(blendata!).getByText("Docker", { exact: true })).toHaveClass("stack-item");
+    expect(within(blendata!).getByText("Prometheus", { exact: true })).toHaveClass("stack-item");
+    expect(within(blendata!).getByText("Kubernetes", { exact: true })).not.toHaveClass("rounded-full", "border");
+    expect(within(blendata!).queryByText("+3 more tools", { exact: true })).not.toBeInTheDocument();
+    expect(within(blendata!).queryByText("Tools", { exact: true })).not.toBeInTheDocument();
+    expect(blendata?.querySelector("details")).not.toBeInTheDocument();
+    expect(aiatStack).toHaveClass("stack-band");
+    for (const tool of ["Python", "vLLM", "DuckDB", "C++ (Arduino)", "FastAPI", "pgvector", "Google / Gemma API", "Slurm"]) {
+      expect(within(aiat!).getByText(tool, { exact: true })).toHaveClass("stack-item");
+    }
+    expect(within(aiat!).queryByText("Focus", { exact: true })).not.toBeInTheDocument();
+    expect(within(aiat!).queryByText("Edge AI", { exact: true })).not.toBeInTheDocument();
   });
 
-  it("keeps mobile navigation keyboard-dismissible and stateful", () => {
+  it("keeps experience links focused on company identity", () => {
+    render(<Experience />);
+
+    const timeline = screen.getByRole("list", { name: "Career experience timeline" });
+    const blendataLink = within(timeline).getByRole("link", { name: /Blendata/i });
+
+    expect(blendataLink).toHaveAttribute("title", "Visit Blendata website in a new tab");
+    expect(blendataLink.querySelector("h3")).not.toBeInTheDocument();
+    expect(blendataLink.querySelector("p")).not.toBeInTheDocument();
+    expect(within(timeline).getByRole("heading", { name: "DevOps Engineer" })).toBeInTheDocument();
+  });
+
+  it("uses a consistent logo frame and stronger evidence hierarchy", () => {
+    render(<Experience />);
+
+    const timeline = screen.getByRole("list", { name: "Career experience timeline" });
+    const blendata = within(timeline).getByRole("link", { name: /Blendata/i }).closest("li");
+
+    expect(timeline.querySelectorAll('[data-logo-frame="true"]')).toHaveLength(4);
+    expect(blendata?.querySelector("h3")).toHaveClass("experience-title");
+    expect(blendata?.querySelector("ul")).toHaveClass("experience-evidence");
+    expect(blendata?.querySelector("ul > li")).toHaveClass("experience-evidence--primary");
+  });
+
+  it("keeps mobile navigation keyboard-dismissible and stateful", async () => {
     render(
       <ThemeProvider attribute="class" defaultTheme="light">
         <MobileNav active="about" />
@@ -233,6 +359,7 @@ describe("editorial portfolio shell", () => {
 
     expect(toggle).toHaveAttribute("aria-expanded", "false");
     expect(toggle).toHaveAttribute("aria-controls", "mobile-primary-navigation");
+    expect(await screen.findByRole("button", { name: "Switch to dark mode" })).toBeInTheDocument();
 
     fireEvent.click(toggle);
 
@@ -262,15 +389,23 @@ describe("editorial portfolio shell", () => {
     expect(screen.getByText("AI, DevOps & Systems", { exact: true })).toBeInTheDocument();
   });
 
+  it("keeps the mobile brand link touch-sized", () => {
+    render(<MobileNav active="about" />);
+
+    expect(screen.getByRole("link", { name: /Kamolpop Vitayarat/i })).toHaveClass("min-h-11");
+  });
+
   it("loads project previews lazily with reserved dimensions", () => {
     render(<Projects />);
 
-    const preview = screen.getByRole("img", { name: "Rally project preview" });
+    for (const name of ["Rally project preview", "Freedomain / WebPad project preview"]) {
+      const preview = screen.getByRole("img", { name });
 
-    expect(preview).toHaveAttribute("loading", "lazy");
-    expect(preview).toHaveAttribute("decoding", "async");
-    expect(preview).toHaveAttribute("width", "1898");
-    expect(preview).toHaveAttribute("height", "860");
+      expect(preview).toHaveAttribute("loading", "lazy");
+      expect(preview).toHaveAttribute("decoding", "async");
+      expect(preview).toHaveAttribute("width", "1600");
+      expect(preview).toHaveAttribute("height", "900");
+    }
   });
 
   it("uses wide media cards for visual projects and compact cards for text-only projects", () => {
@@ -282,8 +417,10 @@ describe("editorial portfolio shell", () => {
 
     expect(rally).toHaveAttribute("data-project-layout", "media");
     expect(webpad).toHaveAttribute("data-project-layout", "media");
-    expect(rally).toHaveClass("md:col-span-2");
-    expect(webpad).toHaveClass("md:col-span-2");
+    expect(rally.parentElement).toHaveClass("flex-col");
+    expect(rally.querySelector('[data-project-preview="true"]')).toHaveClass("aspect-[16/9]");
+    expect(within(webpad).getByText("Visit website")).toBeInTheDocument();
+    expect(within(lanta).getByText("View repository")).toBeInTheDocument();
     expect(lanta).toHaveAttribute("data-project-layout", "text");
     expect(lanta).not.toHaveClass("md:col-span-2");
   });
@@ -294,7 +431,10 @@ describe("editorial portfolio shell", () => {
     expect(screen.getByRole("link", { name: /Rally/i })).toHaveAttribute("title", "Open Rally in a new tab");
 
     const { unmount } = render(<Experience />);
-    expect(screen.getByRole("link", { name: /Blendata/i })).toHaveAttribute("title", "Open Blendata in a new tab");
+    expect(screen.getByRole("link", { name: /Blendata/i })).toHaveAttribute(
+      "title",
+      "Visit Blendata website in a new tab",
+    );
 
     unmount();
   });
@@ -308,8 +448,9 @@ describe("editorial portfolio shell", () => {
     const status = within(rally).getByText("Live", { exact: true });
 
     expect(rally).toHaveClass("overflow-hidden", "border-border/80");
-    expect(rally).toHaveClass("md:grid-cols-[minmax(15rem,0.82fr)_minmax(0,1.45fr)]");
-    expect(preview).toHaveClass("aspect-[16/9]", "border-primary/20", "bg-secondary/80");
+    expect(rally).toHaveClass("block", "rounded-lg");
+    expect(preview).toHaveClass("aspect-[16/9]", "border-border/60", "bg-secondary/80", "flex", "items-center", "justify-center");
+    expect(preview?.querySelector("img")).toHaveClass("object-contain");
     expect(content).toHaveClass("min-w-0");
     expect(status).toHaveClass("status-pill--live", "gap-1.5");
     expect(status.querySelector('[data-status-dot="true"]')).toHaveClass("h-1.5", "w-1.5", "rounded-full");
@@ -321,15 +462,15 @@ describe("editorial portfolio shell", () => {
     const rally = screen.getByRole("link", { name: /Rally/i });
     const preview = rally.querySelector('[data-project-preview="true"]');
 
-    expect(rally).toHaveClass("md:items-stretch");
-    expect(preview).toHaveClass("aspect-[16/9]", "md:aspect-auto", "md:h-full", "md:mb-0");
-    expect(preview).not.toHaveClass("md:-my-4", "md:-ml-4");
+    expect(rally).toHaveClass("p-4", "sm:p-5");
+    expect(preview).toHaveClass("aspect-[16/9]", "mb-5");
+    expect(preview).not.toHaveClass("md:aspect-auto", "md:h-full", "md:-my-4", "md:-ml-4");
   });
 
   it("uses a stronger project heading and plain technical metadata", () => {
     render(<Projects />);
 
-    expect(screen.getByRole("heading", { name: "Selected work", exact: true })).toHaveClass("section-heading");
+    expect(screen.getByRole("heading", { name: "Projects", exact: true })).toHaveClass("section-heading");
 
     const rally = screen.getByRole("link", { name: /Rally/i });
     expect(rally.querySelectorAll('[data-project-tech="true"]')).toHaveLength(5);
@@ -341,16 +482,24 @@ describe("editorial portfolio shell", () => {
     render(<Projects />);
 
     const rally = screen.getByRole("link", { name: /Rally/i });
+    const stack = rally.querySelector('[data-project-stack="true"]');
 
-    expect(within(rally).getByText("Stack", { exact: true })).toHaveClass("stack-label");
-    expect(within(rally).getByText("Next.js", { exact: true })).toHaveClass("stack-chip");
+    expect(stack).toHaveClass("stack-band");
+    expect(within(rally).queryByText("Stack", { exact: true })).not.toBeInTheDocument();
+    expect(within(rally).getByText("Next.js", { exact: true })).toHaveClass("stack-item");
+
+    const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+    const stackBandStyles = styles.match(/\.stack-band \{[\s\S]*?\n\s*\}/)?.[0] ?? "";
+
+    expect(stackBandStyles).toContain("flex-wrap");
   });
 
-  it("uses readable display headings for the supporting sections", () => {
+  it("uses readable display headings for every portfolio section", () => {
     const sections = [
+      [About, "About"],
       [Experience, "Experience"],
       [Recognition, "Recognition"],
-      [Skills, "Skills"],
+      [Skills, "Core expertise"],
       [Contact, "Contact"],
     ] as const;
 
@@ -366,7 +515,8 @@ describe("editorial portfolio shell", () => {
   it("keeps supporting metadata quiet instead of pill-heavy", () => {
     const { unmount } = render(<Skills />);
 
-    expect(screen.getAllByTestId("skill-item").length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("heading", { level: 3 })).toHaveLength(3);
+    expect(screen.queryAllByTestId("skill-item")).toHaveLength(0);
     expect(document.querySelectorAll(".editorial-tag")).toHaveLength(0);
 
     unmount();
@@ -379,13 +529,15 @@ describe("editorial portfolio shell", () => {
     render(<Experience />);
 
     const timeline = screen.getByRole("list", { name: "Career experience timeline" });
-    const blendata = within(timeline).getByRole("link", { name: /Blendata/i });
-    const isap = within(timeline).getByRole("link", { name: /Innosoft Student Associate Program/i });
-    const siliconCraft = within(timeline).getByRole("link", { name: /Silicon Craft/i });
+    const blendata = within(timeline).getByRole("heading", { name: "DevOps Engineer" }).closest("li");
+    const isap = within(timeline).getByRole("heading", { name: "System Engineer" }).closest("li");
+    const siliconCraft = within(timeline)
+      .getByRole("heading", { name: /Digital IC Design Intern and AI Engineer/i })
+      .closest("li");
 
-    expect(within(blendata).getByText("Aug 2026 - Current", { exact: true })).toBeInTheDocument();
-    expect(within(isap).getByText("Aug 2026 - Current", { exact: true })).toBeInTheDocument();
-    expect(within(siliconCraft).getByText("Jun 2026 - Jul 2026", { exact: true })).toBeInTheDocument();
+    expect(within(blendata!).getByText("Aug 2026 - Current", { exact: true })).toBeInTheDocument();
+    expect(within(isap!).getByText("Aug 2026 - Current", { exact: true })).toBeInTheDocument();
+    expect(within(siliconCraft!).getByText("Jun 2026 - Jul 2026", { exact: true })).toBeInTheDocument();
     expect(timeline.querySelectorAll(".status-pill")).toHaveLength(0);
   });
 
@@ -394,9 +546,22 @@ describe("editorial portfolio shell", () => {
 
     const timeline = screen.getByRole("list", { name: "Career experience timeline" });
     const points = timeline.querySelectorAll('[data-timeline-point="true"]');
+    const marker = points[0].parentElement?.firstElementChild;
 
     expect(points).toHaveLength(4);
-    expect(points[0]).toHaveClass("h-2.5", "w-2.5", "rounded-full", "border-2", "border-background");
+    expect(points[0]).toHaveClass(
+      "h-2.5",
+      "w-2.5",
+      "aspect-square",
+      "rounded-full",
+      "border-2",
+      "border-background",
+    );
+    expect(points[0].parentElement).toHaveClass("-left-[33px]", "top-2.5", "aspect-square");
+    expect(marker).toHaveClass("h-4", "w-4", "aspect-square", "rounded-full");
+    expect(marker).not.toHaveClass("border-[3px]", "bg-background");
+    expect(points[0]).toHaveClass("status-dot--live");
+    expect(points[2]).toHaveClass("status-dot--built");
   });
 
   it("groups Super AI levels into one final month-granularity entry with company marks", () => {
@@ -457,17 +622,55 @@ describe("editorial portfolio shell", () => {
       "href",
       "https://www.sic.co.th/",
     );
-    const siliconCraft = within(timeline).getByRole("link", { name: /Silicon Craft/i });
-    expect(within(siliconCraft).getByText("Jun 2026 - Jul 2026", { exact: true })).toBeInTheDocument();
-    expect(within(siliconCraft).queryByText("Completed", { exact: true })).not.toBeInTheDocument();
+    const siliconCraft = within(timeline)
+      .getByRole("heading", { name: /Digital IC Design Intern and AI Engineer/i })
+      .closest("li");
+    expect(within(siliconCraft!).getByText("Jun 2026 - Jul 2026", { exact: true })).toBeInTheDocument();
+    expect(within(siliconCraft!).queryByText("Completed", { exact: true })).not.toBeInTheDocument();
     expect(
-      within(siliconCraft).getByText(/Built a private engineering assistant that lets semiconductor teams/i),
+      within(siliconCraft!).getByText(/Built a private engineering assistant that lets semiconductor teams/i),
     ).toBeInTheDocument();
     expect(within(timeline).getByRole("link", { name: /Artificial Intelligence Association of Thailand/i })).toHaveAttribute(
       "href",
       "https://aiat.or.th/",
     );
     expect(within(timeline).getAllByText(/silver medal/i).length).toBeGreaterThan(0);
+  });
+
+  it("scrolls directly to a hash target after the page mounts", async () => {
+    vi.stubGlobal(
+      "IntersectionObserver",
+      class {
+        observe() {}
+        disconnect() {}
+      },
+    );
+
+    const scrollIntoView = vi.fn();
+    const originalScrollIntoView = HTMLElement.prototype.scrollIntoView;
+    Object.defineProperty(HTMLElement.prototype, "scrollIntoView", {
+      configurable: true,
+      value: scrollIntoView,
+    });
+    window.history.replaceState({}, "", "/#experience");
+
+    try {
+      render(<Index />);
+
+      await waitFor(() => {
+        expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "auto", block: "start" });
+      });
+    } finally {
+      window.history.replaceState({}, "", "/");
+      if (originalScrollIntoView) {
+        Object.defineProperty(HTMLElement.prototype, "scrollIntoView", {
+          configurable: true,
+          value: originalScrollIntoView,
+        });
+      } else {
+        delete (HTMLElement.prototype as unknown as { scrollIntoView?: unknown }).scrollIntoView;
+      }
+    }
   });
 
   it("uses the live status treatment for Rally and WebPad", () => {
@@ -478,6 +681,27 @@ describe("editorial portfolio shell", () => {
 
     expect(within(rally).getByText("Live")).toHaveClass("status-pill--live");
     expect(within(webpad).getByText("Live")).toHaveClass("status-pill--live");
+  });
+
+  it("keeps the footer quiet without a top divider", () => {
+    vi.stubGlobal(
+      "IntersectionObserver",
+      class {
+        observe() {}
+        disconnect() {}
+      },
+    );
+
+    render(
+      <ThemeProvider attribute="class" defaultTheme="light">
+        <Index />
+      </ThemeProvider>,
+    );
+
+    const footer = screen.getByText(/Built with React/).closest("footer");
+
+    expect(footer).toHaveClass("editorial-footer");
+    expect(footer).not.toHaveClass("border-t", "border-border/80");
   });
 
   it("keeps the shell flat, cobalt-led, and readable", () => {
@@ -492,11 +716,9 @@ describe("editorial portfolio shell", () => {
       </ThemeProvider>,
     );
 
-    const themeToggle = screen.getByRole("button", { name: "Switch to dark mode" });
     const mascot = screen.getByRole("img", { name: /illustrated cat mascot/i });
 
     expect(screen.queryByText("hi, i'm")).not.toBeInTheDocument();
-    expect(themeToggle).not.toHaveClass("shadow-[0_2px_8px_-3px_rgba(0,0,0,0.08)]");
     expect(mascot).not.toHaveClass("drop-shadow-[0_6px_18px_hsl(222_30%_18%/0.16)]");
 
     const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");

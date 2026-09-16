@@ -1,15 +1,20 @@
 import { ArrowUpRight } from "lucide-react";
+import { TechnologyIcon } from "@/components/TechnologyIcon";
 import { PROFILE, PROJECTS } from "@/data/portfolio";
-import { getStatusTone } from "@/lib/status";
+import { getStatusTone, STATUS_TONE_CLASSES } from "@/lib/status";
 import { cn } from "@/lib/utils";
+
+const PROJECT_PREVIEW_WIDTH = 1600;
+const PROJECT_PREVIEW_HEIGHT = 900;
 
 export function Projects() {
   return (
     <section id="projects" className="editorial-section scroll-mt-24 py-16 lg:py-20">
-      <h2 className="section-heading reveal mb-6">Selected work</h2>
-      <div className="grid gap-4 md:grid-cols-2">
+      <h2 className="section-heading reveal mb-6">Projects</h2>
+      <div className="flex max-w-3xl flex-col gap-5">
         {PROJECTS.map((p) => {
           const tone = getStatusTone(p.status);
+          const statusClasses = STATUS_TONE_CLASSES[tone];
 
           return (
             <a
@@ -20,43 +25,41 @@ export function Projects() {
               title={`Open ${p.title} in a new tab`}
               data-project-layout={p.image ? "media" : "text"}
               className={cn(
-                "reveal editorial-card group relative block overflow-hidden border-border/80 transition-colors duration-300 hover:border-primary/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary/60",
-                p.image
-                  ? "p-3.5 md:col-span-2 md:grid md:grid-cols-[minmax(15rem,0.82fr)_minmax(0,1.45fr)] md:items-stretch md:gap-6 md:p-4"
-                  : "p-5",
+                "reveal group relative block min-w-0 overflow-hidden rounded-lg border border-border/80 bg-card/80 transition-colors duration-300 hover:border-primary/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary",
+                "p-4 sm:p-5",
               )}
             >
               {p.image && (
                 <div
                   data-project-preview="true"
-                  className="mb-4 aspect-[16/9] overflow-hidden rounded-xl border border-primary/20 bg-secondary/80 md:mb-0 md:aspect-auto md:h-full"
+                  className="mb-5 flex aspect-[16/9] items-center justify-center overflow-hidden rounded-md border border-border/60 bg-secondary/80"
                 >
                   <img
                     src={p.image}
                     alt={`${p.title} project preview`}
-                    width={1898}
-                    height={860}
+                    width={PROJECT_PREVIEW_WIDTH}
+                    height={PROJECT_PREVIEW_HEIGHT}
                     loading="lazy"
                     decoding="async"
-                    sizes="(min-width: 768px) 32rem, 100vw"
-                    className="h-full w-full object-cover object-left-top transition-transform duration-500 group-hover:scale-[1.03]"
+                    sizes="(min-width: 1024px) 60vw, 100vw"
+                    className="h-full w-full object-contain"
                   />
                 </div>
               )}
               {p.image ? (
                 <div data-project-content="true" className="flex min-w-0 flex-col">
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                    <span className={cn("status-pill gap-1.5", `status-pill--${tone}`)}>
+                    <span className={cn("status-pill gap-1.5", statusClasses.pill)}>
                       <span aria-hidden="true" data-status-dot="true" className="h-1.5 w-1.5 rounded-full bg-current" />
                       {p.status}
                     </span>
-                    <div className="project-category font-mono text-[12px] uppercase tracking-[0.06em] text-muted-foreground">
+                    <div className="project-category text-[14px] text-muted-foreground">
                       {p.category}
                     </div>
                   </div>
 
                   <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                    <h3 className="text-[21px] font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary md:text-[23px]">
+                    <h3 className="text-[22px] font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary md:text-[25px]">
                       {p.title}
                     </h3>
                     <ArrowUpRight
@@ -69,14 +72,14 @@ export function Projects() {
                     {p.description}
                   </p>
 
-                  <div data-project-stack="true" className="mt-5 flex flex-wrap items-center gap-2">
-                    <span className="stack-label">Stack</span>
+                  {p.tech.length > 0 && <div data-project-stack="true" className="stack-band mt-4">
                     {p.tech.map((t) => (
-                      <span key={t} data-project-tech="true" className="stack-chip">
+                      <span key={t} data-project-tech="true" className="stack-item">
+                        <TechnologyIcon name={t} />
                         {t}
                       </span>
                     ))}
-                  </div>
+                  </div>}
                 </div>
               ) : (
                 <>
@@ -88,13 +91,13 @@ export function Projects() {
                       aria-hidden="true"
                       className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
                     />
-                    <span className={cn("status-pill ml-auto gap-1.5", `status-pill--${tone}`)}>
+                    <span className={cn("status-pill ml-auto gap-1.5", statusClasses.pill)}>
                       <span aria-hidden="true" data-status-dot="true" className="h-1.5 w-1.5 rounded-full bg-current" />
                       {p.status}
                     </span>
                   </div>
 
-                  <div className="project-category mt-1 font-mono text-[13px] uppercase tracking-[0.05em] text-muted-foreground">
+                  <div className="project-category mt-2 text-[14px] text-muted-foreground">
                     {p.category}
                   </div>
 
@@ -102,16 +105,20 @@ export function Projects() {
                     {p.description}
                   </p>
 
-                  <div data-project-stack="true" className="mt-4 flex flex-wrap items-center gap-2">
-                    <span className="stack-label">Stack</span>
+                  {p.tech.length > 0 && <div data-project-stack="true" className="stack-band mt-4">
                     {p.tech.map((t) => (
-                      <span key={t} data-project-tech="true" className="stack-chip">
+                      <span key={t} data-project-tech="true" className="stack-item">
+                        <TechnologyIcon name={t} />
                         {t}
                       </span>
                     ))}
-                  </div>
+                  </div>}
                 </>
               )}
+              <span className="mt-3 inline-flex min-h-11 items-center gap-2 text-[14px] font-medium text-primary">
+                {p.link?.includes("github.com") ? "View repository" : "Visit website"}
+                <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+              </span>
             </a>
           );
         })}
@@ -123,7 +130,7 @@ export function Projects() {
           target="_blank"
           rel="noreferrer"
           title="Open GitHub in a new tab"
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-[15px] font-medium text-foreground transition hover:border-primary/40 hover:text-primary"
+          className="inline-flex min-h-11 items-center gap-2 text-[15px] font-medium text-primary underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
         >
           More projects
           <ArrowUpRight aria-hidden="true" className="h-4 w-4" />

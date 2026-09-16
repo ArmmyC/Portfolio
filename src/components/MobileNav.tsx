@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { NAV, PROFILE } from "@/data/portfolio";
-import { ThemeToggle } from "./ThemeToggle";
 import { BrandMark } from "./BrandMark";
 import { MaewCore } from "./MaewCore";
+import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -29,7 +29,7 @@ export function MobileNav({ active }: Props) {
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur-xl lg:hidden">
       <div className="mobile-nav-bar flex min-h-[4.25rem] items-center justify-between gap-4 px-5 pb-3.5">
-        <a href="#about" className="flex min-w-0 items-center gap-3 leading-tight">
+        <a href="#about" className="flex min-h-11 min-w-0 items-center gap-3 leading-tight">
           <BrandMark alt="" aria-hidden="true" className="brand-mark brand-mark--compact" />
           <span className="min-w-0">
             <h1 className="truncate text-[17px] font-semibold text-foreground">

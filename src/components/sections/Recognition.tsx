@@ -1,27 +1,43 @@
 import { RECOGNITION } from "@/data/portfolio";
+import { RecognitionLogo } from "@/components/RecognitionLogo";
 
 export function Recognition() {
+  const awards = RECOGNITION.filter((item) => item.category === "Award");
+  const credentials = RECOGNITION.filter((item) => item.category !== "Award");
   return (
     <section id="recognition" className="editorial-section scroll-mt-24 py-16 lg:py-20">
       <h2 className="section-heading reveal mb-6">Recognition</h2>
-      <p className="reveal mb-6 max-w-[68ch] text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">A few credentials and moments along the way.</p>
-
-      <ol className="relative space-y-6 border-l-2 border-dashed border-border pl-6">
-        {RECOGNITION.map((r) => (
-          <li key={r.title} className="reveal relative">
-            <span className="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center">
-              <span className="absolute h-4 w-4 rounded-full bg-cat/30" />
-              <span className="h-2 w-2 rounded-full bg-cat" />
-            </span>
-            <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-              <span className="font-mono text-[13px] text-muted-foreground">{r.year}</span>
-              <span className="font-mono text-[12px] uppercase tracking-[0.05em] text-muted-foreground/80">{r.category}</span>
-            </div>
-            <h3 className="mt-1 text-[17px] font-medium text-foreground md:text-[18px]">{r.title}</h3>
-            <p className="text-[15px] text-muted-foreground md:text-[16px]">{r.issuer}</p>
-          </li>
-        ))}
-      </ol>
+      <div className="max-w-3xl">
+        <h3 className="reveal mb-4 text-[18px] font-semibold">Awards</h3>
+        <ul aria-label="Awards" className="grid gap-3 sm:grid-cols-2">
+          {awards.map((award) => (
+            <li key={award.title} className="reveal min-w-0 rounded-lg border border-primary/20 bg-primary/5 p-5">
+              <div className="mb-4 flex flex-wrap items-start justify-between gap-3 text-[13px] text-muted-foreground">
+                <RecognitionLogo item={award} />
+                <div className="text-right"><span>Award</span><p>{award.year}</p></div>
+              </div>
+              <p className="text-[22px] font-semibold leading-tight tracking-tight text-primary">{award.highlight}</p>
+              <h4 className="mt-2 text-[16px] font-medium leading-relaxed">{award.title}</h4>
+              <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">{award.issuer}</p>
+              {award.detail && <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">{award.detail}</p>}
+            </li>
+          ))}
+        </ul>
+        <h3 className="reveal mb-2 mt-9 text-[18px] font-semibold">Credentials & leadership</h3>
+        <ul aria-label="Credentials and leadership" className="space-y-1">
+          {credentials.map((credential) => (
+            <li key={credential.title} className="reveal grid grid-cols-[auto_minmax(0,1fr)_auto] items-start gap-x-3 py-4 sm:gap-x-4">
+              <RecognitionLogo item={credential} compact />
+              <div className="min-w-0">
+                <h4 className="text-[16px] font-medium leading-relaxed">{credential.title}</h4>
+                <p className="mt-1 text-[14px] leading-relaxed text-muted-foreground">{credential.issuer}</p>
+                {credential.detail && <p className="mt-1 text-[14px] leading-relaxed text-muted-foreground">{credential.detail}</p>}
+              </div>
+              <span className="pt-1 text-[13px] tabular-nums text-muted-foreground">{credential.year}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }

@@ -1,59 +1,56 @@
-import { Github, Linkedin, Mail, FileText } from "lucide-react";
+import { Github, Linkedin, FileText } from "lucide-react";
 import { PROFILE } from "@/data/portfolio";
 
 export function Contact() {
   const hasLinkedIn = PROFILE.linkedin.trim().length > 0;
   const hasResume = PROFILE.resume.trim().length > 0;
+  const secondaryLink = "inline-flex min-h-11 items-center gap-2 text-[15px] text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary";
 
   return (
     <section id="contact" className="editorial-section scroll-mt-24 py-16 lg:py-20">
       <h2 className="section-heading reveal mb-6">Contact</h2>
-      <div className="reveal editorial-card p-6">
-        <p className="text-[17px] leading-relaxed text-muted-foreground md:text-[19px]">
-          Open to internships, collaborations, and engineering projects across{" "}
-          <span className="text-foreground font-medium">AI</span>,{" "}
-          <span className="text-foreground font-medium">embedded systems</span>, and{" "}
-          <span className="text-foreground font-medium">systems infrastructure</span>.
+      <div className="reveal max-w-3xl">
+        <p className="text-[16px] leading-7 text-muted-foreground md:text-[17px]">
+          Have a project or opportunity in mind? Let's talk.
         </p>
 
-        <div className="mt-5 flex flex-wrap gap-2.5">
           <a
             href={`mailto:${PROFILE.email}`}
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-[16px] font-medium text-primary-foreground transition hover:opacity-90 md:text-[17px]"
+            className="mt-3 inline-flex min-h-11 max-w-full items-center break-all text-[22px] font-semibold leading-snug tracking-tight text-primary underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:text-[28px]"
           >
-            <Mail className="h-4 w-4" /> Say hi
+            {PROFILE.email}
           </a>
+        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
           <a
             href={PROFILE.github}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-[16px] font-medium text-foreground transition hover:border-primary/40 md:text-[17px]"
+            className={secondaryLink}
+            title="Open GitHub in a new tab"
           >
-            <Github className="h-4 w-4" /> GitHub
+            <Github aria-hidden="true" className="h-4 w-4" /> GitHub
           </a>
           {hasLinkedIn && (
             <a
               href={PROFILE.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-[16px] font-medium text-foreground transition hover:border-primary/40 md:text-[17px]"
+              className={secondaryLink}
+              title="Open LinkedIn in a new tab"
             >
-              <Linkedin className="h-4 w-4" /> LinkedIn
+              <Linkedin aria-hidden="true" className="h-4 w-4" /> LinkedIn
             </a>
           )}
           {hasResume && (
             <a
               href={PROFILE.resume}
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-[16px] font-medium text-foreground transition hover:border-primary/40 md:text-[17px]"
+              className={secondaryLink}
             >
-              <FileText className="h-4 w-4" /> Resume
+              <FileText aria-hidden="true" className="h-4 w-4" /> Resume
             </a>
           )}
         </div>
 
-        <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-cat/20 px-3.5 py-1.5 text-[13px] text-foreground/70">
-          <span className="h-1.5 w-1.5 rounded-full bg-cat" /> currently open to opportunities
-        </div>
       </div>
     </section>
   );
