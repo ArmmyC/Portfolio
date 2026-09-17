@@ -249,13 +249,13 @@ describe("editorial portfolio shell", () => {
     ).toBeInTheDocument();
   });
 
-  it("keeps About copy at one size and gives sidebar selectors a little more emphasis", () => {
+  it("keeps About copy at the larger shared size and gives sidebar selectors a little more emphasis", () => {
     render(<About />);
 
     const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
-    const aboutLeadStyles = styles.match(/\.portfolio-main \.about-lead \{[\s\S]*?\}/)?.[0] ?? "";
+    const aboutCopyStyles = styles.match(/\.portfolio-main \.about-copy \{[\s\S]*?\}/)?.[0] ?? "";
 
-    expect(aboutLeadStyles).toContain("font-size: var(--content-body-size)");
+    expect(aboutCopyStyles).toContain("font-size: var(--content-lead-size)");
     expect(styles).toContain(".portfolio-sidebar .portfolio-sidebar-nav-link { font-size: 14px; }");
   });
 

@@ -417,11 +417,7 @@
     }
 
     .portfolio-main .about-copy {
-      font-size: var(--content-body-size);
-    }
-
-    .portfolio-main .about-lead {
-      font-size: var(--content-body-size);
+      font-size: var(--content-lead-size);
     }
 
     .portfolio-main .experience-title {
