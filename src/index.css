@@ -321,7 +321,6 @@
 
   .about-lead {
     max-width: 66ch;
-    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
     line-height: 1.65;
     color: hsl(var(--foreground) / 0.86);
   }
@@ -422,7 +421,7 @@
     }
 
     .portfolio-main .about-lead {
-      font-size: var(--content-lead-size);
+      font-size: var(--content-body-size);
     }
 
     .portfolio-main .experience-title {
@@ -448,7 +447,7 @@
 
   .portfolio-sidebar .portfolio-sidebar-name { font-size: 26px; }
   .portfolio-sidebar p { font-size: 14px; }
-  .portfolio-sidebar .portfolio-sidebar-nav-link { font-size: 13px; }
+  .portfolio-sidebar .portfolio-sidebar-nav-link { font-size: 14px; }
   .portfolio-main .project-card h3 { font-size: 20px; }
   .portfolio-main [data-project-layout="text"] h3 { font-size: 17px; }
   .portfolio-main .stack-item { font-size: 13px; }

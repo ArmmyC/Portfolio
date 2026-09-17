@@ -249,6 +249,16 @@ describe("editorial portfolio shell", () => {
     ).toBeInTheDocument();
   });
 
+  it("keeps About copy at one size and gives sidebar selectors a little more emphasis", () => {
+    render(<About />);
+
+    const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+    const aboutLeadStyles = styles.match(/\.portfolio-main \.about-lead \{[\s\S]*?\}/)?.[0] ?? "";
+
+    expect(aboutLeadStyles).toContain("font-size: var(--content-body-size)");
+    expect(styles).toContain(".portfolio-sidebar .portfolio-sidebar-nav-link { font-size: 14px; }");
+  });
+
   it("gives the opening section heading enough hierarchy to anchor the first fold", () => {
     render(<About />);
 
