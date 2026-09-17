@@ -8,8 +8,7 @@ export function useReveal() {
         entries.forEach((e) => {
           if (e.isIntersecting) {
             e.target.classList.add("in");
-          } else {
-            e.target.classList.remove("in");
+            io.unobserve(e.target);
           }
         });
       },
