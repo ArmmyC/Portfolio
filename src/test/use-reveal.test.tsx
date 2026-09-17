@@ -8,7 +8,9 @@ function RevealProbe() {
 }
 
 describe("useReveal", () => {
-  it("keeps an element revealed after it leaves the viewport", () => {
+  it("replays after a stable exit without flickering at the viewport edge", () => {
+    vi.useFakeTimers();
+
     let intersectionCallback: IntersectionObserverCallback | undefined;
     const observe = vi.fn();
     const unobserve = vi.fn();
@@ -23,27 +25,39 @@ describe("useReveal", () => {
       disconnect = vi.fn();
     }
 
-    vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
-    render(<RevealProbe />);
+    try {
+      vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
+      render(<RevealProbe />);
 
-    const target = screen.getByTestId("reveal-probe");
-    const observer = {} as IntersectionObserver;
+      const target = screen.getByTestId("reveal-probe");
+      const observer = {} as IntersectionObserver;
+      const emit = (isIntersecting: boolean) => {
+        act(() => {
+          intersectionCallback?.([
+            { target, isIntersecting } as IntersectionObserverEntry,
+          ], observer);
+        });
+      };
 
-    act(() => {
-      intersectionCallback?.([
-        { target, isIntersecting: true } as IntersectionObserverEntry,
-      ], observer);
-    });
+      emit(true);
+      expect(target).toHaveClass("in");
 
-    expect(target).toHaveClass("in");
-    expect(unobserve).toHaveBeenCalledWith(target);
+      emit(false);
+      expect(target).toHaveClass("in");
 
-    act(() => {
-      intersectionCallback?.([
-        { target, isIntersecting: false } as IntersectionObserverEntry,
-      ], observer);
-    });
+      emit(true);
+      act(() => vi.advanceTimersByTime(500));
+      expect(target).toHaveClass("in");
 
-    expect(target).toHaveClass("in");
+      emit(false);
+      act(() => vi.advanceTimersByTime(500));
+      expect(target).not.toHaveClass("in");
+
+      emit(true);
+      expect(target).toHaveClass("in");
+      expect(unobserve).not.toHaveBeenCalled();
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });
