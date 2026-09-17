@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef } from "react";
 import { Github, Linkedin, Mail, FileText, LayoutGrid } from "lucide-react";
 import { NAV, PROFILE } from "@/data/portfolio";
 import { MaewCore } from "./MaewCore";
@@ -13,12 +14,37 @@ interface Props {
 }
 
 export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnlockEasterEgg }: Props) {
+  const sidebarRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    const sidebar = sidebarRef.current;
+    if (!sidebar || typeof ResizeObserver === "undefined") return;
+    const measure = () => {
+      const height = sidebar.getBoundingClientRect().height;
+      sidebar.style.setProperty("--rail-height", `${height}px`);
+      const name = sidebar.querySelector<HTMLElement>(".portfolio-sidebar-name");
+      const layout = sidebar.parentElement;
+      if (!name || !layout) return;
+      const nameOffset = name.getBoundingClientRect().top - sidebar.getBoundingClientRect().top;
+      const minimumOffset = getComputedStyle(sidebar).getPropertyValue("--rail-offset").trim();
+      layout.style.setProperty(
+        "--intro-start",
+        `calc(max(${minimumOffset}, (100dvh - ${height}px) / 2) + ${nameOffset}px)`,
+      );
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(sidebar);
+    return () => observer.disconnect();
+  }, []);
+
   const hasLinkedIn = PROFILE.linkedin.trim().length > 0;
   const hasHub = PROFILE.hub.trim().length > 0;
   const hasResume = PROFILE.resume.trim().length > 0;
 
   return (
     <aside
+      ref={sidebarRef}
       aria-label="Kamolpop portfolio sidebar"
       className="portfolio-sidebar editorial-rail hidden lg:flex lg:w-full lg:shrink-0 lg:self-start lg:flex-col lg:pr-4 select-none"
     >

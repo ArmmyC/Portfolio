@@ -5,7 +5,7 @@ export function About() {
     <section id="about" className="editorial-section editorial-section--intro scroll-mt-24">
       <h2 className="section-heading section-heading--hero reveal mb-5">About</h2>
 
-      <div className="reveal max-w-[72ch] space-y-5 text-[17px] leading-relaxed text-muted-foreground md:text-[19px]">
+      <div className="about-copy reveal max-w-[72ch] text-[17px] leading-relaxed text-muted-foreground md:text-[19px]">
         <p className="about-lead">
           I'm <span className="text-foreground font-medium">Arm</span>{" "}
           <span className="text-foreground/80">({PROFILE.thaiName})</span>, a Computer Engineering student at{" "}

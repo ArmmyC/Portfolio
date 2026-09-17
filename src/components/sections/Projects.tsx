@@ -11,7 +11,7 @@ export function Projects() {
   return (
     <section id="projects" className="editorial-section editorial-section--work scroll-mt-24">
       <h2 className="section-heading reveal mb-6">Projects</h2>
-      <div className="flex max-w-3xl flex-col gap-4">
+      <div className="flex max-w-3xl flex-col gap-6">
         {PROJECTS.map((p) => {
           const tone = getStatusTone(p.status);
           const statusClasses = STATUS_TONE_CLASSES[tone];
@@ -68,7 +68,7 @@ export function Projects() {
                     />
                   </div>
 
-                  <p className="mt-3 max-w-2xl text-[16px] leading-7 text-muted-foreground md:text-[17px]">
+                  <p className="project-description mt-3 max-w-2xl text-[16px] leading-7 text-muted-foreground md:text-[17px]">
                     {p.description}
                   </p>
 
@@ -101,7 +101,7 @@ export function Projects() {
                     {p.category}
                   </div>
 
-                  <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
+                  <p className="project-description mt-3 max-w-2xl text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
                     {p.description}
                   </p>
 

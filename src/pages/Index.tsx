@@ -117,7 +117,7 @@ const Index = () => {
             onUnlockEasterEgg={handleUnlockEasterEgg}
           />
 
-          <main id="main-content" tabIndex={-1} className="min-w-0 focus:outline-none lg:py-6 xl:py-8">
+          <main id="main-content" tabIndex={-1} className="portfolio-main min-w-0 focus:outline-none">
             <About />
             <Experience />
             <Projects />

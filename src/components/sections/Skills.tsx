@@ -4,7 +4,7 @@ export function Skills() {
   return (
     <section id="skills" className="editorial-section editorial-section--compact scroll-mt-24">
       <h2 className="section-heading reveal mb-6">Core expertise</h2>
-      <div className="max-w-3xl space-y-6">
+      <div className="skills-groups max-w-3xl">
         {CORE_EXPERTISE.map((group) => (
           <div
             key={group.title}
@@ -13,7 +13,7 @@ export function Skills() {
             <h3 className="text-[17px] font-semibold leading-7 text-foreground">
               {group.title}
             </h3>
-            <p className="text-[16px] leading-7 text-muted-foreground">{group.description}</p>
+            <p className="skills-description text-[16px] leading-7 text-muted-foreground">{group.description}</p>
           </div>
         ))}
       </div>

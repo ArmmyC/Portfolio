@@ -788,6 +788,40 @@ describe("editorial portfolio shell", () => {
     expect(styles).toContain("--rail-nav-gap");
   });
 
+  it("centers the desktop sidebar using its measured height", () => {
+    render(<Index />);
+
+    const sidebar = screen.getByRole("complementary", { name: "Kamolpop portfolio sidebar" });
+    const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+
+    expect(sidebar).toHaveClass("portfolio-sidebar");
+    expect(styles).toContain("calc((100dvh - var(--rail-height, 100dvh)) / 2)");
+  });
+
+  it("matches the main content type scale to the short-viewport sidebar", () => {
+    render(<Index />);
+
+    const main = document.querySelector("main#main-content");
+    const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+
+    expect(main).toHaveClass("portfolio-main");
+    expect(styles).toContain("--content-body-size");
+    expect(styles).toContain("--content-lead-size");
+    expect(styles).not.toContain("--content-section-space");
+    expect(styles).not.toContain("--content-body-leading");
+    expect(styles).not.toContain("padding-block: var(--content-section-space)");
+    expect(styles).not.toContain("padding-block-start: 1.75rem");
+    expect(styles).not.toContain("padding-block: 1rem");
+  });
+
+  it("keeps main content padding desktop-only", () => {
+    const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+    const baseMainRule = styles.match(/\.portfolio-main \{[\s\S]*?\n\s*\}/)?.[0] ?? "";
+
+    expect(baseMainRule).toContain("padding-block: 0");
+    expect(styles).toContain("@media (min-width: 1024px)");
+  });
+
   it("updates the active sidebar item immediately when the URL hash changes", async () => {
     vi.stubGlobal(
       "IntersectionObserver",

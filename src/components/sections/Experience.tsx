@@ -11,7 +11,7 @@ export function Experience() {
 
       <ol
         aria-label="Career experience timeline"
-        className="relative space-y-7 border-l-2 border-dashed border-border pl-6 md:space-y-8"
+        className="experience-timeline relative border-l-2 border-dashed border-border pl-6"
       >
         {EXPERIENCES.map((experience) => {
           const tone = getStatusTone(experience.status);
@@ -87,7 +87,7 @@ export function Experience() {
                   {experience.title}
                 </h3>
 
-                <p className="mt-2 max-w-[65ch] text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
+                <p className="experience-summary mt-2 max-w-[65ch] text-[16px] leading-relaxed text-muted-foreground md:text-[17px]">
                   {experience.summary}
                 </p>
 

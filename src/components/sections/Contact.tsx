@@ -10,13 +10,13 @@ export function Contact() {
     <section id="contact" className="editorial-section editorial-section--close scroll-mt-24">
       <h2 className="section-heading reveal mb-6">Contact</h2>
       <div className="reveal max-w-3xl">
-        <p className="text-[16px] leading-7 text-muted-foreground md:text-[17px]">
+        <p className="contact-intro text-[16px] leading-7 text-muted-foreground md:text-[17px]">
           Have a project or opportunity in mind? Let's talk.
         </p>
 
           <a
             href={`mailto:${PROFILE.email}`}
-            className="mt-3 inline-flex min-h-11 max-w-full items-center break-all text-[22px] font-semibold leading-snug tracking-tight text-primary underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:text-[28px]"
+            className="contact-email mt-3 inline-flex min-h-11 max-w-full items-center break-all text-[22px] font-semibold leading-snug tracking-tight text-primary underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:text-[28px]"
           >
             {PROFILE.email}
           </a>

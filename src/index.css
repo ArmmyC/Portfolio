@@ -222,7 +222,7 @@
     --rail-section-gap: 2rem;
     --rail-nav-gap: 2rem;
     position: sticky;
-    top: var(--rail-offset);
+    top: max(var(--rail-offset), calc((100dvh - var(--rail-height, 100dvh)) / 2));
     gap: var(--rail-section-gap);
     padding-block: var(--rail-padding);
   }
@@ -255,6 +255,35 @@
     padding-top: 0.75rem;
   }
 
+  .portfolio-main {
+    padding-block: 0;
+  }
+
+  .about-copy,
+  .experience-timeline,
+  .skills-groups {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-copy {
+    gap: 1.75rem;
+  }
+
+  .experience-timeline {
+    gap: 2.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .experience-timeline {
+      gap: 3.5rem;
+    }
+  }
+
+  .skills-groups {
+    gap: 2rem;
+  }
+
   .portfolio-frame {
     width: 100%;
   }
@@ -264,26 +293,26 @@
   }
 
   .editorial-section {
-    --section-space: clamp(3rem, 4vw, 4rem);
+    --section-space: clamp(3.5rem, 5vw, 5rem);
     padding-block: var(--section-space);
   }
 
   .editorial-section--intro {
-    --section-space: clamp(2.5rem, 3.5vw, 3.5rem);
+    --section-space: clamp(3rem, 4.5vw, 4.5rem);
     padding-block-start: clamp(2rem, 3vw, 3rem);
   }
 
   .editorial-section--dense {
-    --section-space: clamp(2.5rem, 3.5vw, 3.5rem);
+    --section-space: clamp(3rem, 4.5vw, 4.5rem);
   }
 
   .editorial-section--work {
-    --section-space: clamp(3rem, 4vw, 4rem);
+    --section-space: clamp(3.5rem, 5vw, 5rem);
   }
 
   .editorial-section--compact,
   .editorial-section--close {
-    --section-space: clamp(2.5rem, 3.5vw, 3rem);
+    --section-space: clamp(3rem, 4.5vw, 4rem);
   }
 
   .section-heading--hero {
@@ -311,14 +340,38 @@
       grid-template-columns: 17rem minmax(0, 1fr);
       column-gap: 3.5rem;
     }
+
+    .portfolio-main {
+      padding-block: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .portfolio-main {
+      padding-block: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .portfolio-main {
+      padding-block-start: var(--intro-start, 6rem);
+    }
+
+    .portfolio-main .editorial-section--intro {
+      padding-block-start: 0;
+    }
+
+    .portfolio-main .section-heading--hero {
+      line-height: 1.25;
+    }
   }
 
   @media (min-width: 1024px) and (max-height: 800px) {
     .portfolio-sidebar {
       --rail-offset: 1rem;
       --rail-padding: 1rem;
-      --rail-section-gap: 1rem;
-      --rail-nav-gap: 1rem;
+      --rail-section-gap: 1.5rem;
+      --rail-nav-gap: 1.5rem;
     }
 
     .portfolio-sidebar-name {
@@ -352,6 +405,60 @@
     letter-spacing: -0.035em;
     text-wrap: balance;
   }
+
+  @media (min-width: 0px) {
+    .portfolio-main {
+      --content-body-size: 15px;
+      --content-lead-size: 17px;
+    }
+
+    .portfolio-main .section-heading {
+      font-size: clamp(24px, 1.8vw, 28px);
+      margin-bottom: 2rem;
+    }
+
+    .portfolio-main .about-copy {
+      font-size: var(--content-body-size);
+    }
+
+    .portfolio-main .about-lead {
+      font-size: var(--content-lead-size);
+    }
+
+    .portfolio-main .experience-title {
+      font-size: 21px;
+    }
+
+    .portfolio-main .experience-summary,
+    .portfolio-main .experience-evidence,
+    .portfolio-main .project-description,
+    .portfolio-main .skills-description,
+    .portfolio-main .contact-intro {
+      font-size: var(--content-body-size);
+    }
+
+    .portfolio-main .recognition-award-highlight {
+      font-size: 18px;
+    }
+
+    .portfolio-main .contact-email {
+      font-size: 23px;
+    }
+  }
+
+  .portfolio-sidebar .portfolio-sidebar-name { font-size: 26px; }
+  .portfolio-sidebar p { font-size: 14px; }
+  .portfolio-sidebar .portfolio-sidebar-nav-link { font-size: 13px; }
+  .portfolio-main .project-card h3 { font-size: 20px; }
+  .portfolio-main [data-project-layout="text"] h3 { font-size: 17px; }
+  .portfolio-main .stack-item { font-size: 13px; }
+  .portfolio-main .experience-period { font-size: 13px; }
+  .portfolio-main #recognition h3 { font-size: 17px; }
+  .portfolio-main #recognition h4 { font-size: 15px; }
+  .portfolio-main #skills h3 { font-size: 16px; }
+  .portfolio-main .project-card { padding: 1.5rem; }
+  .portfolio-main .recognition-awards { gap: 1.25rem; }
+
   .section-label {
     @apply font-mono text-[16px] font-semibold uppercase tracking-[0.05em] text-primary md:text-[17px];
   }
