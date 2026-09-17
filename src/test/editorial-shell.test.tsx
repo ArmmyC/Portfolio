@@ -760,4 +760,20 @@ describe("editorial portfolio shell", () => {
     expect(styles).not.toContain("--badge-dark");
     expect(styles).toContain("text-[13px]");
   });
+
+  it("uses a compact desktop composition without scaling mobile navigation", () => {
+    render(<Index />);
+
+    const frame = document.querySelector('[data-layout-frame="true"]');
+    expect(frame).toHaveClass("portfolio-frame");
+    expect(frame).toHaveAttribute("data-desktop-scale", "0.9");
+
+    const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+    const desktopScaleStyles = styles.match(
+      /@media \(min-width: 1024px\) \{[\s\S]*?\.portfolio-frame \{[\s\S]*?\n\s*\}/,
+    )?.[0] ?? "";
+
+    expect(desktopScaleStyles).toContain("zoom: 0.9");
+    expect(styles).toContain("@media (max-width: 1023px)");
+  });
 });

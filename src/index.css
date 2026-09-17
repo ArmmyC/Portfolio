@@ -215,6 +215,20 @@
   .tag {
     @apply editorial-tag;
   }
+
+  /* Keep the full desktop composition visible in shorter browser windows. */
+  @media (min-width: 1024px) {
+    .portfolio-frame {
+      zoom: 0.9;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .portfolio-frame {
+      zoom: 1;
+    }
+  }
+
   .link-cyan {
     @apply text-muted-foreground transition-colors hover:text-primary;
   }

@@ -104,7 +104,11 @@ const Index = () => {
 
       <MobileNav active={active} />
 
-      <div className="mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-10 xl:px-12 relative z-10">
+      <div
+        data-layout-frame="true"
+        data-desktop-scale="0.9"
+        className="portfolio-frame relative z-10 mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-10 xl:px-12"
+      >
         <div className="lg:grid lg:grid-cols-[18rem_minmax(0,1fr)] lg:gap-14 xl:grid-cols-[18rem_minmax(0,1fr)] xl:gap-20">
           <Sidebar
             active={active}
