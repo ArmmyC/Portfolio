@@ -106,10 +106,10 @@ const Index = () => {
 
       <div
         data-layout-frame="true"
-        data-desktop-scale="0.9"
-        className="portfolio-frame relative z-10 mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-10 xl:px-12"
+        data-layout-density="compact"
+        className="portfolio-frame relative z-10 mx-auto px-5 sm:px-8 lg:px-10 xl:px-12"
       >
-        <div className="lg:grid lg:grid-cols-[18rem_minmax(0,1fr)] lg:gap-14 xl:grid-cols-[18rem_minmax(0,1fr)] xl:gap-20">
+        <div className="portfolio-layout">
           <Sidebar
             active={active}
             easterEggUnlocked={catTrailUnlocked}
@@ -117,7 +117,7 @@ const Index = () => {
             onUnlockEasterEgg={handleUnlockEasterEgg}
           />
 
-          <main id="main-content" tabIndex={-1} className="min-w-0 focus:outline-none lg:py-8 xl:py-10">
+          <main id="main-content" tabIndex={-1} className="min-w-0 focus:outline-none lg:py-6 xl:py-8">
             <About />
             <Experience />
             <Projects />

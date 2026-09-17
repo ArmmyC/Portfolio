@@ -7,7 +7,7 @@ export function Contact() {
   const secondaryLink = "inline-flex min-h-11 items-center gap-2 text-[15px] text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary";
 
   return (
-    <section id="contact" className="editorial-section scroll-mt-24 py-16 lg:py-20">
+    <section id="contact" className="editorial-section editorial-section--close scroll-mt-24">
       <h2 className="section-heading reveal mb-6">Contact</h2>
       <div className="reveal max-w-3xl">
         <p className="text-[16px] leading-7 text-muted-foreground md:text-[17px]">

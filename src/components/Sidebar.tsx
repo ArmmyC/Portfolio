@@ -20,7 +20,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
   return (
     <aside
       aria-label="Kamolpop portfolio sidebar"
-      className="editorial-rail hidden lg:flex lg:w-[260px] xl:w-[292px] lg:shrink-0 lg:self-start lg:flex-col lg:gap-y-10 lg:sticky lg:top-6 lg:py-8 lg:pr-4 select-none"
+      className="portfolio-sidebar editorial-rail hidden lg:flex lg:w-full lg:shrink-0 lg:self-start lg:flex-col lg:pr-4 select-none"
     >
       <div>
         <div className="flex w-full items-center justify-between gap-4">
@@ -29,7 +29,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
           </a>
           <ThemeToggle />
         </div>
-        <h1 className="mt-6 text-[26px] font-bold tracking-tight text-foreground leading-tight whitespace-nowrap xl:text-[30px]">
+        <h1 className="portfolio-sidebar-name text-[26px] font-bold tracking-tight text-foreground leading-tight whitespace-nowrap xl:text-[30px]">
           {PROFILE.name}
         </h1>
         <p className="mt-1.5 text-[17px] text-muted-foreground">
@@ -39,8 +39,8 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
           {PROFILE.role}
         </p>
 
-        <nav className="mt-10" aria-label="Primary section navigation">
-          <ul className="space-y-1.5">
+        <nav className="portfolio-sidebar-nav" aria-label="Primary section navigation">
+          <ul className="portfolio-sidebar-nav-list">
             {NAV.map((item) => {
               const isActive = active === item.id;
               return (
@@ -49,7 +49,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
                     href={`#${item.id}`}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "editorial-nav-link group flex items-center gap-3 py-2 font-mono text-[14px] uppercase tracking-[0.05em] transition-colors md:text-[15px]",
+                      "portfolio-sidebar-nav-link editorial-nav-link group flex items-center gap-3 font-mono text-[14px] uppercase tracking-[0.05em] transition-colors md:text-[15px]",
                       isActive ? "text-primary" : "text-muted-foreground hover:text-foreground",
                     )}
                   >
@@ -68,7 +68,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
         </nav>
       </div>
 
-      <div className="space-y-3">
+      <div className="portfolio-sidebar-social-group">
         <MaewCore
           active={active}
           allowEasterEgg
@@ -76,7 +76,7 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
           achievementVisible={achievementVisible}
           onUnlock={onUnlockEasterEgg}
         />
-        <div className="flex items-center gap-1.5 pt-3 text-muted-foreground">
+        <div className="portfolio-sidebar-socials flex items-center gap-1.5 text-muted-foreground">
           <a
             href={PROFILE.github}
             target="_blank"

@@ -2,9 +2,9 @@ import { CORE_EXPERTISE } from "@/data/portfolio";
 
 export function Skills() {
   return (
-    <section id="skills" className="editorial-section scroll-mt-24 py-16 lg:py-20">
+    <section id="skills" className="editorial-section editorial-section--compact scroll-mt-24">
       <h2 className="section-heading reveal mb-6">Core expertise</h2>
-      <div className="max-w-3xl space-y-7">
+      <div className="max-w-3xl space-y-6">
         {CORE_EXPERTISE.map((group) => (
           <div
             key={group.title}

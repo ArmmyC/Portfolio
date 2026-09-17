@@ -216,16 +216,129 @@
     @apply editorial-tag;
   }
 
-  /* Keep the full desktop composition visible in shorter browser windows. */
+  .portfolio-sidebar {
+    --rail-offset: 1.5rem;
+    --rail-padding: 2rem;
+    --rail-section-gap: 2rem;
+    --rail-nav-gap: 2rem;
+    position: sticky;
+    top: var(--rail-offset);
+    gap: var(--rail-section-gap);
+    padding-block: var(--rail-padding);
+  }
+
+  .portfolio-sidebar-name {
+    margin-top: 1.5rem;
+  }
+
+  .portfolio-sidebar-nav {
+    margin-top: var(--rail-nav-gap);
+  }
+
+  .portfolio-sidebar-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .portfolio-sidebar-nav-link {
+    padding-block: 0.5rem;
+  }
+
+  .portfolio-sidebar-social-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .portfolio-sidebar-socials {
+    padding-top: 0.75rem;
+  }
+
+  .portfolio-frame {
+    width: 100%;
+  }
+
+  .portfolio-layout {
+    display: block;
+  }
+
+  .editorial-section {
+    --section-space: clamp(3rem, 4vw, 4rem);
+    padding-block: var(--section-space);
+  }
+
+  .editorial-section--intro {
+    --section-space: clamp(2.5rem, 3.5vw, 3.5rem);
+    padding-block-start: clamp(2rem, 3vw, 3rem);
+  }
+
+  .editorial-section--dense {
+    --section-space: clamp(2.5rem, 3.5vw, 3.5rem);
+  }
+
+  .editorial-section--work {
+    --section-space: clamp(3rem, 4vw, 4rem);
+  }
+
+  .editorial-section--compact,
+  .editorial-section--close {
+    --section-space: clamp(2.5rem, 3.5vw, 3rem);
+  }
+
+  .section-heading--hero {
+    font-size: clamp(2.25rem, 3vw, 2.75rem);
+  }
+
+  .about-lead {
+    max-width: 66ch;
+    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+    line-height: 1.65;
+    color: hsl(var(--foreground) / 0.86);
+  }
+
+  .recognition-awards > li:last-child {
+    grid-column: 1 / -1;
+  }
+
   @media (min-width: 1024px) {
     .portfolio-frame {
-      zoom: 0.9;
+      max-width: 1188px;
+    }
+
+    .portfolio-layout {
+      display: grid;
+      grid-template-columns: 17rem minmax(0, 1fr);
+      column-gap: 3.5rem;
     }
   }
 
-  @media (max-width: 1023px) {
-    .portfolio-frame {
-      zoom: 1;
+  @media (min-width: 1024px) and (max-height: 800px) {
+    .portfolio-sidebar {
+      --rail-offset: 1rem;
+      --rail-padding: 1rem;
+      --rail-section-gap: 1rem;
+      --rail-nav-gap: 1rem;
+    }
+
+    .portfolio-sidebar-name {
+      margin-top: 1rem;
+    }
+
+    .portfolio-sidebar-nav-list {
+      gap: 0.25rem;
+    }
+
+    .portfolio-sidebar-nav-link {
+      padding-block: 0.375rem;
+    }
+
+    .portfolio-sidebar-social-group {
+      gap: 0.5rem;
+    }
+
+    .portfolio-sidebar-socials {
+      padding-top: 0.5rem;
     }
   }
 

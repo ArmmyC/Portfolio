@@ -9,9 +9,9 @@ const PROJECT_PREVIEW_HEIGHT = 900;
 
 export function Projects() {
   return (
-    <section id="projects" className="editorial-section scroll-mt-24 py-16 lg:py-20">
+    <section id="projects" className="editorial-section editorial-section--work scroll-mt-24">
       <h2 className="section-heading reveal mb-6">Projects</h2>
-      <div className="flex max-w-3xl flex-col gap-5">
+      <div className="flex max-w-3xl flex-col gap-4">
         {PROJECTS.map((p) => {
           const tone = getStatusTone(p.status);
           const statusClasses = STATUS_TONE_CLASSES[tone];

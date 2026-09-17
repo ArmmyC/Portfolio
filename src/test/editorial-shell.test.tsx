@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { ThemeProvider } from "next-themes";
 import { vi } from "vitest";
 import { readFileSync } from "node:fs";
@@ -85,8 +85,8 @@ describe("editorial portfolio shell", () => {
 
     const github = screen.getByRole("link", { name: "GitHub" });
 
-    expect(github.parentElement).toHaveClass("pt-3");
-    expect(github.parentElement?.parentElement).toHaveClass("space-y-3");
+    expect(github.parentElement).toHaveClass("portfolio-sidebar-socials");
+    expect(github.parentElement?.parentElement).toHaveClass("portfolio-sidebar-social-group");
   });
 
   it("keeps the sidebar social links free of a divider", () => {
@@ -761,19 +761,58 @@ describe("editorial portfolio shell", () => {
     expect(styles).toContain("text-[13px]");
   });
 
-  it("uses a compact desktop composition without scaling mobile navigation", () => {
+  it("uses layout-level desktop density without scaling mobile navigation", () => {
     render(<Index />);
 
     const frame = document.querySelector('[data-layout-frame="true"]');
     expect(frame).toHaveClass("portfolio-frame");
-    expect(frame).toHaveAttribute("data-desktop-scale", "0.9");
+    expect(frame).toHaveAttribute("data-layout-density", "compact");
+    expect(frame).not.toHaveAttribute("data-desktop-scale");
+    expect(frame?.firstElementChild).toHaveClass("portfolio-layout");
 
     const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
-    const desktopScaleStyles = styles.match(
-      /@media \(min-width: 1024px\) \{[\s\S]*?\.portfolio-frame \{[\s\S]*?\n\s*\}/,
-    )?.[0] ?? "";
+    expect(styles).toContain("max-width: 1188px");
+    expect(styles).not.toContain("zoom: 0.9");
+    expect(styles).toContain("--section-space");
+  });
 
-    expect(desktopScaleStyles).toContain("zoom: 0.9");
-    expect(styles).toContain("@media (max-width: 1023px)");
+  it("keeps the desktop sidebar within a short viewport", () => {
+    render(<Index />);
+
+    const sidebar = screen.getByRole("complementary", { name: "Kamolpop portfolio sidebar" });
+    const styles = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
+
+    expect(sidebar).toHaveClass("portfolio-sidebar");
+    expect(styles).toContain("@media (min-width: 1024px) and (max-height: 800px)");
+    expect(styles).toContain("--rail-section-gap");
+    expect(styles).toContain("--rail-nav-gap");
+  });
+
+  it("updates the active sidebar item immediately when the URL hash changes", async () => {
+    vi.stubGlobal(
+      "IntersectionObserver",
+      class {
+        observe() {}
+        disconnect() {}
+      },
+    );
+
+    render(<Index />);
+
+    const navigation = screen.getByRole("navigation", { name: "Primary section navigation" });
+    const originalPath = window.location.pathname + window.location.search + window.location.hash;
+
+    try {
+      act(() => {
+        window.history.replaceState({}, "", "/#projects");
+        window.dispatchEvent(new Event("hashchange"));
+      });
+
+      await waitFor(() => {
+        expect(within(navigation).getByRole("link", { name: /projects/i })).toHaveAttribute("aria-current", "page");
+      });
+    } finally {
+      window.history.replaceState({}, "", originalPath);
+    }
   });
 });

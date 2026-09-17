@@ -2,11 +2,11 @@ import { PROFILE } from "@/data/portfolio";
 
 export function About() {
   return (
-    <section id="about" className="editorial-section scroll-mt-24 py-16 lg:py-20">
-      <h2 className="section-heading reveal mb-6">About</h2>
+    <section id="about" className="editorial-section editorial-section--intro scroll-mt-24">
+      <h2 className="section-heading section-heading--hero reveal mb-5">About</h2>
 
       <div className="reveal max-w-[72ch] space-y-5 text-[17px] leading-relaxed text-muted-foreground md:text-[19px]">
-        <p>
+        <p className="about-lead">
           I'm <span className="text-foreground font-medium">Arm</span>{" "}
           <span className="text-foreground/80">({PROFILE.thaiName})</span>, a Computer Engineering student at{" "}
           <span className="text-foreground font-medium">King Mongkut's University of Technology Thonburi (KMUTT)</span>.

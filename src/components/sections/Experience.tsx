@@ -6,12 +6,12 @@ import { cn } from "@/lib/utils";
 
 export function Experience() {
   return (
-    <section id="experience" className="editorial-section scroll-mt-24 py-16 lg:py-20">
+    <section id="experience" className="editorial-section editorial-section--dense scroll-mt-24">
       <h2 className="section-heading reveal mb-6">Experience</h2>
 
       <ol
         aria-label="Career experience timeline"
-        className="relative space-y-8 border-l-2 border-dashed border-border pl-6 md:space-y-10"
+        className="relative space-y-7 border-l-2 border-dashed border-border pl-6 md:space-y-8"
       >
         {EXPERIENCES.map((experience) => {
           const tone = getStatusTone(experience.status);
@@ -110,7 +110,7 @@ export function Experience() {
                       key={responsibility}
                       className={cn("flex gap-3", index === 0 && "experience-evidence--primary")}
                     >
-                      <span aria-hidden="true" className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
+                      <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
                       <span>{responsibility}</span>
                     </li>
                   ))}

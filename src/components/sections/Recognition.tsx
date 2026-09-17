@@ -5,11 +5,11 @@ export function Recognition() {
   const awards = RECOGNITION.filter((item) => item.category === "Award");
   const credentials = RECOGNITION.filter((item) => item.category !== "Award");
   return (
-    <section id="recognition" className="editorial-section scroll-mt-24 py-16 lg:py-20">
+    <section id="recognition" className="editorial-section editorial-section--dense scroll-mt-24">
       <h2 className="section-heading reveal mb-6">Recognition</h2>
       <div className="max-w-3xl">
         <h3 className="reveal mb-4 text-[18px] font-semibold">Awards</h3>
-        <ul aria-label="Awards" className="grid gap-3 sm:grid-cols-2">
+        <ul aria-label="Awards" className="recognition-awards grid gap-3 sm:grid-cols-2">
           {awards.map((award) => (
             <li key={award.title} className="recognition-award-card reveal min-w-0 border p-5">
               <div className="mb-4 flex flex-wrap items-start justify-between gap-3 text-[13px] text-muted-foreground">
