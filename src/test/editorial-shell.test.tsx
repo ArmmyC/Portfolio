@@ -3,6 +3,7 @@ import { ThemeProvider } from "next-themes";
 import { vi } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import postcss from "postcss";
 import { Sidebar } from "@/components/Sidebar";
 import { MobileNav } from "@/components/MobileNav";
 import { MaewCore } from "@/components/MaewCore";
@@ -19,6 +20,21 @@ import Index from "@/pages/Index";
 import { STATUS_TONE_CLASSES } from "@/lib/status";
 
 describe("editorial portfolio shell", () => {
+  it("does not animate theme changes on every element", () => {
+    const stylesheet = postcss.parse(readFileSync(resolve(process.cwd(), "src/index.css"), "utf8"));
+    const globalTransitionDeclarations: string[] = [];
+
+    stylesheet.walkRules((rule) => {
+      if (rule.selectors?.some((selector) => selector.trim() === "*")) {
+        rule.walkDecls(/^(transition|transition-property)$/, (declaration) => {
+          globalTransitionDeclarations.push(declaration.prop);
+        });
+      }
+    });
+
+    expect(globalTransitionDeclarations).toEqual([]);
+  });
+
   it("keeps status tones mapped to concrete utility classes", () => {
     expect(STATUS_TONE_CLASSES).toEqual({
       live: { pill: "status-pill--live", marker: "status-marker--live", dot: "status-dot--live" },
@@ -159,7 +175,8 @@ describe("editorial portfolio shell", () => {
     const toggle = await screen.findByRole("button", { name: "Switch to light mode" });
     const knob = toggle.firstElementChild;
 
-    expect(knob).toHaveClass("left-1", "translate-x-[38px]", "transition-transform");
+    expect(knob).toHaveClass("left-1", "translate-x-[38px]", "transition-[transform,background-color,color]");
+    expect(knob).toHaveClass("duration-300");
     expect(knob).not.toHaveClass("right-1", "translate-x-[36px]");
   });
 

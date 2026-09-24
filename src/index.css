@@ -112,9 +112,6 @@
 @layer base {
   * {
     @apply border-border;
-    transition-property: background-color, border-color, color, opacity;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
   }
 
   html {
@@ -137,6 +134,7 @@
     background-color: hsl(var(--background));
     background-image: none;
     background-attachment: fixed;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   .dark body {
@@ -181,6 +179,16 @@
 
   .editorial-card {
     @apply rounded-2xl border border-border/80 bg-card/90;
+  }
+
+  .editorial-card,
+  .project-card,
+  .recognition-award-card,
+  .stack-item,
+  .experience-logo-frame,
+  .status-pill,
+  .focus-badge {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
   }
 
   .project-card {
