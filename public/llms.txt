@@ -1,0 +1,18 @@
+# Kamolpop Vitayarat (Arm)
+
+> Kamolpop Vitayarat is a computer engineering student at KMUTT in Bangkok, building across AI infrastructure, DevOps systems, embedded software, and edge AI.
+
+## Portfolio
+
+- [About](https://kamolpop.dev/#about): Background and engineering interests.
+- [Experience](https://kamolpop.dev/#experience): Professional and program experience.
+- [Projects](https://kamolpop.dev/#projects): Project descriptions and implementation details.
+- [Recognition](https://kamolpop.dev/#recognition): Awards and recognition.
+- [Core expertise](https://kamolpop.dev/#skills): Technical skills and focus areas.
+- [Contact](https://kamolpop.dev/#contact): Contact information.
+
+## Profiles
+
+- [GitHub](https://github.com/ArmmyC)
+- [LinkedIn](https://www.linkedin.com/in/kamolpopvitayarat/)
+- [Project hub](https://hub.kamolpop.dev)

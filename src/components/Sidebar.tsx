@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { Github, Linkedin, Mail, LayoutGrid } from "lucide-react";
 import { NAV, PROFILE } from "@/data/portfolio";
 import { MaewCore } from "./MaewCore";
@@ -13,10 +13,12 @@ interface Props {
   onUnlockEasterEgg: () => void;
 }
 
+const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
+
 export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnlockEasterEgg }: Props) {
   const sidebarRef = useRef<HTMLElement>(null);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const sidebar = sidebarRef.current;
     if (!sidebar || typeof ResizeObserver === "undefined") return;
     const measure = () => {
@@ -54,9 +56,9 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
           </a>
           <ThemeToggle />
         </div>
-        <h1 className="portfolio-sidebar-name text-[26px] font-bold tracking-tight text-foreground leading-tight whitespace-nowrap xl:text-[30px]">
+        <p className="portfolio-sidebar-name text-[26px] font-bold tracking-tight text-foreground leading-tight whitespace-nowrap xl:text-[30px]">
           {PROFILE.name}
-        </h1>
+        </p>
         <p className="mt-1.5 text-[17px] text-muted-foreground">
           aka <span className="text-foreground">"{PROFILE.nickname}"</span>
         </p>

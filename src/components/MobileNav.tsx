@@ -32,9 +32,9 @@ export function MobileNav({ active }: Props) {
         <a href="#about" className="flex min-h-11 min-w-0 items-center gap-3 leading-tight">
           <BrandMark alt="" aria-hidden="true" className="brand-mark brand-mark--compact" />
           <span className="min-w-0">
-            <h1 className="truncate text-[17px] font-semibold text-foreground">
+            <span className="block truncate text-[17px] font-semibold text-foreground">
               {PROFILE.name}
-            </h1>
+            </span>
             <span className="block whitespace-nowrap text-[12px] text-muted-foreground">{PROFILE.shortRole}</span>
           </span>
         </a>
