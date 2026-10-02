@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
-import { Github, Linkedin, Mail, FileText, LayoutGrid } from "lucide-react";
+import { Github, Linkedin, Mail, LayoutGrid } from "lucide-react";
 import { NAV, PROFILE } from "@/data/portfolio";
 import { MaewCore } from "./MaewCore";
 import { ThemeToggle } from "./ThemeToggle";
@@ -40,7 +40,6 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
 
   const hasLinkedIn = PROFILE.linkedin.trim().length > 0;
   const hasHub = PROFILE.hub.trim().length > 0;
-  const hasResume = PROFILE.resume.trim().length > 0;
 
   return (
     <aside
@@ -143,16 +142,6 @@ export function Sidebar({ active, easterEggUnlocked, achievementVisible, onUnloc
               className="link-cyan inline-flex h-11 w-11 items-center justify-center rounded-full"
             >
               <LayoutGrid className="h-[22px] w-[22px] transition-transform hover:scale-105" />
-            </a>
-          )}
-          {hasResume && (
-            <a
-              href={PROFILE.resume}
-              aria-label="Resume"
-              title="Resume"
-              className="link-cyan inline-flex h-11 w-11 items-center justify-center rounded-full"
-            >
-              <FileText className="h-[22px] w-[22px] transition-transform hover:scale-105" />
             </a>
           )}
         </div>

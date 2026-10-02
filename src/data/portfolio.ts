@@ -25,7 +25,6 @@ export const PROFILE = {
   github: "https://github.com/ArmmyC",
   linkedin: "https://www.linkedin.com/in/kamolpopvitayarat/",
   hub: "https://hub.kamolpop.dev",
-  resume: "",
 };
 
 export type Experience = {
