@@ -426,7 +426,7 @@ describe("editorial portfolio shell", () => {
   it("loads project previews lazily with reserved dimensions", () => {
     render(<Projects />);
 
-    for (const name of ["Rally project preview", "Freedomain / WebPad project preview"]) {
+    for (const name of ["KwaHub project preview", "Freedomain / WebPad project preview"]) {
       const preview = screen.getByRole("img", { name });
 
       expect(preview).toHaveAttribute("loading", "lazy");
@@ -439,7 +439,7 @@ describe("editorial portfolio shell", () => {
   it("uses wide media cards for visual projects and compact cards for text-only projects", () => {
     render(<Projects />);
 
-    const rally = screen.getByRole("link", { name: /Rally/i });
+    const rally = screen.getByRole("link", { name: /KwaHub/i });
     const webpad = screen.getByRole("link", { name: /Freedomain \/ WebPad/i });
     const lanta = screen.getByRole("link", { name: /Lanta LLM Hosting/i });
 
@@ -456,7 +456,7 @@ describe("editorial portfolio shell", () => {
   it("labels external work links before opening a new tab", () => {
     render(<Projects />);
 
-    expect(screen.getByRole("link", { name: /Rally/i })).toHaveAttribute("title", "Open Rally in a new tab");
+    expect(screen.getByRole("link", { name: /KwaHub/i })).toHaveAttribute("title", "Open KwaHub in a new tab");
 
     const { unmount } = render(<Experience />);
     expect(screen.getByRole("link", { name: /Blendata/i })).toHaveAttribute(
@@ -470,7 +470,7 @@ describe("editorial portfolio shell", () => {
   it("gives visual project cards a framed preview and clearer metadata", () => {
     render(<Projects />);
 
-    const rally = screen.getByRole("link", { name: /Rally/i });
+    const rally = screen.getByRole("link", { name: /KwaHub/i });
     const preview = rally.querySelector('[data-project-preview="true"]');
     const content = rally.querySelector('[data-project-content="true"]');
     const status = within(rally).getByText("Live", { exact: true });
@@ -487,7 +487,7 @@ describe("editorial portfolio shell", () => {
   it("keeps visual project previews aligned with the desktop card padding", () => {
     render(<Projects />);
 
-    const rally = screen.getByRole("link", { name: /Rally/i });
+    const rally = screen.getByRole("link", { name: /KwaHub/i });
     const preview = rally.querySelector('[data-project-preview="true"]');
 
     expect(rally).toHaveClass("p-4", "sm:p-5");
@@ -500,7 +500,7 @@ describe("editorial portfolio shell", () => {
 
     expect(screen.getByRole("heading", { name: "Projects", exact: true })).toHaveClass("section-heading");
 
-    const rally = screen.getByRole("link", { name: /Rally/i });
+    const rally = screen.getByRole("link", { name: /KwaHub/i });
     expect(rally.querySelectorAll('[data-project-tech="true"]')).toHaveLength(5);
     expect(rally.querySelectorAll(".editorial-tag")).toHaveLength(0);
     expect(within(rally).getByText("Opportunity Directory", { exact: true })).toHaveClass("project-category");
@@ -509,7 +509,7 @@ describe("editorial portfolio shell", () => {
   it("labels project technology metadata as a visible stack", () => {
     render(<Projects />);
 
-    const rally = screen.getByRole("link", { name: /Rally/i });
+    const rally = screen.getByRole("link", { name: /KwaHub/i });
     const stack = rally.querySelector('[data-project-stack="true"]');
 
     expect(stack).toHaveClass("stack-band");
@@ -726,10 +726,10 @@ describe("editorial portfolio shell", () => {
     }
   });
 
-  it("uses the live status treatment for Rally and WebPad", () => {
+  it("uses the live status treatment for KwaHub and WebPad", () => {
     render(<Projects />);
 
-    const rally = screen.getByRole("link", { name: /Rally/i });
+    const rally = screen.getByRole("link", { name: /KwaHub/i });
     const webpad = screen.getByRole("link", { name: /Freedomain \/ WebPad/i });
 
     expect(within(rally).getByText("Live")).toHaveClass("status-pill--live");

@@ -1,4 +1,4 @@
-import rallyScreenshot from "@/assets/projects/rally-home-clean.png";
+import kwahubScreenshot from "@/assets/projects/kwahub-home.png";
 import freedomainScreenshot from "@/assets/projects/webpad-home.png";
 
 export type NavItem = { id: string; label: string };
@@ -132,14 +132,14 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    title: "Rally",
+    title: "KwaHub",
     category: "Opportunity Directory",
     status: "Live",
     description:
       "A bilingual directory for discovering verified internships, hackathons, competitions, scholarships, and student programmes in Thailand.",
     tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Node.js"],
-    link: "https://rally.kamolpop.dev/",
-    image: rallyScreenshot,
+    link: "https://kwahub.kamolpop.dev/",
+    image: kwahubScreenshot,
   },
   {
     title: "Freedomain / WebPad",

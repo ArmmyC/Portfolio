@@ -19,6 +19,20 @@ function insertRenderedRoot(template, markup, route) {
   );
 }
 
+function rewriteBuiltAssetUrls(markup, manifest, base) {
+  const basePath = base.endsWith("/") ? base : `${base}/`;
+
+  return markup.replace(/\/src\/assets\/([^"'<>\s)]+)/g, (sourceUrl, assetPath) => {
+    const manifestEntry = manifest[`src/assets/${assetPath}`];
+
+    if (!manifestEntry?.file) {
+      throw new Error(`Could not find a production build asset for ${sourceUrl}.`);
+    }
+
+    return `${basePath}${manifestEntry.file}`;
+  });
+}
+
 function createNotFoundDocument(template) {
   return template
     .replace(/<title>[\s\S]*?<\/title>/, "<title>Page not found | Kamolpop Vitayarat</title>")
@@ -48,10 +62,17 @@ try {
 
   const { renderRoute } = await vite.ssrLoadModule("/src/entry-server.tsx");
   const template = await readFile(htmlPath, "utf8");
-  const homeHtml = insertRenderedRoot(template, renderRoute("/"), "home");
+  const manifestPath = resolve(projectRoot, "dist/.vite/manifest.json");
+  const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+  const base = vite.config.base;
+  const homeHtml = insertRenderedRoot(
+    template,
+    rewriteBuiltAssetUrls(renderRoute("/"), manifest, base),
+    "home",
+  );
   const notFoundHtml = insertRenderedRoot(
     createNotFoundDocument(template),
-    renderRoute("/__not-found__"),
+    rewriteBuiltAssetUrls(renderRoute("/__not-found__"), manifest, base),
     "not-found",
   );
 
