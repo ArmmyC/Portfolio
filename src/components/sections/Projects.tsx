@@ -42,7 +42,7 @@ export function Projects() {
                     loading="lazy"
                     decoding="async"
                     sizes="(min-width: 1024px) 60vw, 100vw"
-                    className="h-full w-full object-contain"
+                    className="h-full w-full object-cover"
                   />
                 </div>
               )}

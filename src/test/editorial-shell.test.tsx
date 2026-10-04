@@ -478,7 +478,7 @@ describe("editorial portfolio shell", () => {
     expect(rally).toHaveClass("overflow-hidden", "project-card");
     expect(rally).toHaveClass("block");
     expect(preview).toHaveClass("aspect-[16/9]", "border-border/60", "bg-secondary/80", "flex", "items-center", "justify-center");
-    expect(preview?.querySelector("img")).toHaveClass("object-contain");
+    expect(preview?.querySelector("img")).toHaveClass("object-cover");
     expect(content).toHaveClass("min-w-0");
     expect(status).toHaveClass("status-pill--live", "gap-1.5");
     expect(status.querySelector('[data-status-dot="true"]')).toHaveClass("h-1.5", "w-1.5", "rounded-full");
