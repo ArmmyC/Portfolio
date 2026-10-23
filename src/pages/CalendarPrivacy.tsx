@@ -19,7 +19,11 @@ const CalendarPrivacy = () => (
           requests{" "}
           <code className="break-words rounded bg-muted px-1 py-0.5 font-mono text-xs">https://www.googleapis.com/auth/calendar.events</code>{" "}
           and <code className="break-words rounded bg-muted px-1 py-0.5 font-mono text-xs">https://www.googleapis.com/auth/gmail.readonly</code>.
-          It asks Google to include previously granted scopes, so the current account grant may
+          Google defines <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">calendar.events</code> as permission to view and edit events on all calendars
+          the user can access, though this bridge currently uses only the primary calendar.
+          <code className="ml-1 rounded bg-muted px-1 py-0.5 font-mono text-xs">gmail.readonly</code>
+          permits reading Gmail messages and settings, not sending. The helper asks Google to
+          include previously granted scopes, so the current account grant may
           include scopes beyond this helper's requested list. Server-side history confirms that
           the separate Workspace setup flow was used and saved a token. A later check reported
           partial authentication and a Calendar API failure. The token's exact granted scopes, and
@@ -35,10 +39,13 @@ const CalendarPrivacy = () => (
         <div className="mt-5 rounded-xl bg-muted p-4 text-sm leading-6">
           <p className="font-medium">A Workspace skill is installed in the research profile.</p>
           <p className="mt-2 text-muted-foreground">
-            When invoked, it can use installed tools to search and read Gmail, return message
-            headers, snippets, and labels, retrieve message bodies, and send or reply to messages.
-            The Calendar bridge itself does not call Gmail. A separate Gmail digest uses IMAP with
-            a different app-password file; that is separate from the Gmail OAuth scope.
+            The Calendar helper requests <code className="rounded bg-background px-1 py-0.5 font-mono text-xs">gmail.readonly</code>,
+            which permits reading Gmail messages and settings but not sending. If the actual grant
+            includes the separate Workspace <code className="rounded bg-background px-1 py-0.5 font-mono text-xs">gmail.send</code> or <code className="rounded bg-background px-1 py-0.5 font-mono text-xs">gmail.modify</code> scope,
+            tools from the installed skill can send or reply to messages. The saved grant is
+            unverified. The Calendar bridge itself does not call Gmail. A separate Gmail digest
+            uses IMAP with a different app-password file; that is separate from the Gmail OAuth
+            scope.
           </p>
         </div>
         <div className="mt-5 border-t border-border/80 pt-5">

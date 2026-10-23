@@ -4,7 +4,7 @@
 
 **Goal:** Add public /calendar, /calendar/privacy, and /calendar/terms pages to the existing kamolpop.dev Portfolio site.
 
-**Architecture:** Add React Router pages using existing editorial tokens and emit static HTML for each route through the existing Vite prerender script. Publish through the existing Appwrite Site only after the unresolved privacy, branding, and Terms facts are confirmed.
+**Architecture:** Add React Router pages using existing editorial tokens and emit static HTML for each route through the existing Vite prerender script. Publish through the existing Appwrite Site after the owner reviews the final scope disclosures, privacy policy, and Terms; operational facts that remain unknown stay labeled as unknown.
 
 **Tech Stack:** React 18, TypeScript, React Router 6, Vite, Tailwind CSS, Appwrite Sites.
 
@@ -49,6 +49,6 @@ The route test was first run against the original state and failed because the r
 
 ### Task 4: Publish through the existing Appwrite Site
 
-- [ ] Confirm all publication facts in the spec are resolved with the site owner.
+- [ ] Review the public scope, privacy, and Terms copy with the site owner, preserving explicit unknowns.
 - [ ] Publish a deployment of the existing Portfolio site without changing its domain or OAuth configuration.
 - [ ] Verify the homepage, privacy policy, and Terms URL over HTTPS without login.

@@ -44,7 +44,9 @@ const CalendarHome = () => (
               https://www.googleapis.com/auth/calendar.events
             </code>
             <span className="mt-2 block text-muted-foreground">
-              Lets the Calendar bridge read and create events on the primary calendar.
+              Google defines this scope as permission to view and edit events on all calendars
+              you can access. The Calendar bridge currently lists and creates events only on the
+              primary calendar.
             </span>
           </li>
           <li>
@@ -52,10 +54,11 @@ const CalendarHome = () => (
               https://www.googleapis.com/auth/gmail.readonly
             </code>
             <span className="mt-2 block text-muted-foreground">
-              The Workspace skill installed in the research profile can invoke tools to search
-              Gmail and read message headers, snippets, labels, and full message bodies. It can
-              also send or reply to Gmail messages. The Calendar bridge itself does not call Gmail.
-              The separate Gmail digest uses IMAP and a different app-password file.
+              This scope permits reading Gmail messages and settings; it does not permit sending.
+              If the actual grant includes the separate Workspace scopes gmail.send or
+              gmail.modify, tools from the installed Workspace skill can send or reply to messages.
+              The saved grant is unverified. The Calendar bridge itself does not call Gmail. The
+              separate Gmail digest uses IMAP and a different app-password file.
             </span>
           </li>
         </ul>
@@ -76,9 +79,9 @@ const CalendarHome = () => (
       <p className="mt-4 text-sm leading-6 text-muted-foreground">
         A Workspace setup utility is installed in the same Hermes profile and can request Gmail
         read, send, and modify; full Calendar; Drive; Contacts read-only; Sheets; and Docs access.
-        It shares the Calendar helper's local token and OAuth client-file paths. The inspected live
-        The Calendar integration is enabled in Hermes. Its research profile also has the Workspace
-        skill installed and can invoke the broader tools. The setup flow has been used and saved a token,
+        It shares the Calendar helper's local token and OAuth client-file paths. The Calendar
+        integration is enabled in Hermes. Its research profile also has the Workspace skill
+        installed and can invoke the broader tools. The setup flow has been used and saved a token,
         but its granted scopes and OAuth client identity have not been confirmed. Since the
         Calendar helper includes previously granted scopes, the current grant may be broader than
         the two scopes listed above.
