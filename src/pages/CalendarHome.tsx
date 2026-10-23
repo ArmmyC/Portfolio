@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { CalendarPageShell } from "./CalendarPageShell";
+import { useCalendarRoutes } from "./useCalendarRoutes";
 
-const CalendarHome = () => (
+const CalendarHome = () => {
+  const routes = useCalendarRoutes();
+
+  return (
   <CalendarPageShell
     activePage="overview"
     eyebrow="Google OAuth application"
@@ -110,7 +114,7 @@ const CalendarHome = () => (
             not been verified. See the{" "}
             <Link
               className="font-medium text-primary underline underline-offset-4"
-              to="/calendar/privacy"
+              to={routes.privacy}
             >
               privacy policy
             </Link>
@@ -127,14 +131,15 @@ const CalendarHome = () => (
     </p>
 
     <nav aria-label="Policies" className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm">
-      <Link className="font-medium text-primary underline underline-offset-4" to="/calendar/privacy">
+      <Link className="font-medium text-primary underline underline-offset-4" to={routes.privacy}>
         Privacy policy
       </Link>
-      <Link className="font-medium text-primary underline underline-offset-4" to="/calendar/terms">
+      <Link className="font-medium text-primary underline underline-offset-4" to={routes.terms}>
         Terms of Service
       </Link>
     </nav>
   </CalendarPageShell>
-);
+  );
+};
 
 export default CalendarHome;

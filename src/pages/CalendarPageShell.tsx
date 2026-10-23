@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { useCalendarRoutes } from "./useCalendarRoutes";
 
 type CalendarPageShellProps = {
   activePage: "overview" | "privacy" | "terms";
@@ -16,6 +17,8 @@ export function CalendarPageShell({
   description,
   children,
 }: CalendarPageShellProps) {
+  const routes = useCalendarRoutes();
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <a
@@ -26,27 +29,27 @@ export function CalendarPageShell({
       </a>
       <div className="border-b border-border/80">
         <header className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8">
-          <Link to="/" className="text-sm font-semibold tracking-tight text-foreground">
+          <Link to={routes.overview} className="text-sm font-semibold tracking-tight text-foreground">
             Kamolpop Vitayarat
             <span className="ml-2 font-normal text-muted-foreground">Personal site</span>
           </Link>
           <nav aria-label="Calendar pages" className="flex items-center gap-5 text-sm">
             <Link
-              to="/calendar"
+              to={routes.overview}
               aria-current={activePage === "overview" ? "page" : undefined}
               className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline aria-[current=page]:font-semibold aria-[current=page]:text-foreground"
             >
               Overview
             </Link>
             <Link
-              to="/calendar/privacy"
+              to={routes.privacy}
               aria-current={activePage === "privacy" ? "page" : undefined}
               className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline aria-[current=page]:font-semibold aria-[current=page]:text-foreground"
             >
               Privacy policy
             </Link>
             <Link
-              to="/calendar/terms"
+              to={routes.terms}
               aria-current={activePage === "terms" ? "page" : undefined}
               className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline aria-[current=page]:font-semibold aria-[current=page]:text-foreground"
             >
@@ -68,12 +71,12 @@ export function CalendarPageShell({
         <footer className="mt-16 flex flex-col gap-3 border-t border-border/80 pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <span>Kamolpop Vitayarat</span>
           <div className="flex gap-5">
-            <Link className="underline underline-offset-4 hover:text-foreground" to="/calendar">
+            <Link className="underline underline-offset-4 hover:text-foreground" to={routes.overview}>
               Calendar overview
             </Link>
             <Link
               className="underline underline-offset-4 hover:text-foreground"
-              to="/calendar/privacy"
+              to={routes.privacy}
             >
               Privacy policy
             </Link>

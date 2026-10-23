@@ -9,31 +9,31 @@ const notFoundPath = resolve(projectRoot, "dist/404.html");
 const rootPlaceholder = '<div id="root"></div>';
 const calendarPages = [
   {
-    path: "/calendar",
-    route: "calendar-home",
-    output: resolve(projectRoot, "dist/calendar/index.html"),
+    path: "/",
+    route: "home",
+    output: htmlPath,
     title: "Armmy Hermes Gmail Summary | Google Calendar",
     description:
       "A personal Hermes assistant integration for listing upcoming Google Calendar events and creating timed events when asked.",
-    canonical: "https://kamolpop.dev/calendar",
+    canonical: "https://calendar.kamolpop.dev/",
   },
   {
-    path: "/calendar/privacy",
+    path: "/privacy",
     route: "calendar-privacy",
-    output: resolve(projectRoot, "dist/calendar/privacy/index.html"),
+    output: resolve(projectRoot, "dist/privacy/index.html"),
     title: "Privacy policy | Armmy Hermes Gmail Summary",
     description:
       "Privacy disclosures for Armmy Hermes Gmail Summary, a Google OAuth app used by a personal Hermes integration.",
-    canonical: "https://kamolpop.dev/calendar/privacy",
+    canonical: "https://calendar.kamolpop.dev/privacy",
   },
   {
-    path: "/calendar/terms",
+    path: "/terms",
     route: "calendar-terms",
-    output: resolve(projectRoot, "dist/calendar/terms/index.html"),
+    output: resolve(projectRoot, "dist/terms/index.html"),
     title: "Terms of Service | Armmy Hermes Gmail Summary",
     description:
       "Terms for the personal Google Calendar integration, including account permissions and service functionality.",
-    canonical: "https://kamolpop.dev/calendar/terms",
+    canonical: "https://calendar.kamolpop.dev/terms",
   },
 ];
 
@@ -140,11 +140,6 @@ try {
   const manifestPath = resolve(projectRoot, "dist/.vite/manifest.json");
   const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
   const base = vite.config.base;
-  const homeHtml = insertRenderedRoot(
-    template,
-    rewriteBuiltAssetUrls(renderRoute("/"), manifest, base),
-    "home",
-  );
   const notFoundHtml = insertRenderedRoot(
     createNotFoundDocument(template),
     rewriteBuiltAssetUrls(renderRoute("/__not-found__"), manifest, base),
@@ -161,7 +156,6 @@ try {
   }));
 
   await Promise.all([
-    writeFile(htmlPath, homeHtml),
     writeFile(notFoundPath, notFoundHtml),
     ...calendarDocuments.map(async ({ path, html }) => {
       await mkdir(dirname(path), { recursive: true });

@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { CalendarPageShell } from "./CalendarPageShell";
+import { useCalendarRoutes } from "./useCalendarRoutes";
 
-const CalendarPrivacy = () => (
+const CalendarPrivacy = () => {
+  const routes = useCalendarRoutes();
+
+  return (
   <CalendarPageShell
     activePage="privacy"
     eyebrow="Google Workspace integration"
@@ -181,12 +185,13 @@ const CalendarPrivacy = () => (
       </section>
 
       <p className="text-sm text-muted-foreground">
-        <Link className="font-medium text-primary underline underline-offset-4" to="/calendar">
+        <Link className="font-medium text-primary underline underline-offset-4" to={routes.overview}>
           Back to calendar overview
         </Link>
       </p>
     </div>
   </CalendarPageShell>
-);
+  );
+};
 
 export default CalendarPrivacy;

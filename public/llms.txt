@@ -1,19 +1,14 @@
-# Kamolpop Vitayarat (Arm)
+# Armmy Hermes Gmail Summary
 
-> Kamolpop Vitayarat is a computer engineering student at KMUTT in Bangkok, building across AI infrastructure, DevOps systems, embedded software, and edge AI.
+> Public information and legal pages for a personal Hermes integration that uses Google Calendar and optional Google Workspace tools.
 
-## Portfolio
+## Pages
 
-- [About](https://kamolpop.dev/#about): Background and engineering interests.
-- [Experience](https://kamolpop.dev/#experience): Professional and program experience.
-- [Projects](https://kamolpop.dev/#projects): Project descriptions and implementation details.
-- [Recognition](https://kamolpop.dev/#recognition): Awards and recognition.
-- [Core expertise](https://kamolpop.dev/#skills): Technical skills and focus areas.
-- [Contact](https://kamolpop.dev/#contact): Contact information.
+- [Overview](https://calendar.kamolpop.dev/): Calendar integration, requested OAuth scopes, and data handling summary.
+- [Privacy policy](https://calendar.kamolpop.dev/privacy): Google data access, processing, storage, retention, and deletion disclosures.
+- [Terms of Service](https://calendar.kamolpop.dev/terms): Terms for use of the personal integration.
 
-## Profiles
+## Operator
 
-- [GitHub](https://github.com/ArmmyC)
-- [LinkedIn](https://www.linkedin.com/in/kamolpopvitayarat/)
-- [ORCID](https://orcid.org/0009-0000-4579-5538)
-- [Project hub](https://hub.kamolpop.dev)
+- [Portfolio and contact](https://kamolpop.dev/)
+- Email: k.kamolpopv@gmail.com

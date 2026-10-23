@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { CalendarPageShell } from "./CalendarPageShell";
+import { useCalendarRoutes } from "./useCalendarRoutes";
 
-const CalendarTerms = () => (
+const CalendarTerms = () => {
+  const routes = useCalendarRoutes();
+
+  return (
   <CalendarPageShell
     activePage="terms"
     eyebrow="Google Workspace integration"
@@ -44,7 +48,7 @@ const CalendarTerms = () => (
         </p>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight">Read the privacy policy</h2>
         <p className="mt-4 text-sm leading-6 text-muted-foreground">
-          The <Link className="font-medium text-primary underline underline-offset-4" to="/calendar/privacy">privacy policy</Link>{" "}
+          The <Link className="font-medium text-primary underline underline-offset-4" to={routes.privacy}>privacy policy</Link>{" "}
           describes the Google data the integration can access and how it is processed. It also
           identifies granted-scope, retention, deletion, and security details that have not been
           verified.
@@ -59,12 +63,13 @@ const CalendarTerms = () => (
       </section>
 
       <p className="text-sm text-muted-foreground">
-        <Link className="font-medium text-primary underline underline-offset-4" to="/calendar">
+        <Link className="font-medium text-primary underline underline-offset-4" to={routes.overview}>
           Back to calendar overview
         </Link>
       </p>
     </div>
   </CalendarPageShell>
-);
+  );
+};
 
 export default CalendarTerms;
