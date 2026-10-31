@@ -138,7 +138,7 @@ export const PROJECTS: Project[] = [
     description:
       "A bilingual directory for discovering verified internships, hackathons, competitions, scholarships, and student programmes in Thailand.",
     tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Node.js"],
-    link: "https://kwahub.kamolpop.dev/",
+    link: "https://kwahub.com/",
     image: kwahubScreenshot,
   },
   {
