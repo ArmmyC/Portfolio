@@ -127,6 +127,7 @@ export type Project = {
   description: string;
   tech: string[];
   link?: string;
+  instagram?: string;
   image?: string;
 };
 
@@ -139,6 +140,7 @@ export const PROJECTS: Project[] = [
       "A bilingual directory for discovering verified internships, hackathons, competitions, scholarships, and student programmes in Thailand.",
     tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Node.js"],
     link: "https://kwahub.com/",
+    instagram: "https://www.instagram.com/kwahub.official/",
     image: kwahubScreenshot,
   },
   {

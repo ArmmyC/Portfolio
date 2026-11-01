@@ -445,7 +445,7 @@ describe("editorial portfolio shell", () => {
 
     expect(rally).toHaveAttribute("data-project-layout", "media");
     expect(webpad).toHaveAttribute("data-project-layout", "media");
-    expect(rally.parentElement).toHaveClass("flex-col");
+    expect(rally.parentElement?.parentElement).toHaveClass("flex-col");
     expect(rally.querySelector('[data-project-preview="true"]')).toHaveClass("aspect-[16/9]");
     expect(within(webpad).getByText("Visit website")).toBeInTheDocument();
     expect(within(lanta).getByText("View repository")).toBeInTheDocument();
@@ -724,6 +724,17 @@ describe("editorial portfolio shell", () => {
         delete (HTMLElement.prototype as unknown as { scrollIntoView?: unknown }).scrollIntoView;
       }
     }
+  });
+
+  it("links KwaHub's Instagram beside the card link instead of inside it", () => {
+    render(<Projects />);
+
+    const instagram = screen.getByRole("link", { name: "Instagram" });
+    const rally = screen.getByRole("link", { name: /KwaHub/i });
+
+    expect(instagram).toHaveAttribute("href", "https://www.instagram.com/kwahub.official/");
+    expect(instagram).toHaveAttribute("title", "Open KwaHub on Instagram in a new tab");
+    expect(rally).not.toContainElement(instagram);
   });
 
   it("uses the live status treatment for KwaHub and WebPad", () => {
